@@ -1,5 +1,5 @@
 - 👋 Hi, I’m Cerveau KATCHON
-- 👀 I’m interested  Data science 
+- 👀 I’m interested in Data science 
 - 🌱 I’m currently learning at Africa Tour Up 
 - 💞️ I’m looking to collaborate on my differents projets
 
