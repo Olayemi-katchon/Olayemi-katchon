@@ -1,4 +1,4 @@
-- 👋 Hi, I’m Cerveau KATCHON
+- 👋 Hi, I’m Cerveau KATCHON, i'm male
 - 👀 I’m interested in Data science 
 - 🌱 I’m currently PhD student at School Polytechnique of Montreal
 - 💞️ I’m looking to collaborate on my differents projets
