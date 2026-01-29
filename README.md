@@ -1,6 +1,6 @@
 - 👋 Hi, I’m Cerveau KATCHON
 - 👀 I’m interested in Data science 
-- 🌱 I’m currently learning at Africa Tour Up 
+- 🌱 I’m currently PhD student at School Polytechnique of Montreal
 - 💞️ I’m looking to collaborate on my differents projets
 
 <!---
