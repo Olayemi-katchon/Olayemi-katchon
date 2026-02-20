@@ -1,7 +1,7 @@
 # Évaluation du Programme d'Insertion Spécial dans l'Emploi (PSIE) au Bénin
 
 > **Rapport d'évaluation – Phase I : Revue documentaire**
-> Évaluation fondée sur les critères OCDE
+> Évaluation fondée sur les critères OCDE/CAD
 > *Document de travail – Version provisoire*
 
 ---
@@ -294,7 +294,7 @@ Le Bénin dispose de plusieurs programmes et dispositifs d'insertion professionn
 
 ### Documents de politique nationale
 - Gouvernement du Bénin (2021). *Programme d'Actions du Gouvernement (PAG) 2021-2026*. Cotonou.
-- Ministère du Travail et de la Fonction Publique (20XX). *Stratégie Nationale de l'Emploi*. Cotonou.
+- Ministère du Travail et de la Fonction Publique (*année à préciser*). *Stratégie Nationale de l'Emploi*. Cotonou.
 
 ### Rapports et études sectoriels
 - INSAE (2023). *Enquête Modulaire Intégrée sur les Conditions de Vie des ménages (EMICoV)*. Cotonou.
