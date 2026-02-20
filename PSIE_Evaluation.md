@@ -400,12 +400,20 @@ Les recommandations sont formulées selon les **normes OCDE/CAD** : elles sont *
 
 ### Annexe 2 — Liste des documents consultés
 
-| N° | Intitulé du document | Type | Auteur/Institution | Année | Source |
+> Les documents sources sont déposés dans les dossiers suivants du dépôt :
+> - 📁 [`docs/psie/01_document_projet/`](docs/psie/01_document_projet/) — Document de projet / conception
+> - 📁 [`docs/psie/02_rapport_mise_en_oeuvre/`](docs/psie/02_rapport_mise_en_oeuvre/) — Rapport(s) de mise en œuvre
+> - 📁 [`docs/psie/03_cadre_logique/`](docs/psie/03_cadre_logique/) — Cadre logique / théorie du changement
+> - 📁 [`docs/psie/04_donnees_statistiques/`](docs/psie/04_donnees_statistiques/) — Données statistiques (INSAE, ANPE)
+> - 📁 [`docs/psie/05_politiques_nationales/`](docs/psie/05_politiques_nationales/) — Politiques nationales (PAG, PNE, SCRP)
+
+| N° | Intitulé du document | Type | Auteur/Institution | Année | Dossier / Source |
 |---|---|---|---|---|---|
-| 1 | `[À COMPLÉTER : ex. Plan d'Action du Gouvernement 2021-2026]` | Politique nationale | Gouvernement du Bénin | `[année]` | `[lien ou archive]` |
-| 2 | `[À COMPLÉTER : ex. Document de programme PSIE]` | Document de programme | `[À COMPLÉTER]` | `[année]` | `[lien ou archive]` |
-| 3 | `[À COMPLÉTER : ex. Rapport annuel d'activités PSIE]` | Rapport d'activités | `[À COMPLÉTER]` | `[année]` | `[lien ou archive]` |
-| 4 | `[À COMPLÉTER : ex. Données INSAE sur l'emploi]` | Données statistiques | INSAE | `[année]` | `[lien ou archive]` |
+| 1 | Document de projet PSIE | Document de programme | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `docs/psie/01_document_projet/` |
+| 2 | Rapport de mise en œuvre PSIE | Rapport d'activités | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `docs/psie/02_rapport_mise_en_oeuvre/` |
+| 3 | Cadre logique du PSIE | Cadre de résultats | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `docs/psie/03_cadre_logique/` |
+| 4 | `[À COMPLÉTER : ex. Plan d'Action du Gouvernement]` | Politique nationale | Gouvernement du Bénin | `[À COMPLÉTER]` | `docs/psie/05_politiques_nationales/` |
+| 5 | `[À COMPLÉTER : ex. Données INSAE sur l'emploi]` | Données statistiques | INSAE | `[À COMPLÉTER]` | `docs/psie/04_donnees_statistiques/` |
 
 ### Annexe 3 — Glossaire des termes clés
 
