@@ -68,9 +68,337 @@ La présente évaluation est une **évaluation de processus et de mise en œuvre
 
 Les critères d'efficience, d'effets/impacts, de durabilité et de genre feront l'objet d'une évaluation ultérieure (Phase 2), une fois les données primaires collectées.
 
-### 1.3 Utilisateurs de l'évaluation
+### 1.3 Champ et portée de l'évaluation
 
-Coordination du PSIE, Présidence de la République (BAI), Ministère en charge de la Promotion de l'Emploi, ANPE, partenaires techniques et financiers, et toute instance décisionnelle concernée par le renouvellement ou l'extension du programme.
+#### 1.3.1 Objet de l'évaluation
+
+La présente évaluation porte sur le **Programme Spécial d'Insertion dans l'Emploi (PSIE)**, programme national mis en œuvre par l'Agence Nationale Pour l'Emploi (ANPE) sous l'autorité de la Présidence de la République du Bénin. Elle constitue la **Phase 1 d'une évaluation en deux temps**, délibérément limitée aux critères évaluables par voie documentaire, dans l'attente de la collecte de données primaires.
+
+L'objet de l'évaluation est triple :
+1. **Apprécier le bien-fondé du programme** au regard des besoins et des priorités nationales (critère de pertinence) ;
+2. **Vérifier la solidité de sa logique d'intervention** et sa cohérence avec le paysage politique et institutionnel béninois (critère de cohérence) ;
+3. **Mesurer l'atteinte des objectifs de mise en œuvre** sur la base des données de performance disponibles (critère d'efficacité).
+
+#### 1.3.2 Période couverte
+
+L'évaluation couvre la **période de mise en œuvre effective du PSIE**, soit du **1er juillet 2020** — date du démarrage effectif des inscriptions sur la plateforme — au **30 septembre 2025**, qui constitue la dernière date de référence documentée dans les sources disponibles. Cette période de cinq années représente la quasi-totalité de la durée initiale du programme (2020-2024) et le début de sa phase de prolongation (2025 et au-delà).
+
+#### 1.3.3 Périmètre géographique
+
+L'évaluation couvre l'ensemble du **territoire national de la République du Bénin**, conformément à la vocation nationale du PSIE, déployé à travers le réseau des antennes départementales et locales de l'ANPE dans les **douze (12) départements**. Des disparités territoriales dans les résultats sont analysées comme facteur d'efficacité.
+
+#### 1.3.4 Dimensions et niveaux d'analyse
+
+| Dimension | Périmètre | Niveaux analysés |
+|---|---|---|
+| **Institutionnelle** | Gouvernance, pilotage, articulation avec l'ANPE et les partenaires | National |
+| **Opérationnelle** | Processus de mise en œuvre (enregistrement → insertion → suivi) | National et départemental |
+| **Financière** | Exécution budgétaire des salaires et du fonctionnement | National |
+| **Population cible** | Jeunes diplômés (18-35 ans, BAC à Master) et entreprises | National et sectoriel |
+
+#### 1.3.5 Critères couverts et critères différés
+
+La présente phase d'évaluation se concentre sur les **trois critères OCDE/CAD évaluables par revue documentaire** :
+
+| Critère | Phase | Justification |
+|---|---|---|
+| **Pertinence** | Phase 1 (présente) | Évaluable sur base des documents de programme et des diagnostics sectoriels disponibles |
+| **Cohérence** | Phase 1 (présente) | Évaluable par analyse documentaire du cadre logique et du paysage institutionnel |
+| **Efficacité** | Phase 1 (présente) | Évaluable sur la base des rapports de performance et des données de la plateforme PSIE |
+| **Efficience** | Phase 2 | Nécessite une analyse coût-efficacité comparée avec des programmes similaires dans la sous-région |
+| **Effets/Impacts** | Phase 2 | Nécessite une enquête auprès des bénéficiaires (maintien en emploi post-programme, évolution des revenus) |
+| **Durabilité** | Phase 2 | Nécessite un suivi longitudinal des cohortes d'alumni |
+| **Genre** | Phase 2 | Nécessite des données désagrégées par sexe, non disponibles dans les sources actuelles |
+
+#### 1.3.6 Ce que l'évaluation ne couvre pas
+
+Par souci de rigueur méthodologique, il importe de délimiter explicitement les aspects **hors champ** de la présente évaluation :
+
+- La perception des bénéficiaires (jeunes et entreprises) n'est pas collectée directement ;
+- Le taux de rétention des allocataires en emploi à l'issue de la période d'immersion de 24 mois n'est pas documenté dans les sources disponibles et ne peut donc être évalué ;
+- Les effets sur la pauvreté des ménages, sur la productivité des entreprises, ou sur le marché du travail au niveau macroéconomique sont exclus du champ de la Phase 1 ;
+- L'évaluation ne couvre pas les aspects de gestion interne (systèmes de contrôle interne, audit) qui relèvent d'un audit de performance distinct.
+
+#### 1.3.7 Utilisateurs de l'évaluation
+
+Les résultats et recommandations de la présente évaluation sont destinés en priorité à :
+- La **Coordination du PSIE** et le **Bureau d'Appui aux Investissements (BAI)** de la Présidence de la République — pour orienter les décisions de pilotage opérationnel et stratégique ;
+- Le **Ministère en charge de la Promotion de l'Emploi** — pour alimenter la révision de la Politique Nationale de l'Emploi (PNE) ;
+- La **Direction Générale de l'ANPE** — pour améliorer les processus opérationnels ;
+- Les **partenaires techniques et financiers** susceptibles d'appuyer une future évaluation d'impact ;
+- Toute instance décisionnelle impliquée dans le renouvellement, l'extension ou la réplication du programme.
+
+---
+
+### 1.4 Description du PSIE
+
+#### 1.4.1 Contexte et genèse du programme
+
+Le PSIE est une **initiative présidentielle** inscrite dans la continuité du Programme d'Actions du Gouvernement (PAG 2016-2021), dont l'un des axes stratégiques consiste à traiter la question de l'emploi des jeunes de manière systématique dans l'ensemble des interventions gouvernementales.
+
+Le programme est né d'un constat convergent issu de plusieurs diagnostics : d'un côté, une masse considérable de jeunes diplômés — estimés à **4,08 millions de personnes de moins de 40 ans** (EMICOV 2015), soit 34 % de la population totale — condamnés au chômage ou au sous-emploi (72 %, INSAE 2017) faute de pouvoir accéder à leur premier emploi formel ; de l'autre, des entreprises qui peinent à embaucher non par manque de besoin, mais par crainte des charges salariales à long terme, en particulier dans les PME/PMI.
+
+L'initiative a été **annoncée publiquement par le Président de la République le 31 juillet 2019**, lors du 59ème anniversaire de l'indépendance du Bénin, qui a déclaré vouloir « *recruter chaque année, à la charge de l'État, 2 000 jeunes diplômés à placer dans des entreprises privées ou publiques, sur une période de deux ans, avec l'espoir qu'ils sauront se rendre utiles et efficaces pour se faire recruter à l'issue de la période d'insertion, ou alors qu'ils sauront voler de leurs propres ailes dans l'auto emploi* ».
+
+Elle a ensuite fait l'objet d'une phase de formulation rigoureuse (décembre 2019 – mars 2020), incluant des concertations avec les organisations d'employeurs, aboutissant à la validation du document provisoire du programme par le Conseil des ministres le **10 juin 2020**, au lancement officiel le **15 juin 2020**, et à la prise d'un **décret institutionnalisant le PSIE en août 2020**.
+
+Face aux résultats probants du programme, le Conseil des ministres, lors de sa session du **19 février 2025**, a autorisé la **prolongation du PSIE au-delà de son échéance initiale de décembre 2025**, confirmant ainsi son ancrage durable dans l'architecture des politiques d'emploi au Bénin.
+
+#### 1.4.2 Objectifs et structure du PSIE
+
+##### A. Architecture des objectifs
+
+Le cadre de résultats du PSIE est organisé selon une hiérarchie à trois niveaux, articulant l'objectif général, les objectifs spécifiques et les résultats attendus :
+
+**Objectif Général (OG) :**
+Faciliter l'insertion professionnelle de **deux mille (2 000) jeunes diplômés par an** dans les entreprises publiques et privées de la République du Bénin.
+
+**Objectifs Spécifiques (OS) :**
+
+| N° | Objectif Spécifique | Résultat Attendu associé |
+|---|---|---|
+| **OS1** | Améliorer l'employabilité des bénéficiaires du programme en vue de leur insertion professionnelle durable dans les nouveaux postes d'emploi créés, grâce aux actions d'immersion et d'encadrement | **R1 :** Les mesures d'accompagnement à l'employabilité pour l'insertion durable et pérenne de 2 000 jeunes par an sont initiées et mises en œuvre |
+| **OS2** | Soutenir financièrement la prise en charge totale des salaires des titulaires des nouveaux emplois créés par les entreprises dans le cadre du programme | **R2 :** 2 000 jeunes candidats à l'emploi qualifiés sont employés par an par les entreprises, et leur rémunération est prise en charge par l'État, en vue de leur insertion durable |
+
+##### B. Structure institutionnelle de gouvernance
+
+Le PSIE est gouverné par un dispositif institutionnel à quatre niveaux, s'appuyant sur les structures existantes pour éviter la création d'une administration parallèle coûteuse :
+
+```
+PRÉSIDENCE DE LA RÉPUBLIQUE (BAI)
+        │  Tutelle politique et financière
+        ▼
+COMITÉ DE PILOTAGE = Conseil d'Administration de l'ANPE
+        │  Orientations stratégiques · Approbation du budget et des rapports
+        │  Réunion trimestrielle (puis semestrielle)
+        ▼
+COMITÉ TECHNIQUE = Direction Générale de l'ANPE (Président : DG ANPE)
+        │  Validation technique de toutes les opérations
+        │  Approbation des listes d'aptitude des bénéficiaires
+        │  Réunion mensuelle
+        ▼
+UNITÉ DE COORDINATION PSIE (mise à disposition par la Présidence de la République)
+        │  Coordonnateur · Spécialiste S-E · Administrateur plateforme
+        │  Gestion opérationnelle quotidienne
+        ▼
+ANPE (Agence d'exécution)
+        Plateforme numérique · Conseillers en emploi · Réseau de 12 antennes départementales
+```
+
+Cette architecture présente l'avantage de mutualiser les ressources techniques et humaines de l'ANPE (plateforme, bases de données, réseau territorial, conseillers en emploi) tout en maintenant une identité opérationnelle propre au PSIE, assurée par l'Unité de Coordination.
+
+##### C. Processus opérationnel
+
+Le cycle opérationnel du PSIE s'organise en **huit étapes séquentielles** :
+
+| Étape | Activités clés | Acteurs principaux |
+|---|---|---|
+| **1. Information-communication** | Campagnes médiatiques, sensibilisation des employeurs via CCIB/CNPB/CONEB | Coordination PSIE · ANPE |
+| **2. Inscription** | Enregistrement en ligne (entreprises et candidats) sur la plateforme psie.bj | Candidats et entreprises |
+| **3. Présélection sur dossiers** | Contrôle de conformité et de complétude ; dépouillement par les Conseillers en emploi | ANPE (Conseillers en emploi) |
+| **4. Éligibilité** | Analyse qualitative des dossiers ; entretiens exploratoires ; panels d'experts ; listes d'aptitude | Panels d'experts · Comité technique |
+| **5. Sélection des allocataires** | Entreprise choisit parmi les profils proposés ; entretiens finaux | Entreprise hôte · ANPE |
+| **6. Préparation** | Formation pré-immersion (3-5 jours) : culture d'entreprise, déontologie, savoir-vivre ; formation des tuteurs/mentors | ANPE · Coordination PSIE |
+| **7. Immersion et suivi** | Signature des contrats ; prise de poste ; suivi mensuel de présence ; ateliers de renforcement | Trésor public (salaires) · ANPE (suivi) |
+| **8. Dispositif post-programme** | Orientation vers l'emploi salarié ou indépendant ; salon annuel de recrutement ; suivi alumni à 6, 12 et 24 mois | Coordination PSIE · ANPE |
+
+##### D. Structure budgétaire
+
+Le PSIE est **entièrement financé par le budget national** (aucune contribution numéraire des entreprises). Le budget prévisionnel sur 5 ans (2020-2024) s'élève à **46,60 milliards FCFA**, répartis comme suit :
+
+| Composante | Montant prévisionnel | Part |
+|---|---|---|
+| Salaires bruts et charges sociales des allocataires | 43,57 milliards FCFA | 93,5 % |
+| Frais de formation et d'encadrement (ateliers, coaching, tutorat) | ~1,4 milliard FCFA | 3,0 % |
+| Fonctionnement et frais de gestion administrative | ~1,6 milliard FCFA | 3,5 % |
+| **TOTAL** | **46,60 milliards FCFA** | **100 %** |
+
+La grille de rémunération des allocataires garantit un salaire net minimum selon les niveaux de qualification, l'État assurant également les contributions patronales CNSS et l'IRPP, dans une logique d'emploi décent :
+
+| Niveau de qualification | Diplôme correspondant | Salaire net garanti (FCFA) |
+|---|---|---|
+| Technicien spécialisé/professionnel | BAC professionnel | 100 000 |
+| Technicien supérieur | BTS/DUT (BAC+2) | 150 000 |
+| Technicien supérieur spécialisé | DTS/Licence (BAC+3) | 175 000 |
+| Administrateur/Ingénieur | Master/Ingénieur (BAC+5) | 250 000 |
+
+#### 1.4.3 Portée, enjeux et effets attendus du PSIE
+
+##### A. Portée quantitative et géographique
+
+Le PSIE est un programme **d'envergure nationale**, à portée multidimensionnelle :
+
+- **Portée temporelle :** 5 ans de mise en œuvre initiale (2020-2024), prolongé au-delà de 2025 ;
+- **Portée cible :** 2 000 nouveaux jeunes bénéficiaires par an, soit une cible initiale de **8 000 bénéficiaires cumulés** sur la durée du programme (chaque cohorte de 2 000 étant en immersion sur deux années consécutives, le cumul en situation d'emploi pouvant atteindre 4 000 simultanément) ;
+- **Portée entreprises :** l'ensemble des entreprises publiques et privées formelles de toutes tailles, réparties sur l'ensemble du territoire national ;
+- **Portée géographique :** les **12 départements du Bénin**, avec un accent particulier sur les zones économiquement dynamiques (Littoral, Atlantique) et un objectif de déconcentration progressive vers les régions septentrionales.
+
+##### B. Enjeux de politique publique
+
+Le PSIE s'inscrit au croisement de plusieurs enjeux majeurs de politique publique :
+
+**1. L'enjeu du dividende démographique :**
+Avec une population de moins de 40 ans estimée à 4,08 millions de personnes (34 % de la population totale), le Bénin dispose d'un potentiel démographique considérable. Cependant, sans emploi productif, ce dividende démographique risque de se transformer en fardeau social. Le PSIE représente l'un des mécanismes par lesquels l'État tente de convertir ce potentiel en moteur de croissance économique.
+
+**2. L'enjeu de la formalisation de l'emploi :**
+En imposant le recours à des contrats à durée déterminée formels, l'affiliation obligatoire à la CNSS et l'assujettissement à l'IRPP, le PSIE s'inscrit dans une logique de formalisation progressive du marché du travail béninois. Chaque allocataire inséré représente une unité de travail formelle supplémentaire dans l'économie nationale.
+
+**3. L'enjeu de la compétitivité des entreprises :**
+En permettant aux entreprises d'accéder à des compétences qualifiées sans supporter le coût salarial dans un premier temps, le PSIE vise à renforcer la compétitivité du tissu productif, notamment des PME/PMI qui constituent l'ossature de l'économie béninoise. L'enjeu est ici de transformer la dynamique d'embauche des entreprises en induisant, par l'expérience, une culture de valorisation du capital humain qualifié.
+
+**4. L'enjeu de l'articulation formation-emploi :**
+Le PSIE ne se substitue pas à une réforme du système éducatif, mais il crée un mécanisme intermédiaire de transition entre la formation initiale et l'emploi durable, en permettant aux jeunes d'acquérir une expérience professionnelle encadrée qui valorise leurs diplômes sur le marché du travail.
+
+**5. L'enjeu de l'équité territoriale :**
+Avec 85,5 % des insertions réalisées dans le Littoral et l'Atlantique au 30 septembre 2025, le PSIE est confronté à un défi d'équité géographique. L'enjeu à long terme est d'assurer que les opportunités d'emploi formel se diffusent progressivement vers les régions septentrionalesdu pays, qui concentrent une partie importante de la pauvreté rurale.
+
+##### C. Effets attendus du PSIE à trois niveaux
+
+Le PSIE est conçu pour produire des effets à différents horizons temporels, pour des groupes d'acteurs distincts :
+
+**Effets immédiats (court terme — pendant la période d'immersion de 24 mois) :**
+
+| Bénéficiaire | Effet attendu |
+|---|---|
+| **Jeunes allocataires** | Accès à un premier emploi formel rémunéré ; acquisition d'une expérience professionnelle encadrée ; développement des compétences métiers et transversales (déontologie, savoir-vivre, gestion de poste) |
+| **Entreprises bénéficiaires** | Accès à des ressources humaines qualifiées à coût nul sur 24 mois ; amélioration de la productivité ; test des profils avant une éventuelle embauche permanente |
+| **Écosystème de l'emploi** | Dynamisation du marché de l'emploi formel ; visibilité accrue des offres grâce à la plateforme PSIE |
+
+**Effets intermédiaires (moyen terme — à la sortie du programme) :**
+
+| Bénéficiaire | Effet attendu |
+|---|---|
+| **Jeunes allocataires** | Amélioration de l'employabilité ; insertion durable dans l'emploi salarié ou dans l'auto-emploi ; réduction du chômage de longue durée des jeunes diplômés |
+| **Entreprises bénéficiaires** | Modification durable des comportements d'embauche (réduction de la réticence à embaucher des jeunes qualifiés) ; renforcement des capacités de gestion des ressources humaines |
+| **Marché du travail** | Réduction du taux de sous-emploi des jeunes ; augmentation du volume d'emplois formels |
+
+**Effets à long terme (impact — 3 à 5 ans après le programme) :**
+
+| Niveau | Impact attendu |
+|---|---|
+| **Individuel** | Amélioration durable des revenus des anciens bénéficiaires ; réduction de la vulnérabilité économique des ménages |
+| **Sectoriel** | Augmentation de la productivité dans les secteurs d'accueil ; diffusion d'une culture du travail qualifié dans les PME/PMI |
+| **Macroéconomique** | Contribution à la réduction du taux de sous-emploi des jeunes (actuellement 72 %) ; appui à la réalisation des objectifs du PAG en matière de croissance économique inclusive |
+
+#### 1.4.4 Théorie de changement du PSIE
+
+La théorie de changement (TdC) du PSIE est la représentation explicite de la logique causale par laquelle le programme entend produire les changements attendus sur le marché du travail béninois. Elle articule le problème central, les hypothèses causales, les mécanismes d'intervention et la chaîne de résultats.
+
+##### A. Énoncé du problème central
+
+Le PSIE part d'un **double constat de blocage structurel sur le marché du travail béninois** :
+
+> **Côté offre de travail :** Les jeunes diplômés béninois (BAC à Master) sont en nombre croissant mais peinent à accéder au marché du travail formel faute d'expérience professionnelle. Sans premier emploi, ils ne peuvent acquérir cette expérience ; sans cette expérience, ils ne peuvent décrocher un premier emploi — un cercle vicieux qui les condamne au sous-emploi informel ou au chômage (72 % de taux de sous-emploi, INSAE 2017).
+
+> **Côté demande de travail :** Les entreprises — en particulier les PME/PMI qui représentent la majeure partie du tissu économique formel béninois — ont des besoins réels en ressources humaines qualifiées, mais hésitent à embaucher en raison de la charge salariale immédiate qu'elles doivent assumer dès le premier jour, sans garantie de retour sur investissement.
+
+**Le nœud causal :** La rencontre entre l'offre et la demande de travail qualifié est bloquée par une **asymétrie d'information et une contrainte financière à l'embauche**. Ni les jeunes ne peuvent démontrer leur valeur productive sans accès à un emploi, ni les entreprises ne peuvent s'assurer de la qualité d'un candidat sans l'avoir mis à l'épreuve.
+
+##### B. Logique causale (Si... Alors...)
+
+Le PSIE repose sur une **chaîne causale en quatre liens** :
+
+**Lien 1 :** *Si* l'État prend en charge 100 % du coût salarial des nouvelles recrues pendant 24 mois, *alors* la contrainte financière à l'embauche est levée pour les entreprises.
+
+**Lien 2 :** *Si* la contrainte financière est levée *et* qu'un mécanisme de sélection rigoureux permet d'apparier les profils des candidats avec les besoins réels des entreprises, *alors* les entreprises augmenteront leur volume d'embauche de jeunes qualifiés.
+
+**Lien 3 :** *Si* les jeunes sont mis en immersion dans des entreprises encadrées par des tuteurs/mentors *et* bénéficient d'un accompagnement à l'employabilité (formation, coaching, ateliers), *alors* ils acquièrent une expérience professionnelle concrète qui améliore durablement leur employabilité.
+
+**Lien 4 :** *Si* les jeunes acquièrent cette expérience et démontrent leur valeur productive *et* que les entreprises révisent positivement leur perception du risque à l'embauche, *alors* une insertion professionnelle durable — soit par maintien dans l'entreprise hôte, soit par mobilité vers un autre employeur, soit par auto-emploi — devient plus probable.
+
+##### C. Représentation schématique de la théorie de changement
+
+```
+╔══════════════════════════════════════════════════════════════════════╗
+║                     PROBLÈME CENTRAL                                 ║
+║  Taux de sous-emploi des jeunes : 72 %  (INSAE, 2017)               ║
+║  CAUSE 1 : Jeunes diplômés sans expérience → non recrutables        ║
+║  CAUSE 2 : Entreprises réticentes à embaucher (charges salariales)  ║
+╚══════════════════════════════════════════════════════════════════════╝
+                               │
+                               ▼
+╔══════════════════════════════════════════════════════════════════════╗
+║                         INTRANTS                                     ║
+║  • Budget de l'État : 46,60 milliards FCFA sur 5 ans                ║
+║  • Infrastructure ANPE : plateforme numérique, réseau territorial   ║
+║  • Unité de Coordination PSIE (Présidence de la République)         ║
+║  • Panels d'experts recruteurs (6 327 experts cumulés)              ║
+╚══════════════════════════════════════════════════════════════════════╝
+                               │
+                               ▼
+╔══════════════════════════════════════════════════════════════════════╗
+║                         ACTIVITÉS                                    ║
+║  A1. Information-communication sur le programme                     ║
+║  A2. Prospection, inscription et éligibilité des entreprises        ║
+║  A3. Inscription, évaluation et éligibilité des candidats           ║
+║  A4. Appariement candidats-entreprises par panels d'experts         ║
+║  A5. Formation pré-immersion des candidats (3-5 jours)              ║
+║  A6. Formation des tuteurs/mentors des entreprises                  ║
+║  A7. Mise en emploi + paiement des salaires (Trésor public)         ║
+║  A8. Suivi mensuel de présence et performances                      ║
+║  A9. Ateliers de renforcement des capacités (TRE, coaching)         ║
+║  A10. Dispositif post-programme et suivi alumni                     ║
+╚══════════════════════════════════════════════════════════════════════╝
+                               │
+                               ▼
+╔══════════════════════════════════════════════════════════════════════╗
+║                         EXTRANTS (Outputs)                           ║
+║  • 2 067 entreprises éligibles et engagées (cumul 2020-sept. 2025)  ║
+║  • 11 509 postes validés et publiés                                 ║
+║  • 137 086 candidats interviewés                                    ║
+║  • 9 263 allocataires mis en emploi                                 ║
+║  • 18,3 milliards FCFA de salaires versés                           ║
+╚══════════════════════════════════════════════════════════════════════╝
+                               │
+                               ▼
+╔══════════════════════════════════════════════════════════════════════╗
+║                    RÉSULTATS IMMÉDIATS (Outcomes)                    ║
+║  R1 : Mesures d'accompagnement à l'employabilité initiées           ║
+║       → Jeunes mieux armés pour le marché du travail                ║
+║  R2 : 2 000 jeunes/an en emploi formel, rémunéré et protégé         ║
+║       → Expérience professionnelle documentée (CV, références)      ║
+║  → Entreprises testent le profil des allocataires sans risque       ║
+╚══════════════════════════════════════════════════════════════════════╝
+                               │
+                               ▼
+╔══════════════════════════════════════════════════════════════════════╗
+║                  RÉSULTATS INTERMÉDIAIRES                            ║
+║  • Taux d'insertion durable post-programme (à mesurer en Phase 2)   ║
+║  • Révision à la hausse des comportements d'embauche des entreprises ║
+║  • Réduction de l'inadéquation formation-emploi                     ║
+║  • Augmentation du volume d'emplois formels dans l'économie         ║
+╚══════════════════════════════════════════════════════════════════════╝
+                               │
+                               ▼
+╔══════════════════════════════════════════════════════════════════════╗
+║                         IMPACT VISÉ                                  ║
+║  • Réduction durable du taux de sous-emploi des jeunes au Bénin     ║
+║  • Augmentation de la compétitivité des entreprises béninoises      ║
+║  • Contribution à la croissance économique inclusive (ODD 8)        ║
+║  • Réalisation des objectifs du PAG sur l'emploi des jeunes         ║
+╚══════════════════════════════════════════════════════════════════════╝
+```
+
+##### D. Hypothèses clés et risques
+
+La validité de la théorie de changement repose sur un ensemble d'hypothèses critiques identifiées dès la conception du programme. Leur tenue conditionne directement l'atteinte des résultats :
+
+| Hypothèse | Niveau de risque | Statut (au regard des données disponibles) |
+|---|---|---|
+| **H1 : Les entreprises s'engagent réellement comme tuteurs/mentors** — et ne se contentent pas d'utiliser les allocataires comme main-d'œuvre à bas coût | Élevé | Partiellement confirmé : le suivi des contrats existe, mais des cas de non-respect documentés subsistent (Rapport MO 2025) |
+| **H2 : Le financement de l'État est disponible et versé à temps** — les allocataires reçoivent leur salaire chaque mois | Moyen | Confirmé : paiements réguliers par le Trésor (18,3 mds FCFA versés sans rupture documentée) |
+| **H3 : Les jeunes bénéficiaires restent engagés pendant 24 mois** — et ne se retirent pas prématurément | Moyen | Partiellement documenté : le taux d'abandon est mentionné dans les défis du programme mais non quantifié dans les sources |
+| **H4 : Les allocataires sont maintenus en emploi à l'issue de la période d'immersion** — ou trouvent un autre emploi formel rapidement | Élevé | Non mesurable à ce stade (données post-programme indisponibles) — constitue la principale lacune de la TdC |
+| **H5 : L'environnement économique et réglementaire reste stable** — pas de crise majeure perturbant l'activité des entreprises | Faible | Contexte relativement stable sur la période 2020-2025 |
+| **H6 : La plateforme numérique et les outils de sélection garantissent un appariement de qualité** — candidats en adéquation avec les besoins des entreprises | Moyen | Confirmé partiellement : taux de sélection par les entreprises de 109,7 % (Sept 2025) indique une bonne adéquation |
+
+##### E. Limites de la théorie de changement
+
+L'analyse de la TdC du PSIE révèle deux **angles morts** qu'une évaluation robuste devra adresser en Phase 2 :
+
+1. **Le maillon de la durabilité reste opaque :** La TdC suppose que l'expérience acquise pendant 24 mois est suffisante pour assurer une insertion durable post-programme, mais aucune donnée sur le taux de rétention des allocataires après la fin de leur contrat n'est disponible. Si les entreprises utilisent le programme uniquement comme source de main-d'œuvre temporaire à coût nul, sans intégrer durablement les jeunes, l'impact de long terme serait limité.
+
+2. **Le changement de comportement des entreprises n'est pas suffisamment documenté :** La TdC postule un changement durable dans les comportements d'embauche des entreprises (réduction de la réticence à embaucher des jeunes qualifiés). Or, le rapport de mise en œuvre ne documente pas explicitement si les entreprises qui ont participé au PSIE ont effectivement augmenté leurs embauches propres (hors PSIE) à l'issue des cycles d'immersion.
 
 ---
 
