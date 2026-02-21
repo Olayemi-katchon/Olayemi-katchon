@@ -235,22 +235,17 @@ Le PSIE est un programme **d'envergure nationale**, à portée multidimensionnel
 
 ##### B. Enjeux de politique publique
 
-Le PSIE s'inscrit au croisement de plusieurs enjeux majeurs de politique publique :
+Le PSIE s'inscrit au croisement de cinq enjeux structurants de la politique de l'emploi au Bénin.
 
-**1. L'enjeu du dividende démographique :**
-Avec une population de moins de 40 ans estimée à 4,08 millions de personnes (34 % de la population totale), le Bénin dispose d'un potentiel démographique considérable. Cependant, sans emploi productif, ce dividende démographique risque de se transformer en fardeau social. Le PSIE représente l'un des mécanismes par lesquels l'État tente de convertir ce potentiel en moteur de croissance économique.
+Le premier est l'enjeu du **dividende démographique**. Avec plus de quatre millions de Béninois de moins de 40 ans, soit 34 % de la population, le pays dispose d'un potentiel humain considérable. Sans mécanismes d'insertion productive, ce dividende risque de se muer en pression sociale. Le PSIE représente une réponse institutionnelle visant à convertir ce potentiel en levier de croissance.
 
-**2. L'enjeu de la formalisation de l'emploi :**
-En imposant le recours à des contrats à durée déterminée formels, l'affiliation obligatoire à la CNSS et l'assujettissement à l'IRPP, le PSIE s'inscrit dans une logique de formalisation progressive du marché du travail béninois. Chaque allocataire inséré représente une unité de travail formelle supplémentaire dans l'économie nationale.
+Le deuxième enjeu est celui de la **formalisation de l'emploi**. En imposant des contrats à durée déterminée formels, assortis d'affiliations obligatoires à la CNSS et à l'IRPP, le programme contribue à l'élargissement progressif de l'économie formelle. Chaque bénéficiaire inséré constitue une unité supplémentaire de travail déclaré.
 
-**3. L'enjeu de la compétitivité des entreprises :**
-En permettant aux entreprises d'accéder à des compétences qualifiées sans supporter le coût salarial dans un premier temps, le PSIE vise à renforcer la compétitivité du tissu productif, notamment des PME/PMI qui constituent l'ossature de l'économie béninoise. L'enjeu est ici de transformer la dynamique d'embauche des entreprises en induisant, par l'expérience, une culture de valorisation du capital humain qualifié.
+Le troisième enjeu concerne la **compétitivité des entreprises**. En donnant accès à des compétences qualifiées à coût salarial réduit, notamment pour les PME/PMI, le PSIE soutient le tissu productif tout en cherchant à ancrer une culture durable de valorisation du capital humain qualifié.
 
-**4. L'enjeu de l'articulation formation-emploi :**
-Le PSIE ne se substitue pas à une réforme du système éducatif, mais il crée un mécanisme intermédiaire de transition entre la formation initiale et l'emploi durable, en permettant aux jeunes d'acquérir une expérience professionnelle encadrée qui valorise leurs diplômes sur le marché du travail.
+Le quatrième enjeu est celui de l'**articulation formation-emploi**. Le programme crée un espace de transition structuré entre la formation initiale et l'emploi durable, permettant aux jeunes diplômés de valoriser leurs qualifications par une expérience professionnelle encadrée.
 
-**5. L'enjeu de l'équité territoriale :**
-Avec 85,5 % des insertions réalisées dans le Littoral et l'Atlantique au 30 septembre 2025, le PSIE est confronté à un défi d'équité géographique. L'enjeu à long terme est d'assurer que les opportunités d'emploi formel se diffusent progressivement vers les régions septentrionalesdu pays, qui concentrent une partie importante de la pauvreté rurale.
+Le cinquième enjeu, enfin, est celui de l'**équité territoriale**. La concentration de 85,5 % des insertions dans les départements du Littoral et de l'Atlantique révèle un défi géographique majeur. L'enjeu est d'assurer que les opportunités d'emploi formel se diffusent progressivement vers les régions septentrionales, où se concentre une part importante de la pauvreté.
 
 ##### C. Effets attendus du PSIE à trois niveaux
 
