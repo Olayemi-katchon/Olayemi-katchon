@@ -504,24 +504,244 @@ La théorie du changement du PSIE suit la logique suivante :
 
 ## 3. MÉTHODOLOGIE D'ÉVALUATION
 
-### 3.1 Approche méthodologique
+### 3.1 Approche globale et conformité au GMNE
 
-La présente évaluation repose sur une **approche qualitative à base de revue documentaire systématique**. Les documents analysés sont :
+La méthodologie globale de la présente évaluation adopte une **approche inclusive et participative**, conforme au **Guide Méthodologique National d'Évaluation (GMNE)** des politiques publiques en République du Bénin. Elle repose sur une combinaison articulée de deux volets complémentaires :
 
-1. **Prodoc PSIE-BéninF (revu) 03.04.20.pdf** — Document de projet (59 pages, mars 2020)
-2. **Cadre Logique PSIE.pdf** — Cadre logique officiel (4 pages)
-3. **Rapport actualisé de mise en œuvre du PSIE juil. 2020 – sept. 2025** — Rapport de performance (octobre 2025)
+- **Un volet documentaire** (Phase 1 — en cours) : revue documentaire systématique des sources officielles du programme, permettant d'évaluer la pertinence, la cohérence et l'efficacité sur la base des documents disponibles ;
+- **Un volet terrain** (Phase 2 — à venir) : enquête mixte (quantitative et qualitative) auprès des bénéficiaires, du groupe témoin, des entreprises et des acteurs clés, permettant d'évaluer les effets/impacts, l'efficience, la durabilité et la dimension genre.
 
-### 3.2 Triangulation
+Cette architecture en deux phases répond à une contrainte réelle : l'impossibilité d'évaluer certains critères OCDE/CAD (effets, impact, durabilité) sans données primaires collectées directement auprès des bénéficiaires.
 
-Les constats reposent sur la convergence des trois documents. Les données statistiques sont tirées exclusivement du rapport de mise en œuvre (source primaire de référence : Base de données PSIE, septembre 2025).
+---
 
-### 3.3 Limites méthodologiques
+### 3.2 Processus de conduite de la mission
 
-- **Absence de données primaires** : Pas d'entretiens avec les bénéficiaires, entreprises ou équipe de coordination.
-- **Pas de groupe de comparaison** : L'évaluation ne peut pas isoler l'effet causal du programme sans groupe témoin.
-- **Biais de rapport** : Les rapports officiels tendent à présenter les succès. Les taux d'insertion à long terme (rétention post-programme) ne sont pas renseignés dans les documents disponibles.
-- **Données sectorielles limitées** : Les données INSAE sur l'emploi datent de 2017 pour certains indicateurs.
+Le processus de la présente évaluation est structuré en **cinq phases**, dont les deux premières sont réalisées dans le cadre du présent rapport :
+
+| Phase | Intitulé | Activités principales | Statut |
+|---|---|---|---|
+| **Phase 1** | Phase préparatoire | Recrutement de l'équipe d'évaluation ; séance de cadrage avec le commanditaire (ANPE) | ✅ Réalisée |
+| **Phase 2** | Élaboration et validation du référentiel d'évaluation | Rédaction du référentiel (contexte, méthodologie, matrice, TdC, outils) ; validation par le Comité de pilotage | ✅ Réalisée |
+| **Phase 3** | Collecte et analyse de données | Enquête quantitative (allocataires, groupe témoin, entreprises) ; entretiens individuels et focus groups | 🔲 À réaliser |
+| **Phase 4** | Élaboration du rapport provisoire | Rédaction du rapport intégral ; soumission au Comité de pilotage pour examen et enrichissement | 🔲 À réaliser |
+| **Phase 5** | Validation nationale et approbation | Prise en compte des observations ; validation par le Comité de pilotage ; approbation du rapport final | 🔲 À réaliser |
+
+#### 3.2.1 Recrutement de l'équipe d'évaluation
+
+Le recrutement de l'équipe de consultants chargée de conduire l'évaluation a été effectué conformément aux **dispositions de passation des marchés publics en vigueur en République du Bénin**. Les termes de référence validés par le commanditaire ont encadré cette étape et constituent le document de référence fondateur de la mission.
+
+#### 3.2.2 Séance de cadrage de la mission
+
+Une **séance de cadrage** s'est tenue dans les locaux de l'ANPE le **mardi 24 novembre 2025**. Cette séance a réuni l'équipe d'évaluation, la Coordination du PSIE et les représentants de la Direction Générale de l'ANPE. Elle a permis de :
+
+- Présenter et discuter l'approche méthodologique proposée par l'équipe d'évaluation ;
+- Clarifier les attentes du commanditaire et les priorités de l'évaluation ;
+- Identifier les sources documentaires disponibles et les modalités d'accès aux données.
+
+Les observations issues de cette séance ont été intégralement prises en compte dans l'élaboration du présent rapport de démarrage, qui constitue le **référentiel d'évaluation** soumis au Comité de pilotage.
+
+#### 3.2.3 Élaboration et validation du référentiel d'évaluation
+
+Au terme de la séance de cadrage, l'équipe d'évaluation a élaboré le présent **référentiel d'évaluation**, qui comprend :
+
+- Le contexte et la description du programme (Section 1) ;
+- La présente méthodologie détaillée (Section 3) ;
+- La matrice d'évaluation (questions évaluatives, indicateurs, sources) intégrée aux Sections 4, 5 et 6 ;
+- La théorie de changement reconstituée (Section 1.4.4) ;
+- Les outils de collecte de données (questionnaires, guides d'entretien — à finaliser en Phase 3) ;
+- Le protocole de traitement et d'analyse des données (Section 3.4).
+
+Ce référentiel est soumis au Comité de pilotage pour lecture, amendement et validation avant le démarrage de la Phase 3.
+
+---
+
+### 3.3 Phase 1 — Revue documentaire systématique *(phase en cours)*
+
+#### 3.3.1 Sources documentaires analysées
+
+La Phase 1 repose sur l'analyse systématique de **trois documents officiels** du programme :
+
+| N° | Document | Nature | Couverture |
+|---|---|---|---|
+| **D1** | Prodoc PSIE-BéninF (revu) 03.04.20 | Document de projet (59 pages) | Conception, objectifs, architecture institutionnelle, budget prévisionnel (mars 2020) |
+| **D2** | Cadre Logique PSIE | Matrice officielle de résultats (4 pages) | Objectifs spécifiques, résultats, indicateurs, hypothèses, moyens de vérification |
+| **D3** | Rapport actualisé de mise en œuvre du PSIE (juil. 2020 – sept. 2025) | Rapport de performance (oct. 2025) | Données de réalisation, extrants, exécution financière, défis et perspectives |
+
+Ces documents constituent la **base probatoire exclusive** de la Phase 1. Ils ont été déposés par le commanditaire dans le dossier de la mission et analysés selon une **grille de lecture structurée** par critère OCDE/CAD et par question évaluative.
+
+#### 3.3.2 Protocole d'analyse documentaire
+
+Chaque document a été analysé selon un protocole en quatre étapes :
+
+1. **Lecture analytique** : identification des données factuelles, des éléments de contexte, des données chiffrées et des déclarations d'intention ;
+2. **Extraction thématique** : classement des informations extraites selon les sept critères OCDE/CAD et les questions évaluatives de la matrice ;
+3. **Triangulation inter-documents** : mise en correspondance et confrontation des informations issues des trois sources pour détecter les convergences, divergences et lacunes ;
+4. **Formulation des constats** : production de jugements évaluatifs fondés sur les données disponibles, assortis d'un niveau de confiance explicite.
+
+#### 3.3.3 Triangulation des données
+
+Les constats de la Phase 1 reposent sur la **convergence des trois sources documentaires**. En cas de divergence entre les sources, la source la plus récente et la plus directement factuelle (D3 — Rapport de mise en œuvre) est retenue comme référence principale pour les données chiffrées. Les données de contexte et de conception sont tirées du D1 (Prodoc) et du D2 (Cadre logique).
+
+---
+
+### 3.4 Phase 2 — Collecte de données de terrain *(phase à venir)*
+
+#### 3.4.1 Approche mixte
+
+Une fois le présent référentiel validé par le Comité de pilotage, l'équipe d'évaluation organisera la **collecte de données primaires** selon une **approche mixte** combinant :
+
+- **Une enquête quantitative** auprès des allocataires/non-allocataires et des entreprises bénéficiaires/non-bénéficiaires, permettant de mesurer les effets de l'insertion professionnelle par comparaison avec un groupe témoin ;
+- **Des entretiens individuels semi-directifs** auprès des acteurs clés de la mise en œuvre ;
+- **Des groupes de discussion focalisée (focus groups)** auprès des catégories d'acteurs institutionnels concernés.
+
+Les **outils de collecte** mobilisés seront :
+
+| Outil | Cible | Données collectées |
+|---|---|---|
+| Fiche d'analyse de la documentation | Documents additionnels identifiés lors du terrain | Données complémentaires sur les effets et l'efficience |
+| Questionnaire structuré (CSPRO) | Allocataires, groupe témoin, entreprises | Données quantitatives sur l'emploi, les revenus, les comportements d'embauche |
+| Guide d'entretien individuel | Acteurs institutionnels clés | Données qualitatives sur la mise en œuvre, les facteurs de succès et les obstacles |
+| Guide de focus group | Administratifs PSIE, Comité de pilotage, acteurs CNSS/Trésor | Données qualitatives sur la gouvernance, les processus et les perspectives |
+
+#### 3.4.2 Échantillonnage
+
+##### A. Méthode d'échantillonnage
+
+La collecte de données quantitatives reposera sur une méthode **d'échantillonnage aléatoire stratifié**, afin de garantir la représentativité des différentes catégories démographiques et géographiques. Cette approche permettra de **constituer un groupe de comparaison (groupe témoin)** composé de jeunes diplômés n'ayant pas bénéficié du programme, essentiel pour mesurer les changements réellement attribuables au PSIE (méthode de double différence).
+
+##### B. Taille de l'échantillon — Formule de Cochran
+
+La taille de l'échantillon est calculée selon la **formule de Cochran** :
+
+**n₀ = (z² × P(1-P) × deff) / d²**
+
+Avec les paramètres suivants :
+
+| Paramètre | Valeur | Justification |
+|---|---|---|
+| z | 1,96 | Quantile de la loi normale au seuil de confiance de 95 % |
+| P | 6,76 % | Proportion des jeunes allocataires dans la population de référence |
+| d | 5 % | Marge d'erreur autorisée |
+| deff | 1,5 | Effet de design (mesure de l'homogénéité dans les strates) |
+| N | 137 086 | Nombre total de jeunes candidats interviewés (Base de données PSIE, 2025) |
+
+**Résultats du calcul :**
+
+| Cible | Taille brute calculée | Ajustement (+ 20 % refus) | Taille finale retenue |
+|---|---|---|---|
+| Jeunes **allocataires** du PSIE | 145 | + 29 | **174 allocataires** |
+| Jeunes **non-allocataires** (groupe témoin) | — | ratio 1:1,8 | **313 non-allocataires** |
+| **Entreprises** bénéficiaires | 450 | — | **450 entreprises** (sur 2 067 éligibles) |
+| **Total répondants validés attendus** | — | taux participation > 70 % | **≈ 406 répondants** |
+
+##### C. Critères de stratification
+
+La stratification de l'échantillon se fera selon deux critères croisés afin de garantir la comparabilité des groupes :
+
+**Critère 1 — Situation géographique** (répartition par département) :
+
+| Département | Justification de la sélection |
+|---|---|
+| **Atlantique** | Forte concentration d'entreprises et de bénéficiaires |
+| **Borgou** | Représentation du nord du pays ; deuxième pôle économique |
+| **Littoral** | Principal département d'insertion (64 % des allocataires) |
+| **Ouémé** | Important bassin d'emploi de la région côtière |
+
+Ces quatre départements représentent **81,57 %** des jeunes demandeurs d'emploi enregistrés à l'ANPE.
+
+**Critère 2 — Niveau de qualification** (proportions réelles du programme PSIE) :
+
+| Niveau d'étude | Proportion retenue dans l'échantillon |
+|---|---|
+| BAC professionnel | 10 % |
+| BTS/DUT (BAC+2) | 30 % |
+| BAC+3/4 (Licence, Maîtrise) | 40 % |
+| BAC+5 et plus (Master, Ingénieur) | 20 % |
+
+#### 3.4.3 Acteurs clés à interviewer
+
+Pour compléter l'analyse documentaire et collecter des données qualitatives sur la mise en œuvre, les acteurs suivants seront interviewés lors de la Phase 2 :
+
+| Catégorie | Acteurs concernés | Modalité | Nombre |
+|---|---|---|---|
+| **Comité de gouvernance et de pilotage** | Directeur Général de l'ANPE ; Coordonnateur du PSIE | Entretien individuel | 1 entretien (2 personnes) |
+| **Acteurs de mise en œuvre** | Spécialiste S-E PSIE ; Administrateur de la plateforme ; Assistante administrative ; Assistant financier | Focus group | 1 focus group (4 personnes) |
+| **Acteurs impliqués** | Agents CNSS chargés du versement des charges sociales ; Agents du Trésor public chargés du versement des allocations | Entretien individuel | 1 entretien (2 personnes) |
+| **Total** | | | **7 personnes / 3 sessions** |
+
+La liste définitive des participants sera soumise au commanditaire pour approbation avant le démarrage de la collecte.
+
+#### 3.4.4 Protocole de collecte des données quantitatives
+
+La collecte des données quantitatives sera réalisée au moyen d'une **enquête téléphonique**, conformément à un protocole d'appel rigoureux défini en amont. Les étapes du protocole sont les suivantes :
+
+1. **Élaboration des instruments** : questionnaire, plan d'analyse et manuel de l'agent enquêteur — soumis au Comité de pilotage pour validation ;
+2. **Recrutement des enquêteurs** : sélection d'agents enquêteurs qualifiés pour la maîtrise du questionnaire, la gestion des appels et l'utilisation de CSPRO ;
+3. **Formation des enquêteurs** : formation obligatoire avant le démarrage de la collecte (prise en main du questionnaire, gestion des refus, procédures qualité) ;
+4. **Collecte** : environ **1 000 personnes contactées** pour un taux de participation cible supérieur à **70 %** ;
+5. **Supervision** : suivi en temps réel via la **plateforme de synchronisation de données CSPRO** par les membres de l'équipe de consultants.
+
+#### 3.4.5 Contrôle qualité et traitement des données
+
+**Contrôle qualité :** Deux sessions de contrôle qualité sont prévues :
+- Une session à **mi-parcours** de la collecte : vérification des incohérences, valeurs manquantes et valeurs aberrantes ;
+- Une session en **fin de collecte** : vérification finale, corrections et clôture de la base.
+
+**Traitement et analyse des données :**
+
+- **Logiciels** : Microsoft Excel pour l'apurement et les statistiques descriptives ; **Stata 17** pour les analyses économétriques ;
+- **Méthode d'estimation des effets** : **méthode de double différence** (Difference-in-Differences), comparant les allocataires et le groupe témoin avant et après l'intervention ;
+- **Tests statistiques de validation** : test de Student (test de différence de moyennes) pour vérifier que les différences observées entre les groupes ne sont pas dues au hasard et que les changements sont significatifs au seuil de 5 %.
+
+---
+
+### 3.5 Modèles d'évaluation
+
+Compte tenu des objectifs et des livrables attendus de la mission, trois **modèles d'évaluation complémentaires** sont mobilisés :
+
+#### 3.5.1 Modèle d'évaluation de la performance et du rendement *(Phase 1 et Phase 2)*
+
+Ce modèle consiste à **comparer les résultats obtenus aux résultats escomptés** tels que définis dans le cadre logique, et à documenter les facteurs ayant favorisé ou limité l'atteinte de ces résultats. Il couvre également les questions d'efficience, notamment la mobilisation et l'utilisation optimale des ressources allouées au programme.
+
+#### 3.5.2 Modèle d'évaluation de la contribution aux changements *(Phase 2)*
+
+Ce modèle est retenu en raison de la **difficulté à construire un contrefactuel parfait** permettant d'attribuer au PSIE l'ensemble des changements observés. Les analyses s'appuieront sur les **chaînes de causalité** au niveau de la chaîne de résultats et leur contribution documentée à l'atteinte des changements attendus. Lorsque les données ne permettront pas de démontrer une causalité directe, les analyses seront présentées de manière descriptive avec les niveaux d'attribution explicitement indiqués.
+
+#### 3.5.3 Évaluation des aspects transversaux — Dimension genre *(Phase 2)*
+
+L'évaluation de la prise en compte du genre aura pour objectif d'apprécier dans quelle mesure le PSIE intègre le genre dans sa formulation et sa mise en œuvre. Elle s'appuiera sur la **matrice de diagnostic genre des systèmes nationaux de suivi-évaluation**, développée par l'*Africa Gender & Development Evaluators Network* (AGDEN).
+
+Les composantes analysées seront : la Politique Nationale d'Évaluation (PNE), le Système National de Suivi-Évaluation (SNSE), le PSIE dans sa formulation et ses instruments de mise en œuvre, ainsi que la budgétisation des activités du programme.
+
+**Six critères** seront appliqués à ces composantes :
+
+| N° | Critère | Description |
+|---|---|---|
+| C1 | Égalité/équité genre | Le programme traite-t-il équitablement les femmes et les hommes ? |
+| C2 | Budgétisation sensible au genre | Le budget intègre-t-il explicitement une perspective de genre ? |
+| C3 | Participation | Les femmes participent-elles aux processus décisionnels du programme ? |
+| C4 | Prise de décision | Les femmes ont-elles accès aux instances de décision du programme ? |
+| C5 | Évaluabilité / évaluation et révision | Les outils de S-E permettent-ils une analyse désagrégée par sexe ? |
+| C6 | Durabilité | Les acquis en matière de genre sont-ils institutionnalisés ? |
+
+Chaque critère est évalué selon une **grille de scoring à quatre niveaux** : 0 = inexistant ; 1 = faiblement existant ; 2 = existence moyenne ; 3 = pleinement existant (mise en œuvre évidente) ; n/a = non applicable. Les scores sont agrégés par critère et par composante pour produire un **tableau de bord genre** permettant de calculer un indice de performance genre du programme.
+
+---
+
+### 3.6 Limites méthodologiques de la Phase 1
+
+La Phase 1 (revue documentaire) présente des limites inhérentes à son approche, que l'équipe d'évaluation reconnaît explicitement :
+
+| Limite | Nature | Implications pour les constats |
+|---|---|---|
+| **Absence de données primaires** | Méthodologique | Les perceptions des bénéficiaires, des entreprises et des acteurs opérationnels ne sont pas captées. Les jugements reposent exclusivement sur les données officielles disponibles. |
+| **Absence de groupe de comparaison** | Méthodologique | Il est impossible d'isoler l'effet causal net du PSIE sans groupe témoin. Les constats d'efficacité portent sur les extrants (réalisations) et non sur les effets (changements attribuables). |
+| **Biais de publication dans les rapports officiels** | Biais de source | Les documents officiels tendent à valoriser les succès. Les taux d'insertion durable post-programme, les abandons et les difficultés de mise en œuvre sont sous-documentés dans les sources disponibles. |
+| **Données sectorielles partiellement datées** | Lacune de données | Certaines données de référence sur le marché du travail béninois (INSAE) datent de 2017. L'évaluation ne peut pas mesurer l'évolution du contexte entre 2017 et 2025. |
+| **Données désagrégées par sexe indisponibles** | Lacune de données | L'évaluation de la dimension genre est reportée à la Phase 2, faute de données désagrégées par sexe dans les rapports disponibles. |
+
+Ces limites seront intégralement levées lors de la **Phase 2**, dont la collecte de données primaires permettra de produire des jugements évaluatifs fondés sur des données directement collectées auprès des parties prenantes du programme.
 
 ---
 
