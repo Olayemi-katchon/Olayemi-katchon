@@ -749,82 +749,98 @@ Ces limites seront intégralement levées lors de la **Phase 2**, dont la collec
 
 > **Définition OCDE/CAD** : *La pertinence est la mesure dans laquelle les objectifs et la conception d'une intervention correspondent aux besoins, aux politiques et aux priorités des bénéficiaires, du pays partenaire et des partenaires institutionnels.*
 
-### 4.1 Questions évaluatives
+L'analyse de la pertinence du PSIE a pour objectif d'apprécier dans quelle mesure le programme répond aux problèmes documentés du marché de l'emploi au Bénin, si ses bénéficiaires sont clairement identifiés, si des expériences similaires ont déjà été capitalisées, et si la logique qui relie sa raison d'être à ses effets attendus est solide. Cette appréciation repose exclusivement sur la revue documentaire des trois sources primaires disponibles.
 
-| N° | Question évaluative |
-|---|---|
-| QE1.1 | Dans quelle mesure les objectifs du PSIE correspondent-ils aux besoins réels des populations cibles (jeunes diplômés chômeurs ou sous-employés, entreprises en quête de main d'œuvre) ? |
-| QE1.2 | Le programme est-il aligné sur les priorités nationales de développement (Plan d'Action du Gouvernement, Politique Nationale de l'Emploi, ODD 8, Agenda 2063) ? |
-| QE1.3 | Les problèmes que le PSIE cherche à résoudre ont-ils été correctement diagnostiqués et demeurent-ils d'actualité ? |
-| QE1.4 | La conception du programme tient-elle compte des caractéristiques spécifiques du marché de l'emploi béninois ? |
+---
 
-### 4.2 Analyse de la pertinence
+### 4.1 Problème à l'origine du PSIE et ampleur documentée
 
-#### 4.2.1 Pertinence par rapport aux besoins des bénéficiaires
+*Questions évaluatives 1 et 2 — Quel est le problème à l'origine de la mise en place du PSIE ? L'ampleur de ce problème est-elle bien documentée ?*
 
-**Contexte du marché de l'emploi au Bénin (diagnostic du Prodoc, 2020) :**
+Le PSIE a été institué en réponse à une situation de sous-emploi massif des jeunes diplômés au Bénin, documentée de manière rigoureuse dans le document de projet. Le diagnostic de départ met en évidence une triple problématique.
 
-| Indicateur | Valeur | Source |
+Premièrement, **le marché du travail béninois est structurellement incapable d'absorber ses diplômés**. En 2017, le taux de sous-emploi des jeunes atteignait **72 %** (INSAE, août 2017), ce qui signifie que près de trois quarts des jeunes actifs occupaient une situation d'emploi inadéquate — partielle, précaire ou insuffisamment rémunérée. Ce chiffre constitue le principal ancrage chiffré du diagnostic.
+
+Deuxièmement, **l'inadéquation entre les profils offerts par les établissements de formation et les profils demandés par les entreprises** est documentée dans le Prodoc. Les jeunes se présentent majoritairement avec des qualifications de niveau BAC à BAC+5 dans les filières tertiaires, alors que les entreprises expriment des besoins spécifiques en BAC professionnel, BTS, DUT et ingénieurs dans les secteurs productifs.
+
+Troisièmement, **les entreprises — notamment les PME/PMI — sont réticentes à embaucher des primo-demandeurs d'emploi**, en raison du risque perçu lié à l'absence d'expérience professionnelle et du coût des charges patronales. Le programme identifie ce frein comme une défaillance de marché justifiant une intervention publique corrective.
+
+| Indicateur de contexte | Valeur documentée | Source |
 |---|---|---|
-| Population de moins de 40 ans | 4,08 millions (34 % de la population totale) | EMICOV 2015 |
 | Taux de sous-emploi des jeunes | **72 %** | INSAE, août 2017 |
-| Principaux profils disponibles | BAC (toutes filières), BAC+2/3 (tertiaire), BAC+4/5 (général) | INSAE/PAES 2018 |
-| Profils demandés par les entreprises | BAC professionnel, BAC+2/3 (fonctions support), BAC+4/5 (ingénieurs, TIC) | Entretiens employeurs 2017 |
+| Population de moins de 40 ans | **4,08 millions** (34 % de la population totale) | EMICOV 2015 |
+| Base candidats éligibles (2020–2025) | **137 086 candidats** interviewés via la plateforme | Rapport MO, 2025 |
+| Entreprises ayant participé | **2 067 entreprises** sur 5 ans | Rapport MO, 2025 |
 
-Le PSIE cible précisément ces profils (BAC prof à Master) et cette tranche d'âge (18-35 ans), ce qui atteste d'une **adéquation directe entre la conception du programme et le diagnostic des besoins**.
+Le problème à l'origine du PSIE est clairement formulé, quantifié et articulé autour d'une défaillance simultanée du côté de l'offre de travail (inadéquation des profils) et de la demande de travail (réticence à recruter). L'ampleur du problème est bien documentée par les statistiques officielles disponibles.
 
-De plus, le document de projet identifie un facteur bloquant clé : **les entreprises — notamment les PME/PMI — hésitent à embaucher en raison des charges salariales**. Le mécanisme de subvention salariale du PSIE répond directement à cette contrainte. Les données du rapport de mise en œuvre le confirment : entre 2020 et 2025, **2 067 entreprises ont participé** au programme, attestant d'une réponse à un besoin réel du secteur privé.
+---
 
-**Adéquation des secteurs ciblés aux dynamiques de l'emploi :**
+### 4.2 Bénéficiaires directs et indirects du PSIE
 
-Le Prodoc identifie les secteurs à forte demande de main d'œuvre (agro-industries, TIC, BTP, hôtellerie, textile, finance), qui correspondent aux branches professionnelles dominantes dans les résultats du programme (Marketing-Commerce-Distribution : 18 % ; Comptabilité-Gestion : 16 % ; Agro-industries et TIC : 12 % chacun). La cohérence entre le diagnostic et les réalisations atteste de la pertinence sectorielle de la conception.
+*Question évaluative 3 — Les bénéficiaires directs et indirects des actions du PSIE sont-ils clairement identifiés ?*
 
-#### 4.2.2 Pertinence par rapport aux priorités nationales
+Le Prodoc identifie les bénéficiaires du programme avec précision, en distinguant deux catégories.
 
-Le PSIE est ancré dans :
-- Le **Programme d'Actions du Gouvernement (PAG 2016-2021)**, qui prévoit de traiter la question de l'emploi « de manière systématique dans toutes ses interventions » et d'établir une dynamique cohérente entre la politique de développement des PME et la promotion de l'emploi des jeunes.
-- **L'initiative présidentielle** du 31 juillet 2019 : le programme est une réponse directe à un engagement du Chef de l'État.
-- La **Politique Nationale de l'Emploi (PNE) 2017-2026** : les consultations avec les employeurs pour sa formulation ont directement alimenté la conception du PSIE.
-- Les **Objectifs de Développement Durable (ODD 8)** : Travail décent et croissance économique.
+**Les bénéficiaires directs** comprennent deux groupes :
 
-La prolongation du programme au-delà de 2025, autorisée par le Conseil des ministres lors de sa session du **19 février 2025**, confirme que le programme demeure une priorité nationale.
+- **Les jeunes allocataires** : jeunes diplômés béninois âgés de 18 à 35 ans, titulaires d'un diplôme au minimum de niveau BAC professionnel, en situation de chômage ou de sous-emploi, ayant passé les étapes de sélection (inscription sur la plateforme PSIE, entretien de présélection, déploiement en entreprise). Le programme cible des niveaux de qualification précis : BAC professionnel, BTS/DUT, Licence/DTS et Master/Ingénieur.
 
-#### 4.2.3 Pertinence de la conception
+- **Les entreprises bénéficiaires** : toute entreprise formelle béninoise — publique ou privée, toutes tailles — inscrite au Registre du Commerce et affiliée à la CNSS, à l'exception des emplois directs dans les secteurs de la santé, de l'éducation nationale, de l'agriculture vivrière et de l'artisanat traditionnel.
 
-La conception du PSIE se distingue par plusieurs choix novateurs :
+**Les bénéficiaires indirects** incluent : l'État béninois (réduction du stock de chômeurs diplômés, élargissement de l'assiette fiscale et sociale), l'ANPE (renforcement de ses missions de placement actif), la CNSS (élargissement de la base des cotisants), et les ménages des allocataires (amélioration des revenus familiaux).
 
-1. **Modèle centré sur les entreprises** : Plutôt que de former d'abord les jeunes puis de les placer, le PSIE met les entreprises au cœur du dispositif. Ce choix s'appuie sur le constat que c'est la charge salariale — et non le manque de compétences des jeunes — qui constitue la principale barrière à l'embauche. C'est une réponse pertinente au contexte béninois.
+Cette identification claire et hiérarchisée des bénéficiaires constitue un atout méthodologique du programme et facilite le ciblage opérationnel.
 
-2. **Durée d'immersion de 24 mois** : Suffisamment longue pour permettre une acquisition réelle de compétences professionnelles et une augmentation de l'employabilité post-programme, contrairement à des stages courts.
+---
 
-3. **Ciblage de l'enseignement supérieur** (BAC professionnel à Master) : Aligné sur les profils effectivement disponibles sur le marché et sur les besoins des entreprises formelles.
+### 4.3 Capitalisation des expériences similaires
 
-4. **Mécanisme État tiers-payant** : Le Trésor paie directement les allocataires, évitant les risques de détournement et garantissant la régularité des paiements.
+*Question évaluative 4 — A-t-on déjà étudié empiriquement l'effet d'une telle approche ? Quels en ont été les effets ? Constate-t-on des effets secondaires désirables et indésirables ?*
 
-5. **Sécurité sociale** : Les allocataires bénéficient du régime de sécurité sociale du secteur privé (CNSS), ce qui est une disposition importante pour la dignité et la protection des bénéficiaires.
+Le Prodoc mentionne explicitement le **Programme d'Appui à l'Emploi Salarié (PAES)**, mis en œuvre au Bénin à partir de 2009 et ayant constitué le principal précédent national. Les leçons tirées du PAES ont directement orienté la conception du PSIE, notamment sur trois points :
 
-### 4.3 Jugement évaluatif — Pertinence
+1. **Extension de la prise en charge salariale** : Le PAES pratiquait une prise en charge partielle des salaires. Le PSIE a étendu ce mécanisme à une prise en charge totale sur 24 mois, levant une contrainte identifiée comme un frein à la participation des PME.
 
-| Dimension | Niveau de pertinence | Justification |
+2. **Allongement de la durée d'insertion** : Capitalisant sur l'expérience du PAES, le PSIE a fixé la durée de l'immersion à 24 mois, pour permettre une acquisition substantielle de compétences professionnelles certifiées.
+
+3. **Institutionnalisation du mécanisme de tiers-payant** : Le paiement direct des allocations par le Trésor public — et non par les entreprises — constitue une innovation qui réduit les risques de non-paiement et les charges administratives pour les entreprises.
+
+Il convient de noter qu'**aucune évaluation à mi-parcours du PSIE** n'a été réalisée sur la période 2020-2025, ce qui constitue une limite importante pour l'appréciation des effets capitalisés. Cette insuffisance devrait être rattrapée lors de la mise en œuvre du prochain cycle du PSIE.
+
+**Effets secondaires identifiés** : Le rapport de mise en œuvre signale des cas d'abandons d'allocataires avant la fin du contrat (non quantifiés) et des situations où des entreprises ont recruté un allocataire avant la fin des 24 mois — un effet positif en termes d'employabilité, mais qui crée des vacances de poste non anticipées.
+
+---
+
+### 4.4 Rationnel d'intervention et logique causale
+
+*Question évaluative 5 — Quel est le rationnel qui relie logiquement la raison d'être, les cibles, les objectifs, le choix des moyens d'intervention du PSIE et les effets attendus ?*
+
+Le rationnel du PSIE repose sur une logique causale claire : **si l'État prend en charge le coût salarial des primo-demandeurs d'emploi, les entreprises vont accepter de les accueillir ; si les jeunes travaillent pendant 24 mois en entreprise, ils acquièrent une expérience professionnelle certifiée ; si cette expérience est certifiée, leur employabilité augmente et le risque de chômage de longue durée diminue**.
+
+| Problème identifié | Mécanisme d'intervention | Effet attendu |
 |---|---|---|
-| Pertinence par rapport aux besoins | **Élevé** | Diagnostic précis du taux de sous-emploi (72 %), adéquation des profils ciblés avec la réalité du marché, réponse directe au frein des charges salariales |
-| Pertinence par rapport aux priorités nationales | **Élevé** | Ancrage explicite dans le PAG et la PNE ; initiative présidentielle directe ; prolongation confirmée en 2025 |
-| Pertinence de la conception | **Élevé** | Modèle centré sur les entreprises innovant ; durée adaptée ; mécanisme de paiement sécurisé ; sécurité sociale incluse |
-| **Jugement global — Pertinence** | **Élevé** | Le PSIE correspond précisément aux besoins, aux priorités et au contexte |
+| Réticence des entreprises à recruter (coût salarial) | Prise en charge totale des salaires par l'État sur 24 mois | Augmentation de la demande de jeunes en entreprise |
+| Inadéquation des profils à l'expérience | Immersion professionnelle de 24 mois + accompagnement à l'employabilité | Développement des compétences métiers et transversales |
+| Stock de diplômés chômeurs | Ciblage des jeunes 18-35 ans, BAC prof. à Master | Réduction du taux de sous-emploi des jeunes diplômés |
 
-### 4.4 Constats clés — Pertinence
+Le choix de confier la mise en œuvre à l'**ANPE** est cohérent avec ce rationnel : il capitalise sur le réseau territorial existant, la base de données des demandeurs d'emploi et les relations établies avec les entreprises.
 
-**Points forts :**
-- Diagnostic rigoureux du marché de l'emploi béninois ayant guidé la conception
-- Initiative présidentielle à fort ancrage institutionnel
-- Modèle centré sur les entreprises, novateur et adapté aux réticences à l'embauche
-- Alignement explicite avec le PAG et la PNE
-- Pertinence confirmée par la demande croissante des entreprises (2 067 entreprises participantes en 5 ans) et la décision de prolongation en 2025
+Ce rationnel est **solide et pertinent** dans le contexte béninois. Cependant, une limite mérite d'être soulignée : le programme n'intègre pas explicitement de mécanisme garantissant que les entreprises transforment l'immersion en emploi permanent. L'effet à long terme sur l'emploi durable reste conditionné à des facteurs extérieurs au programme.
 
-**Points faibles / Insuffisances :**
-- Exclusion des secteurs de la santé, de l'éducation et de l'agriculture vivrière pour les emplois directs (bien que les emplois de support soient éligibles), qui représentent une part importante de l'économie béninoise et des besoins en emploi
-- Limite d'âge (35 ans) qui exclut les chômeurs de longue durée dépassant cet âge
-- Le diagnostic initial ne quantifie pas explicitement l'inadéquation formation-emploi par filière, limitant la capacité à mesurer l'amélioration de l'adéquation
+---
+
+### 4.5 Jugement global — Pertinence
+
+L'analyse documentaire conduit au constat que **le PSIE présente une pertinence élevée**. Le programme repose sur un diagnostic chiffré rigoureux du marché du travail béninois, identifie clairement ses bénéficiaires, s'appuie sur les leçons du PAES, et déploie un rationnel d'intervention bien articulé pour répondre à des défaillances de marché documentées. La prolongation du programme en 2025 et la participation de 2 067 entreprises sur cinq ans constituent les preuves empiriques les plus éloquentes de sa pertinence.
+
+| Dimension analysée | Jugement | Justification principale |
+|---|---|---|
+| Adéquation au problème (QE1+QE2) | **Élevé** | Taux de sous-emploi 72 %, triple défaillance documentée, diagnostic robuste |
+| Identification des bénéficiaires (QE3) | **Élevé** | Bénéficiaires directs et indirects clairement définis et hiérarchisés |
+| Capitalisation des expériences (QE4) | **Élevé** | Apprentissage du PAES intégré ; effets secondaires documentés |
+| Rationnel d'intervention (QE5) | **Élevé** | Logique causale claire ; mécanisme adapté aux défaillances de marché identifiées |
+| **Jugement global** | **ÉLEVÉ** | Le PSIE répond précisément aux besoins, aux priorités et au contexte béninois |
 
 ---
 
@@ -832,249 +848,253 @@ La conception du PSIE se distingue par plusieurs choix novateurs :
 
 > **Définition OCDE/CAD** : *La cohérence est la compatibilité de l'intervention avec d'autres interventions d'un pays, d'un secteur ou d'une institution. Elle distingue la cohérence interne (solidité de la logique d'intervention) et la cohérence externe (compatibilité avec d'autres politiques et programmes).*
 
-### 5.1 Questions évaluatives
+L'analyse de la cohérence du PSIE vise à apprécier, d'une part, la solidité de sa logique interne — c'est-à-dire l'articulation entre ses objectifs, ses activités et ses résultats attendus — et, d'autre part, son alignement avec les stratégies nationales de l'emploi, les priorités de développement national et les engagements internationaux du Bénin. Elle repose sur l'analyse croisée du cadre logique, du document de projet, du rapport de mise en œuvre et des politiques de référence disponibles.
 
-| N° | Question évaluative |
-|---|---|
-| QE2.1 | La logique interne du PSIE est-elle cohérente ? (Les activités produisent-elles les extrants attendus, qui contribuent aux résultats ?) |
-| QE2.2 | Le PSIE est-il cohérent avec les autres politiques et programmes nationaux d'emploi ? |
-| QE2.3 | Existe-t-il des chevauchements, doublons ou contradictions avec d'autres interventions ? |
-| QE2.4 | Le PSIE est-il cohérent avec les engagements institutionnels de l'ANPE ? |
+---
 
-### 5.2 Analyse de la cohérence
+### 5.1 Cohérence interne — analyse de la chaîne de résultats du PSIE
 
-#### 5.2.1 Cohérence interne (logique d'intervention)
+*Question évaluative 6 — Quel est le degré de cohérence interne du PSIE ?*
 
-**Solidité de la chaîne de résultats :**
+Le cadre logique du PSIE présente une cohérence interne globalement satisfaisante, reposant sur une structuration logique de ses composantes : objectif général, objectifs spécifiques, résultats attendus, activités et indicateurs de suivi.
 
-Le cadre logique du PSIE est articulé autour de deux résultats directement liés aux deux objectifs spécifiques :
+L'objectif général du PSIE — faciliter l'insertion professionnelle des jeunes diplômés dans les entreprises — est décliné de manière cohérente à travers deux objectifs spécifiques complémentaires et interdépendants :
 
-- **R1 → OS1** : Les mesures d'accompagnement à l'employabilité (formation pré-immersion, tutorat, ateliers TRE, coaching) permettent d'améliorer l'employabilité des bénéficiaires. Cette logique est plausible et cohérente, confirmée par la mise en œuvre réelle du dispositif.
-- **R2 → OS2** : La prise en charge totale des salaires par l'État (mécanisme tiers-payant via le Trésor) est directement opérationnelle, comme attesté par 18,3 milliards FCFA de salaires versés de 2020 à septembre 2025.
+- **OS1** : Améliorer l'employabilité des jeunes diplômés par des mesures d'accompagnement (ateliers TRE, coaching, tutorat en entreprise).
+- **OS2** : Soutenir financièrement les entreprises dans la prise en charge des salaires des allocataires, pour lever la barrière économique à l'embauche.
 
-**Qualité des hypothèses critiques identifiées :**
+Ces deux objectifs constituent une réponse systémique et cohérente aux deux dimensions du problème : le déficit d'expérience des jeunes (OS1) et la réticence des entreprises à recruter (OS2). Les résultats attendus (R1 et R2) sont directement liés à ces objectifs.
 
-Le cadre logique identifie explicitement les hypothèses critiques, ce qui est une bonne pratique :
-- Participation et engagement des entreprises ✅ (confirmé : 2 067 entreprises participantes)
-- Financement et mise en œuvre du programme ✅ (confirmé : paiements réguliers par le Trésor)
-- Volonté et disponibilité des demandeurs d'emploi ✅ (confirmé : 137 086 candidats interviewés)
-- Risque d'abandon ⚠️ (mentionné dans les défis : abandon et non-respect des contrats par certaines entreprises)
+**Qualité des hypothèses critiques :**
 
-**Adéquation des ressources aux ambitions :**
+Le cadre logique identifie explicitement les hypothèses sous-jacentes à la réussite du programme, ce qui constitue une bonne pratique de conception :
+- La participation active des entreprises — **confirmée** : 2 067 entreprises participantes
+- La disponibilité et l'engagement des candidats — **confirmée** : 137 086 candidats interviewés
+- La régularité des paiements par le Trésor public — **confirmée** : 18,3 milliards FCFA versés
+- L'absence d'abandon massif — **risque documenté** mais non quantifié
 
-Le budget global de 46,6 milliards FCFA est structuré de manière cohérente : 93,5 % consacrés aux salaires, le reste aux opérations. Cette allocation reflète la nature du programme (subvention salariale). L'évolution de l'exécution financière (19 millions FCFA en 2020, puis progression vers 6,5 milliards en 2024) est cohérente avec la montée en charge progressive du programme.
+**Cohérence entre objectifs et interventions :**
 
-**Observation :** La grille salariale a été revue à la hausse entre le Prodoc (2020) et le rapport d'exécution (2025), reflétant une adaptation pragmatique aux réalités :
+Le nombre d'interventions du programme (accompagnement à l'employabilité + immersion professionnelle + prise en charge salariale) est entièrement couvert par ses objectifs de départ. Il n'y a pas d'intervention orpheline ni d'objectif sans activité associée. On peut estimer à **100 %** le taux d'interventions du PSIE couvertes par ses objectifs de départ.
 
-| Niveau | Salaire net Prodoc 2020 | Salaire net appliqué (2025) |
+**Observation :** La grille salariale a été revue à la hausse entre le Prodoc (2020) et le rapport d'exécution (2025) — de 200 000 FCFA à 250 000 FCFA pour le niveau Master — sans qu'un avenant formalisé au cadre logique ne soit documenté dans les sources disponibles. Cette adaptation est cohérente avec les réalités du marché, mais elle crée un écart non tracé par rapport à la programmation initiale.
+
+---
+
+### 5.2 Cohérence externe — intégration des stratégies du secteur de l'emploi
+
+*Question évaluative 7 — Dans quelle mesure le PSIE intègre-t-il les stratégies du secteur de l'emploi ?*
+
+Le PSIE s'inscrit dans une architecture institutionnelle et sectorielle cohérente qui minimise les risques de chevauchement et maximise les synergies.
+
+**Alignement avec la Politique Nationale de l'Emploi (PNE 2017-2026) :**
+
+Les consultations auprès des employeurs réalisées dans le cadre de l'élaboration de la PNE ont directement alimenté la conception du PSIE. Les diagnostics sectoriels sur l'inadéquation formation-emploi et les barrières à l'embauche des PME figurent à la fois dans la PNE et dans le Prodoc — ce qui témoigne d'une convergence méthodologique entre les deux instruments.
+
+| Objectif de la PNE 2017-2026 | Pris en compte par le PSIE | Modalité |
 |---|---|---|
-| BAC professionnel | 100 000 FCFA | 100 000 FCFA |
-| BTS/DUT (BAC+2) | 125 000 FCFA | 150 000 FCFA |
-| DTS/Licence (BAC+3) | 150 000 FCFA | 175 000 FCFA |
-| Master/Ingénieur (BAC+5) | 200 000 FCFA | 250 000 FCFA |
+| Améliorer l'employabilité des jeunes diplômés | ✅ | Accompagnement TRE, coaching, tutorat (OS1) |
+| Réduire les barrières à l'embauche dans les entreprises formelles | ✅ | Prise en charge salariale 100 % sur 24 mois (OS2) |
+| Formaliser l'emploi et élargir la protection sociale | ✅ | Affiliation CNSS et IRPP pour tous les allocataires |
+| Déploiement territorial équitable | ⚠️ Partiel | Couverture nationale via ANPE, mais 85,5 % des insertions dans 2 départements |
 
-Cette révision est cohérente avec les évolutions du coût de la vie et la compétitivité salariale. Elle reflète une adaptation pragmatique au contexte, mais elle n'est pas formellement documentée dans les sources disponibles (pas d'avenant ou de décret modificatif mentionné dans le rapport de mise en œuvre), ce qui crée un écart non tracé par rapport au budget initial.
+**Articulation institutionnelle avec l'ANPE :**
 
-#### 5.2.2 Cohérence externe — avec les politiques et institutions nationales
+Le choix de l'ANPE comme agence d'exécution est le meilleur garant de la cohérence sectorielle. L'intégration des activités du PSIE dans le Plan de Travail Annuel de l'ANPE — tout en maintenant une comptabilité et un reporting dédiés — constitue un mécanisme de cohérence institutionnelle efficace qui évite la création d'une structure parallèle coûteuse.
 
-| Programme / Politique / Institution | Nature de la relation avec le PSIE |
+**Absence de doublons documentés :**
+
+La revue documentaire ne révèle pas de chevauchements significatifs avec d'autres programmes d'insertion. Le PSIE se distingue clairement du FNPEEJ (financement de projets d'auto-emploi) et des programmes de formation du MESTFP par sa modalité spécifique d'insertion en entreprise avec subvention salariale totale.
+
+---
+
+### 5.3 Synergies avec les priorités nationales et les engagements internationaux
+
+*Question évaluative 8 — Quelle synergie y a-t-il entre le PSIE, les priorités nationales contenues dans le PND et le PAG 2, et les interventions des autres acteurs sectoriels ?*
+
+Le PSIE s'inscrit pleinement dans les priorités nationales de développement du Bénin, avec une cohérence externe forte à trois niveaux.
+
+**Cohérence avec le PAG 2016-2021 et le PAG 2021-2026 :**
+
+Le Programme d'Actions du Gouvernement prévoit explicitement de traiter la question de l'emploi « de manière systématique dans toutes ses interventions » et d'établir une dynamique cohérente entre la politique de développement des PME et la promotion de l'emploi des jeunes. Le PSIE opérationnalise cet engagement en ciblant simultanément les PME/PMI (majorité des 2 067 entreprises participantes) et les jeunes diplômés. La prolongation du programme par le Conseil des ministres du 19 février 2025 confirme que le PSIE reste une priorité du PAG 2.
+
+**Cohérence avec le PND 2018-2025 :**
+
+Le Plan National de Développement 2018-2025 inclut parmi ses objectifs spécifiques la nécessité de « promouvoir l'emploi décent des jeunes et réduire le chômage structurel ». Le PSIE contribue directement à cet objectif : il produit de l'emploi décent (contrats formels, protection sociale, rémunération), cible la tranche d'âge stratégique pour le dividende démographique, et intervient dans les secteurs productifs prioritaires identifiés par le PND.
+
+**Cohérence avec les engagements internationaux :**
+
+| Cadre international | Cohérence avec le PSIE |
 |---|---|
-| **PAG 2016-2021** (puis PAG 2021-2026) | **Complémentaire** — Le PSIE opérationnalise l'engagement du PAG sur l'emploi des jeunes |
-| **Politique Nationale de l'Emploi (PNE) 2017-2026** | **Complémentaire** — Les consultations employeurs de la PNE ont directement alimenté la conception du PSIE |
-| **ANPE** (Agence Nationale Pour l'Emploi) | **Synergie forte** — L'ANPE est l'agence d'exécution ; le PSIE utilise son réseau territorial, sa plateforme et ses conseillers en emploi, évitant les doublons institutionnels |
-| **PAES** (Programme d'Appui à l'Emploi Salarié, éditions 2009-2011) | **Précédent** — Le PSIE tire les leçons du PAES et en améliore le modèle (extension des durées, subvention 100 % vs partielle) |
-| **CNSS** | **Intégration** — Les allocataires sont affiliés à la CNSS comme tout salarié du secteur privé |
-| **CCIB** (Chambre de Commerce et d'Industrie) | **Partenaire opérationnel** — Collaboration pour les séances d'interviews des candidats |
-| **GDIZ** (Zone Industrielle de Glo-Djigbé) | **Articulation émergente** — Demande croissante des entreprises de la GDIZ, ce qui renforce la pertinence et la cohérence du programme dans la stratégie industrielle nationale |
-
-**Point de cohérence institutionnelle notable :** L'intégration des activités et du budget du PSIE dans le **Plan de Travail Annuel (PTA) de l'ANPE** — tout en maintenant une comptabilité et un reporting dédiés — est un mécanisme de cohérence institutionnelle efficace qui évite la création d'une structure parallèle coûteuse.
-
-#### 5.2.3 Cohérence externe — avec les engagements internationaux
-
-| Engagement international | Cohérence avec le PSIE |
-|---|---|
-| **ODD 8** (Travail décent et croissance économique) | **Forte** — Insertion de jeunes dans l'emploi décent (contrats formels, CNSS, IRPP) |
+| **ODD 8** — Travail décent et croissance économique | **Forte** — Insertion en emploi décent (contrats CDD formels, CNSS, IRPP) |
+| **Agenda 2063 de l'Union Africaine** | **Forte** — Valorisation du dividende démographique africain et emploi des jeunes |
+| **ODD 10** — Réduction des inégalités | **Partielle** — Concentration dans 2 départements limite la portée équitable |
 | **Conventions OIT** sur l'emploi | **Cohérent** — Respect du Code du Travail béninois, contrats CDD formels |
-| **Agenda 2063 de l'Union Africaine** | **Cohérent** — Dividende démographique et emploi des jeunes africains |
 
-### 5.3 Jugement évaluatif — Cohérence
+**Articulation émergente avec la GDIZ :**
 
-| Dimension | Niveau de cohérence | Justification |
+Le rapport de mise en œuvre signale une demande croissante des entreprises de la Zone Industrielle de Glo-Djigbé (GDIZ) pour des allocataires PSIE. Cette articulation émergente renforce la cohérence du programme avec la stratégie d'industrialisation nationale et constitue une opportunité de formalisation à exploiter dans la prochaine phase.
+
+---
+
+### 5.4 Jugement global — Cohérence
+
+L'analyse documentaire conduit au constat que **le PSIE présente une cohérence globalement élevée**. Sa logique interne est bien construite, ses hypothèses critiques sont explicitées, son intégration dans l'architecture institutionnelle de l'emploi est forte, et ses synergies avec les priorités nationales sont documentées. La principale insuffisance réside dans l'absence de mise à jour formelle du cadre logique suite à la révision salariale et à la prolongation en 2025, et dans la concentration géographique qui limite la cohérence avec l'objectif d'équité territoriale du PND.
+
+| Dimension analysée | Jugement | Justification principale |
 |---|---|---|
-| Cohérence interne (logique d'intervention) | **Élevé** | Chaîne de résultats claire, hypothèses explicitées, allocation budgétaire cohérente avec la nature salariale du programme |
-| Cohérence externe (politiques nationales) | **Élevé** | Ancrage institutionnel dans l'ANPE, articulation avec PAG et PNE, absence de doublons majeurs |
-| Cohérence institutionnelle | **Élevé** | Intégration dans le PTA de l'ANPE ; utilisation des structures existantes ; partenariats avec CCIB et organisations d'employeurs |
-| **Jugement global — Cohérence** | **Élevé** | Le PSIE est un programme bien intégré dans le paysage institutionnel et politique béninois |
-
-### 5.4 Constats clés — Cohérence
-
-**Points forts :**
-- Cadre logique formalisé et cohérent avec deux résultats clairs directement liés aux objectifs spécifiques
-- Utilisation intelligente des structures existantes (ANPE, CCIB) évitant les coûts de création d'une nouvelle agence
-- Articulation émergente avec la GDIZ comme nouveau moteur industriel national
-- Hypothèses critiques explicitement identifiées dans le cadre logique
-
-**Points faibles / Insuffisances :**
-- La révision à la hausse de la grille salariale (non documentée dans un avenant formel du cadre logique) crée un écart entre le budget initial et les coûts réels qui mérite une mise à jour formelle du cadre de résultats
-- Aucun mécanisme formalisé de coordination avec d'autres programmes d'emploi (FNPEEJ, etc.) n'est documenté dans les sources disponibles, laissant ouvert le risque qu'un même bénéficiaire cumule plusieurs dispositifs
-- La prolongation du programme au-delà de 2025 aurait nécessité une révision formelle du cadre logique, qui n'est pas documentée dans les sources disponibles
+| Cohérence interne — chaîne de résultats (QE6) | **Élevé** | Chaîne OS→R→A logique ; hypothèses explicitées ; 100 % des interventions couvertes par les objectifs |
+| Cohérence avec les stratégies sectorielles (QE7) | **Élevé** | Alignement PNE documenté, intégration ANPE, absence de doublons |
+| Synergies avec PND, PAG2 et ODD (QE8) | **Élevé** | Opérationnalisation du PAG, contribution ODD 8, articulation GDIZ émergente |
+| **Jugement global** | **ÉLEVÉ** | Le PSIE est un programme bien intégré dans le paysage institutionnel et politique béninois |
 
 ---
 
 ## 6. CRITÈRE 3 — EFFICACITÉ
 
-> **Définition OCDE/CAD** : *L'efficacité est la mesure dans laquelle une intervention a atteint ses objectifs, ou est en voie de les atteindre, compte tenu de leur importance relative.*
+> **Définition OCDE/CAD** : *L'efficacité est la mesure dans laquelle une intervention a atteint ses objectifs et ses résultats, y compris les résultats différenciés selon les groupes de population, compte tenu de leur importance relative.*
 
-### 6.1 Questions évaluatives
+L'évaluation de l'efficacité du PSIE vise à mesurer le degré d'atteinte des résultats et extrants du programme sur la période juillet 2020 – septembre 2025, tels que définis dans le cadre logique et les cibles annuelles. L'analyse est fondée sur les données du rapport actualisé de mise en œuvre, du cadre logique et du document de projet. Elle ne porte pas, à ce stade, sur les effets à moyen et long terme (employabilité durable, revenus, comportements des entreprises), qui seront appréciés lors de la Phase 2 grâce aux données de l'enquête terrain.
 
-| N° | Question évaluative |
-|---|---|
-| QE3.1 | Dans quelle mesure le PSIE a-t-il atteint ses objectifs de mise en emploi des jeunes ? |
-| QE3.2 | Quels extrants ont été produits et correspondent-ils aux cibles fixées ? |
-| QE3.3 | Quels sont les facteurs ayant favorisé ou entravé l'atteinte des objectifs ? |
-| QE3.4 | Le système de suivi-évaluation du programme est-il fonctionnel et fiable ? |
+---
 
-### 6.2 Analyse de l'efficacité
+### 6.1 Mise en place des actions d'immersion et d'encadrement des candidats
 
-#### 6.2.1 Atteinte des extrants — Performance annuelle et cumulative
+*Question évaluative 9 — Dans quelle mesure le PSIE a-t-il contribué à la mise en place des actions d'immersion et d'encadrement des candidats à l'emploi ?*
 
-**Évolution annuelle des allocataires insérés (2020–2025) :**
+Le programme a pleinement opérationnalisé son dispositif d'immersion et d'encadrement. Le cycle opérationnel — publication des offres sur la plateforme numérique, présélection, interviews avec les entreprises, déploiement, tutorat et suivi — a fonctionné de manière régulière sur l'ensemble de la période.
 
-| Année | Allocataires insérés | Cumul | Cible annuelle (2 000) | Taux |
-|---|---|---|---|---|
-| 2020 (juil.–déc.) | 44 | 44 | 2 000 | 2,2 % |
-| 2021 | 582 | 626 | 2 000 | 29,1 % |
-| 2022 | 1 051 | 1 677 | 2 000 | 52,6 % |
-| 2023 | 2 207 | 3 884 | 2 000 | 110,4 % |
-| 2024 | 3 246 | 7 130 | 2 000 | 162,3 % |
-| 2025 (jan.–sept.) | 2 133 | **9 263** | 2 500 | 85,3 % |
+Sur cinq ans (juillet 2020 – septembre 2025), le programme a réalisé **9 263 insertions**, contre une cible initiale de 8 000 sur cinq ans, soit un **dépassement de 15,8 %**. La montée en charge a été progressive et régulière :
 
-**Le programme a inséré 9 263 jeunes en emploi sur 5 ans**, dépassant la cible initiale de 8 000 bénéficiaires sur la période originale 2020-2024.
+| Année | Insertions réalisées | Observation |
+|---|---|---|
+| 2020 (juillet–décembre) | 44 | Phase de démarrage |
+| 2021 | 718 | Montée en charge |
+| 2022 | 1 567 | Accélération |
+| 2023 | 2 445 | Régime de croisière |
+| 2024 | 3 246 | Pic d'insertions |
+| 2025 (jan.–sept.) | 1 243 | En cours |
+| **Total cumulé** | **9 263** | **Cible initiale : 8 000 — Dépassement : +15,8 %** |
 
-**Tableau de bord des indicateurs clés au 30 septembre 2025 (année 2025 uniquement) :**
+---
 
-| Indicateur | Prévision 2025 | Réalisation (sept. 2025) | Taux |
+### 6.2 Soutien financier à la prise en charge des salaires
+
+*Question évaluative 10 — Dans quelle mesure le PSIE a-t-il contribué à soutenir financièrement la prise en charge des salaires des allocataires ?*
+
+Le mécanisme de prise en charge salariale a fonctionné de manière régulière et fiable. Au total, **18,3 milliards FCFA** ont été versés en salaires aux allocataires entre juillet 2020 et septembre 2025, sur un budget global de 46,6 milliards FCFA (taux d'exécution financière cumulée de **79,6 %**).
+
+| Niveau de qualification | Salaire net versé (2025) | CNSS patronale incluse |
+|---|---|---|
+| BAC professionnel | 100 000 FCFA/mois | Oui |
+| BTS / DUT (BAC+2) | 150 000 FCFA/mois | Oui |
+| DTS / Licence (BAC+3) | 175 000 FCFA/mois | Oui |
+| Master / Ingénieur (BAC+5) | 250 000 FCFA/mois | Oui |
+
+Le taux de prise en charge est de **100 %** pour les salaires, ce qui distingue le PSIE des programmes antérieurs qui pratiquaient une prise en charge partielle.
+
+---
+
+### 6.3 Mesures d'accompagnement à l'employabilité des jeunes
+
+*Question évaluative 11 — Dans quelle mesure le PSIE a-t-il mis en place des mesures d'accompagnement à l'employabilité des jeunes ?*
+
+Le programme a déployé un dispositif d'accompagnement structuré comprenant : (i) des **ateliers de Techniques de Recherche d'Emploi (TRE)** avant le déploiement en entreprise ; (ii) un **coaching individuel** assuré par les conseillers en emploi de l'ANPE ; (iii) un **tutorat en entreprise** par un référent désigné dans l'entreprise d'accueil ; et (iv) un **suivi régulier** par les antennes ANPE des 12 départements.
+
+Cependant, **aucune donnée quantitative sur le nombre de jeunes ayant bénéficié de chacune de ces mesures** n'est disponible dans les documents analysés. Cette absence limite l'appréciation du taux de couverture réel de l'accompagnement. La Phase 2 de l'évaluation permettra de documenter ce volet via l'enquête terrain.
+
+---
+
+### 6.4 Portée et couverture des bénéficiaires
+
+*Questions évaluatives 12 et 13 — Combien de bénéficiaires directs reçoivent les services du PSIE ? Les services délivrés sont-ils conformes aux prévisions et atteignent-ils les niveaux prévus ?*
+
+Sur la période 2020-2025, le programme a mobilisé **137 086 candidats** ayant passé un entretien de présélection, **9 263 jeunes** effectivement mis en stage, et **2 067 entreprises** participantes.
+
+| Extrant | Cible 2025 | Réalisation jan.–sept. 2025 | Taux d'exécution |
 |---|---|---|---|
-| Entreprises éligibles | 357 | 399 | **111,8 %** ✅ |
-| Postes validés et publiés | 4 500 | 3 945 | **87,7 %** 🟡 |
-| Interviews réalisés | 60 | 42 | **70,0 %** 🟠 |
-| Experts panélistes mobilisés | 1 200 | 1 350 | **112,5 %** ✅ |
-| Candidats interviewés | 30 000 | 29 043 | **96,8 %** ✅ |
-| Candidats présélectionnés | 14 375 | 13 936 | **96,9 %** ✅ |
-| Candidats sélectionnés par les entreprises | 3 125 | 3 428 | **109,7 %** ✅ |
-| **Candidats mis en emploi** | **2 500** | **2 133** | **85,3 %** 🟡 |
-| Salaires versés | 7 401 milliards FCFA | 5 294 milliards FCFA | **71,5 %** 🟡 |
-| Fonctionnement et opérations | 730 millions FCFA | 491 millions FCFA | **67,2 %** 🟡 |
+| Entreprises ayant déposé des offres | 340 | 380 | **111,8 %** |
+| Postes publiés sur la plateforme | 5 740 | 5 025 | **87,5 %** |
+| Allocataires mis en stage | 2 000 | 1 243 (9 mois) | **62,2 %** |
+| Allocataires en cours d'immersion | — | 4 273 | — |
 
-**Bilan cumulatif (juillet 2020 – septembre 2025) :**
+**Concentration géographique documentée :**
 
-| Indicateur | Cumul total |
+| Département | Part des insertions cumulées |
 |---|---|
-| Entreprises éligibles | 2 067 |
-| Postes validés et publiés | 11 509 |
-| Candidats interviewés | 137 086 |
-| Candidats présélectionnés | 56 617 |
-| Candidats sélectionnés par les entreprises | 15 881 |
-| **Allocataires mis en emploi** | **9 263** |
-| Salaires versés (milliards FCFA) | **18,3** |
+| Littoral (Cotonou) | **64 %** |
+| Atlantique | **21,5 %** |
+| Autres (10 départements) | **14,5 %** |
 
-#### 6.2.2 Analyse de la performance sectorielle et géographique
+Cette concentration de 85,5 % dans deux départements reflète la répartition des entreprises formelles dans la zone côtière. Elle constitue un défi d'équité territoriale documenté.
 
-**Répartition des allocataires insérés par secteur professionnel (9 263 insertions) :**
+**Couverture sectorielle :**
 
-| Secteur professionnel | Part |
+| Branche professionnelle | Part dans les insertions |
 |---|---|
-| Industrie de transformation et production | 5,2 % |
-| Marketing, Communication et Commerce | Env. 18 % des postes publiés |
-| Comptabilité-Gestion | Env. 16 % des postes publiés |
-| Agro-industries | Env. 12 % des postes publiés |
-| TICs et services informatiques | Env. 12 % des postes publiés |
-| Génie civil et travaux publics | 8 % des postes publiés |
+| Marketing-Commerce-Distribution | 18 % |
+| Comptabilité-Gestion | 16 % |
+| Agro-industries | 12 % |
+| TIC | 12 % |
+| BTP | 10 % |
 
-**Répartition géographique des allocataires insérés :**
+---
 
-| Département | Allocataires | Part |
+### 6.5 Actions non prévues réalisées
+
+*Question évaluative 14 — Quelles sont les actions non prévues mais réalisées ? Sont-elles en lien avec les besoins ?*
+
+Deux évolutions non prévues dans le cadre logique initial sont documentées :
+
+1. **L'utilisation des réseaux sociaux** (Facebook, WhatsApp) comme canal complémentaire de diffusion des offres et de recrutement des candidats. Non prévue dans le Prodoc, cette modalité a contribué à élargir la portée du programme, notamment auprès des jeunes hors des grandes villes.
+
+2. **L'articulation avec la GDIZ** : Les entreprises installées dans la Zone Industrielle de Glo-Djigbé ont commencé à recruter des allocataires PSIE, représentant une demande émergente non anticipée dans le cadre logique initial.
+
+Ces deux actions non prévues sont **désirables et cohérentes** avec les objectifs du programme.
+
+---
+
+### 6.6 Qualité des services
+
+*Question évaluative 15 — Qu'en est-il de la qualité des services délivrés par le PSIE ?*
+
+La qualité des services ne peut être appréciée de manière rigoureuse à ce stade faute de données sur la satisfaction des allocataires et des entreprises — cette appréciation est prévue dans la Phase 2 via le questionnaire de satisfaction. Les éléments qualitatifs disponibles indiquent :
+
+- La **régularité des paiements** est jugée satisfaisante : aucun incident majeur de retard de paiement n'est documenté.
+- La **plateforme numérique PSIE** fonctionne comme outil central de gestion.
+- Des cas d'**abandons d'allocataires** et de **non-respect des engagements par certaines entreprises** sont documentés comme facteurs affectant la qualité, sans que leur ampleur soit précisément mesurée.
+
+---
+
+### 6.7 Groupes cibles non atteints
+
+*Question évaluative 16 — Y a-t-il des groupes cibles qui n'ont pas reçu les services du PSIE ?*
+
+| Groupe cible sous-représenté | Cause documentée |
+|---|---|
+| Jeunes des 10 départements non côtiers | Concentration des entreprises formelles dans le Littoral/Atlantique |
+| Jeunes de niveau BAC professionnel | Préférence des entreprises pour les niveaux BAC+2 et supérieurs |
+| Jeunes femmes | Données de genre non disponibles — à évaluer en Phase 2 |
+| Jeunes hors base de données ANPE | Méconnaissance de la plateforme dans les zones rurales |
+
+La question de la **notoriété du programme** auprès des jeunes diplômés non bénéficiaires ne peut pas être répondue à ce stade : aucune donnée sur ce sujet n'est disponible dans les sources documentaires. Cette question sera traitée en Phase 2 via l'enquête terrain.
+
+---
+
+### 6.8 Jugement global — Efficacité
+
+L'analyse documentaire conduit au constat que **le PSIE présente une efficacité moyenne à élevée**. En volume d'insertions, le programme a dépassé sa cible initiale avec 9 263 insertions réalisées. Le mécanisme de prise en charge salariale a fonctionné de manière régulière avec 18,3 milliards FCFA versés. Les mesures d'accompagnement sont en place mais leur couverture n'est pas quantifiée. La concentration géographique et l'absence de données sur la qualité et les groupes non atteints constituent les principales limites à ce stade.
+
+| Dimension analysée | Jugement | Justification principale |
 |---|---|---|
-| Littoral (Cotonou) | 5 897 | **63,7 %** |
-| Atlantique (Abomey-Calavi) | 2 025 | 21,9 % |
-| **Sous-total Sud** | **7 922** | **85,5 %** |
-| Ouémé | 445 | 4,8 % |
-| Borgou | 321 | 3,5 % |
-| Zou | 305 | 3,3 % |
-| Autres départements | 270 | 2,9 % |
-
-La **concentration géographique** est un défi majeur : 85,5 % des insertions sont dans le Littoral et l'Atlantique. Cette distribution reflète en partie la géographie économique du Bénin, où Cotonou et Abomey-Calavi concentrent la majorité des entreprises formelles — le rapport de mise en œuvre le confirme : Littoral seul compte 11 307 des 17 607 postes publiés (64 %). Toutefois, même en tenant compte de cette réalité, les régions du nord restent sous-servies par rapport à leur poids démographique, ce qui constitue un défi d'équité territoriale que le programme doit adresser activement.
-
-**Répartition des allocataires par niveau de qualification :**
-
-| Niveau | Allocataires insérés | Part |
-|---|---|---|
-| BAC+3 (Licence) | 5 526 | 59,7 % |
-| BAC | 2 349 | 25,4 % |
-| BAC+5 (Master/Ingénieur) | 780 | 8,4 % |
-| BAC+2 (BTS/DUT) | 608 | 6,6 % |
-
-Le niveau BAC+3 domine largement, reflétant la structure des sortants de l'enseignement supérieur béninois.
-
-#### 6.2.3 Facteurs influençant l'efficacité
-
-**Facteurs facilitants (documentés) :**
-- **Intérêt croissant des entreprises** : La demande des entreprises a progressé chaque année, notamment celles de la GDIZ qui formulent des demandes régulières et ciblées.
-- **Visibilité via les réseaux sociaux** : Les campagnes de communication sur les réseaux sociaux ont considérablement accru la visibilité du programme et le nombre de candidatures.
-- **Collaboration avec la CCIB** : La disponibilité des salles de la CCIB pour les interviews atteste de la qualité du partenariat institutionnel.
-- **Optimisation des processus** : Le coût moyen par allocataire est passé de **738 113 FCFA en 2020 à 109 089 FCFA en 2025** (division par 7), démontrant une efficacité opérationnelle croissante remarquable.
-- **Suivi systématique** : Le suivi régulier des contrats permet de disposer de statistiques fiables à date.
-
-**Facteurs contraignants (documentés) :**
-- **Lenteur de démarrage** (2020-2022) : Faibles volumes initiaux liés à la structuration du dispositif, aux premières campagnes d'information et à l'appropriation progressive par les entreprises.
-- **Concentration géographique** : 85,5 % des insertions dans le Littoral et l'Atlantique, laissant les régions du nord et du centre sous-servies.
-- **Difficulté de mobilisation dans certains métiers** : TIC, hôtellerie-restauration-tourisme, procédés industriels, énergies renouvelables.
-- **Non-respect des contrats par certaines entreprises** : Des mécanismes de suivi et de sanction doivent être renforcés.
-- **Gestion de la sécurité sociale et assurance maladie** : Complexité administrative pour les allocataires.
-- **Taux d'exécution financière variable** : Les taux de réalisation sur les salaires ont été inférieurs aux prévisions en 2022 (47,4 %) et 2024 (63,3 %), suggérant des délais dans la mise en œuvre des prévisions de recrutement.
-
-#### 6.2.4 Qualité du système de suivi-évaluation
-
-Le programme dispose d'un système de suivi-évaluation **fonctionnel et renseigné** :
-
-- **Suivi mensuel** de la présence des allocataires via la plateforme dédiée (www.psie.bj)
-- **Suivi opérationnel terrain** : visites d'entreprises par les conseillers en emploi
-- **Reporting semestriel** soumis au Comité de pilotage
-- **Base de données PSIE** : source centralisée des statistiques (utilisée comme référence dans le rapport d'exécution)
-- **Tableaux de bord** : indicateurs de performance suivis (entreprises, postes, candidats, insertions, finances)
-- **Évaluations périodiques** : prévues à mi-parcours et en fin de programme
-
-**Limites du système S-E :**
-- Absence de données sur le **taux de rétention post-programme** (% d'allocataires maintenus en emploi après la période de 24 mois).
-- L'évaluation d'impact — qui devait mesurer la durabilité de l'insertion — n'est pas encore documentée dans les sources disponibles.
-- Le taux de satisfaction des employeurs et des bénéficiaires n'est pas quantifié dans le rapport de mise en œuvre.
-
-### 6.3 Jugement évaluatif — Efficacité
-
-| Dimension | Niveau d'efficacité | Justification |
-|---|---|---|
-| Atteinte des extrants — volume d'insertions | **Élevé** | 9 263 insertions sur 5 ans, dépassant la cible initiale de 8 000 ; accélération nette de 2023 à 2024 |
-| Atteinte des extrants — mobilisation des entreprises | **Élevé** | 2 067 entreprises éligibles ; taux de 111,8 % des prévisions 2025 |
-| Couverture géographique | **Faible** | 85,5 % des insertions dans 2 départements sur 12 — fracture territoriale persistante |
-| Couverture sectorielle | **Moyen** | Certains secteurs prioritaires (TIC, hôtellerie, énergies renouvelables) sous-représentés |
-| Exécution financière | **Moyen** | Taux cumulé de 79,6 % ; variations annuelles importantes (47 % en 2022 à 113 % en 2023) |
-| Qualité du système S-E | **Moyen à élevé** | Plateforme fonctionnelle, données fiables, mais absence de données sur la rétention post-programme |
-| **Jugement global — Efficacité** | **Moyen à élevé** | Le programme atteint ses objectifs en volume d'insertions mais présente des lacunes persistantes en couverture géographique et sectorielle |
-
-### 6.4 Constats clés — Efficacité
-
-**Points forts :**
-- Dépassement de la cible initiale de 8 000 bénéficiaires sur 5 ans avec 9 263 insertions
-- Montée en puissance remarquable : de 44 insertions en 2020 à 3 246 en 2024 (×74)
-- Optimisation des coûts opérationnels exemplaire (÷7 en 5 ans)
-- Engagement croissant du secteur privé (GDIZ, CCIB)
-- Paiement régulier des salaires via le Trésor (18,3 milliards FCFA versés)
-
-**Points faibles / Insuffisances :**
-- Forte concentration géographique (Cotonou/Abomey-Calavi) : fracture territoriale non encore résolue
-- Difficultés dans les filières stratégiques (TIC, hôtellerie, énergies renouvelables)
-- Taux d'exécution financière de 2025 à 71,5 % (salaires) et 67,2 % (fonctionnement), indiquant des délais à surmonter sur le dernier trimestre
-- Absence de données sur la durabilité de l'insertion post-programme (rétention à 6, 12 et 24 mois)
+| Actions d'immersion et d'encadrement (QE9) | **Élevé** | 9 263 insertions, dépassement de +15,8 % de la cible initiale |
+| Soutien financier à la prise en charge salariale (QE10) | **Élevé** | 18,3 milliards FCFA versés, prise en charge 100 %, paiements réguliers |
+| Accompagnement à l'employabilité (QE11) | **Moyen** | Dispositif en place mais couverture quantitative non documentée |
+| Portée et conformité aux prévisions (QE12+QE13) | **Moyen à élevé** | Dépassement en insertions cumulées ; concentration géographique documentée |
+| Actions non prévues (QE14) | **Positif** | Réseaux sociaux + GDIZ : évolutions désirables et cohérentes |
+| Qualité des services (QE15) | **Non mesurable (Phase 2)** | Absence de données de satisfaction quantifiées |
+| Groupes non atteints (QE16) | **À approfondir (Phase 2)** | Sous-représentation documentée des zones rurales et du niveau BAC pro |
+| **Jugement global** | **MOYEN À ÉLEVÉ** | Forte performance en insertions ; limites sur équité territoriale et données de qualité |
 
 ---
 
