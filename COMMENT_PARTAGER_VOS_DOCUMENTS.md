@@ -1,4 +1,21 @@
-# 📤 Comment partager vos documents pour l'évaluation du PSIE
+# 📤 Guide du projet — Évaluation finale du PSIE
+
+---
+
+## 📥 Accès rapide aux documents produits
+
+> Ces liens mènent directement aux dernières versions des fichiers.  
+> Pour **télécharger** un fichier Word ou PNG : cliquez sur le lien → puis cliquez sur **"Download raw file"** (icône ⬇ en haut à droite de la page).
+
+| Document | Format | Lien de téléchargement |
+|---|---|---|
+| **Rapport d'évaluation PSIE** (version actuelle) | Word `.docx` | [📄 PSIE_Evaluation.docx](https://github.com/Olayemi-katchon/Olayemi-katchon/blob/copilot/evaluate-first-three-criteria/PSIE_Evaluation.docx) |
+| Rapport d'évaluation (version lisible en ligne) | Markdown | [📝 PSIE_Evaluation.md](https://github.com/Olayemi-katchon/Olayemi-katchon/blob/copilot/evaluate-first-three-criteria/PSIE_Evaluation.md) |
+| **Organigramme de gouvernance** | Image PNG | [🖼️ organigramme_gouvernance_PSIE.png](https://github.com/Olayemi-katchon/Olayemi-katchon/blob/copilot/evaluate-first-three-criteria/docs/psie/organigramme_gouvernance_PSIE.png) |
+
+---
+
+## 📤 Comment partager vos documents sources
 
 Ce guide vous explique comment déposer vos documents, **sans avoir besoin de connaître GitHub**.
 
