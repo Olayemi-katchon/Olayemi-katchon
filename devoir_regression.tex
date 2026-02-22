@@ -3,7 +3,7 @@
 %% ---- Encodage et langue ----
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[french]{babel}
+\usepackage[francais]{babel}
 
 %% ---- Mathématiques ----
 \usepackage{amsmath}
@@ -200,6 +200,151 @@ $f(x) = x^{\top} B x$ est une forme quadratique, et :
 \medskip
 \begin{center}
   \fbox{$\displaystyle \grad_x f(x) = 2\,A^{\top} A\, x$}
+\end{center}
+
+% ==============================================================
+\subsection*{Question 6 -- Hessienne de la norme euclidienne au carré de $Ax$}
+% ==============================================================
+
+\textbf{Énoncé.}
+Soit $f(x) = \|Ax\|^2 = (Ax)^{\top}(Ax)$, $A \in \R^{m \times n}$.
+Calculer $\grad_x^2 f(x)$.
+
+\medskip
+\textbf{Démonstration.}
+
+On a établi à la Question~5 que $\grad_x f(x) = 2\,A^{\top} A\,x$.
+La hessienne est la dérivée du gradient par rapport à $x$ :
+\begin{align}
+  \grad_x^2 f(x)
+    &= \frac{\partial}{\partial x}\!\left(2\,A^{\top} A\, x\right)
+     = 2\,A^{\top} A. \notag
+\end{align}
+
+\medskip
+\begin{center}
+  \fbox{$\displaystyle \grad_x^2 f(x) = 2\,A^{\top} A$}
+\end{center}
+
+% ==============================================================
+\subsection*{Question 7 -- Gradient et Hessienne d'une fonction avec barrière logarithmique}
+% ==============================================================
+
+\textbf{Énoncé.}
+Soit la fonction
+\[
+  f(x) = \frac{1}{2}\,x^{\top} A x - b^{\top} x
+         - \mu_1 \log x_1 - \mu_2 \log x_2,
+  \qquad
+  x = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} \in \R^{2},\quad
+  \mu_1,\, \mu_2 > 0.
+\]
+
+\textbf{(a)} Calculer $\grad_x f(x)$. \quad
+\textbf{(b)} Calculer $\grad_x^2 f(x)$.
+
+\medskip
+\textbf{Démonstration -- partie (a).}
+
+On décompose $f$ en trois termes :
+\begin{itemize}
+  \item $\frac{\partial}{\partial x}\!\left(\frac{1}{2}x^{\top} A x\right) = Ax$
+        (avec $A$ symétrique, résultat de la Question~1).
+  \item $\frac{\partial}{\partial x}\!\left(-b^{\top} x\right) = -b$.
+  \item $\frac{\partial}{\partial x_i}\!\left(-\mu_i \log x_i\right)
+        = -\dfrac{\mu_i}{x_i}$,
+        donc $\dfrac{\partial}{\partial x}\!\left(-\mu_1\log x_1 - \mu_2\log x_2\right)
+        = -\begin{pmatrix} \mu_1/x_1 \\ \mu_2/x_2 \end{pmatrix}$.
+\end{itemize}
+
+Par linéarité :
+\[
+  \grad_x f(x) = Ax - b - \begin{pmatrix} \mu_1/x_1 \\ \mu_2/x_2 \end{pmatrix}.
+\]
+
+\medskip
+\begin{center}
+  \fbox{$\displaystyle
+    \grad_x f(x) = Ax - b - \begin{pmatrix} \mu_1/x_1 \\ \mu_2/x_2 \end{pmatrix}
+  $}
+\end{center}
+
+\medskip
+\textbf{Démonstration -- partie (b).}
+
+La hessienne est la dérivée du gradient.
+Les termes issus de $Ax - b$ donnent $A$.
+Les termes logarithmiques contribuent :
+\[
+  \frac{\partial^2}{\partial x_i^2}\!\left(-\mu_i \log x_i\right)
+  = \frac{\mu_i}{x_i^2},
+  \qquad
+  \frac{\partial^2}{\partial x_i\,\partial x_j}\!\left(-\mu_i \log x_i\right) = 0
+  \text{ pour } i \neq j.
+\]
+
+Donc :
+\[
+  \grad_x^2 f(x)
+  = A
+    + \begin{pmatrix} \mu_1/x_1^2 & 0 \\ 0 & \mu_2/x_2^2 \end{pmatrix}
+  = A + \operatorname{diag}\!\left(\frac{\mu_1}{x_1^2},\,\frac{\mu_2}{x_2^2}\right).
+\]
+
+\medskip
+\begin{center}
+  \fbox{$\displaystyle
+    \grad_x^2 f(x)
+    = A + \operatorname{diag}\!\!\left(\frac{\mu_1}{x_1^2},\,\frac{\mu_2}{x_2^2}\right)
+  $}
+\end{center}
+
+% ==============================================================
+\subsection*{Question 8 -- Direction de Newton}
+% ==============================================================
+
+\textbf{Énoncé.}
+En partant de l'approximation de Taylor du second ordre de $f$ au voisinage
+de $x_k$, déterminer la direction $p^*$ qui minimise cette approximation.
+En déduire la mise à jour de Newton $x_{k+1}$.
+
+\medskip
+\textbf{Démonstration.}
+
+Notons $g = \grad_x f(x_k)$ et $H = \grad_x^2 f(x_k)$.
+L'approximation quadratique de $f(x_k + p)$ s'écrit :
+\[
+  f(x_k + p)
+  \approx f(x_k) + g^{\top} p + \frac{1}{2}\,p^{\top} H\, p
+  =: W(p).
+\]
+
+Pour minimiser $W(p)$ par rapport à $p$, on annule son gradient :
+\begin{align}
+  \frac{\partial W(p)}{\partial p}
+    &= g + H\,p = 0 \notag\\[4pt]
+  \Longrightarrow \quad
+  H\,p^* &= -g. \notag
+\end{align}
+
+En supposant $H$ inversible ($H \succ 0$), on obtient la direction de Newton :
+\[
+  p^* = -H^{-1}\,g
+      = -\bigl[\grad_x^2 f(x_k)\bigr]^{-1}\,\grad_x f(x_k).
+\]
+
+La mise à jour de Newton est donc :
+\[
+  x_{k+1} = x_k + p^* = x_k - \bigl[\grad_x^2 f(x_k)\bigr]^{-1}\,\grad_x f(x_k).
+\]
+
+\medskip
+\begin{center}
+  \fbox{$\displaystyle
+    H(x_k)\,p^* = -\grad_x f(x_k)
+    \qquad \Longrightarrow \qquad
+    x_{k+1} = x_k - H(x_k)^{-1}\,\grad_x f(x_k)
+  $}
 \end{center}
 
 \end{document}

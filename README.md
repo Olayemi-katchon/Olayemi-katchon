@@ -16,6 +16,10 @@
 | [`q2 et q3.jpg`](./q2%20et%20q3.jpg) | Images manuscrites — Q2 (hessienne) et Q3 (gradient exponentiel) |
 | [`q4.jpg`](./q4.jpg) | Image manuscrite — Question 4 : hessienne exponentielle |
 | [`q5.jpg`](./q5.jpg), [`q6.jpg`](./q6.jpg) | Images manuscrites — Question 5 : gradient de la norme au carré |
+| [`5687.jpg`](./5687.jpg) | Image manuscrite — Question 6 : hessienne de ‖Ax‖² |
+| [`5694.jpg`](./5694.jpg) | Image manuscrite — Question 7 (a)(b) : gradient + hessienne avec barrière log |
+| [`5722.jpg`](./5722.jpg) | Image manuscrite — Question 7 fonction + méthode de Newton (contexte) |
+| [`5723.jpg`](./5723.jpg) | Image manuscrite — Question 8 : dérivation de la direction de Newton Hp*=−g |
 
 **Résultats clés :**
 
@@ -26,6 +30,10 @@
 | Q3 | `f(x) = exp(xᵀAx)` | `∇f = 2 exp(xᵀAx) Ax` |
 | Q4 | même | `∇²f = exp(xᵀAx)(4 Axxᵀ A + 2A)` |
 | Q5 | `f(x) = ‖Ax‖²` | `∇f = 2 AᵀAx` |
+| Q6 | `f(x) = ‖Ax‖²` | `∇²f = 2 AᵀA` |
+| Q7(a) | `f(x) = ½xᵀAx − bᵀx − μ₁log x₁ − μ₂log x₂` | `∇f = Ax − b − [μ₁/x₁; μ₂/x₂]` |
+| Q7(b) | même | `∇²f = A + diag(μ₁/x₁², μ₂/x₂²)` |
+| Q8 | `min_p [gᵀp + ½pᵀHp]` | `Hp* = −g  →  x_{k+1} = xₖ − H⁻¹∇f(xₖ)` |
 
 ---
 
