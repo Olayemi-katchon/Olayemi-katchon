@@ -11,7 +11,7 @@
 | **Pays** | République du Bénin |
 | **Secteur** | Emploi et Formation Professionnelle |
 | **Portée de l'évaluation** | Nationale |
-| **Critères évalués** | Pertinence, Cohérence, Efficacité |
+| **Critères évalués** | Pertinence, Cohérence, Efficacité, Efficience, Genre (analyse documentaire) |
 | **Type d'évaluation** | Évaluation de processus — Revue documentaire |
 | **Période couverte** | Juillet 2020 – Septembre 2025 |
 | **Documents sources** | Prodoc PSIE (mars 2020) · Cadre logique PSIE · Rapport actualisé de mise en œuvre (juil. 2020 – sept. 2025) |
@@ -32,7 +32,11 @@ L'évaluation des trois premiers critères OCDE/CAD, conduite sur la base d'une 
 
 **Efficacité — Moyenne à Élevée.** Le programme a inséré **9 263 jeunes** en emploi entre juillet 2020 et septembre 2025 pour un total de **18,3 milliards FCFA** de salaires versés. Le rythme annuel d'insertion a augmenté de façon régulière, passant de 44 en 2020 à 3 246 en 2024, dépassant les cibles initiales en volume cumulé. Des écarts persistent sur certains indicateurs 2025 (85 % d'exécution sur les insertions) et une forte concentration géographique dans le Littoral (64 %) demeure un défi. Le taux d'exécution financière cumulée est de 79,6 %.
 
-**Principales recommandations :** Développer une stratégie de déconcentration géographique, renforcer le suivi des clauses contractuelles des entreprises, intensifier la prospection dans les secteurs sous-représentés (TIC, hôtellerie, énergies renouvelables), et formaliser un cadre d'évaluation d'impact pour la phase post-programme.
+**Efficience — Moyenne à Élevée.** Sur 20,6 milliards FCFA réalisés (juillet 2020 – septembre 2025), le coût opérationnel moyen par allocataire est passé de 1 968 689 FCFA en 2020 à 184 388 FCFA en 2024, soit une réduction de 90,6 % — signe d'une montée en efficience structurelle. Le taux d'exécution global des dépenses est de 79,6 %. Le ratio coût administratif/budget total (10,9 %) dépasse l'objectif initial de 3 %, mais reflète les coûts de construction institutionnelle d'un programme démarré de zéro.
+
+**Genre — Insuffisant dans la conception.** Aucune cible, aucun quota, aucun indicateur désagrégé par sexe n'est documenté dans le Prodoc, le Cadre logique ou le Rapport de mise en œuvre. La formulation du PSIE ne fait pas explicitement référence à une politique genre. Cette lacune limite significativement la capacité à évaluer l'équité entre les sexes dans l'accès au programme. Des données désagrégées (base de données PSIE avec variable Sexe) sont indispensables pour la Phase 2.
+
+**Principales recommandations :** Développer une stratégie de déconcentration géographique, renforcer le suivi des clauses contractuelles des entreprises, intensifier la prospection dans les secteurs sous-représentés (TIC, hôtellerie, énergies renouvelables), intégrer explicitement une dimension genre dans la révision du cadre logique, et formaliser un cadre d'évaluation d'impact pour la phase post-programme.
 
 ---
 
@@ -44,9 +48,11 @@ L'évaluation des trois premiers critères OCDE/CAD, conduite sur la base d'une 
 4. [Critère 1 — Pertinence](#4-critère-1--pertinence)
 5. [Critère 2 — Cohérence](#5-critère-2--cohérence)
 6. [Critère 3 — Efficacité](#6-critère-3--efficacité)
-7. [Conclusions préliminaires et recommandations](#7-conclusions-préliminaires-et-recommandations)
-8. [Limites de l'évaluation](#8-limites-de-lévaluation)
-9. [Annexes](#9-annexes)
+7. [Critère 4 — Efficience](#7-critère-4--efficience)
+8. [Critère 5 — Genre](#8-critère-5--genre)
+9. [Conclusions préliminaires et recommandations](#9-conclusions-préliminaires-et-recommandations)
+10. [Limites de l'évaluation](#10-limites-de-lévaluation)
+11. [Annexes](#11-annexes)
 
 ---
 
@@ -982,19 +988,228 @@ L'analyse documentaire conduit au constat que **le PSIE présente une efficacit�
 
 ---
 
-## 7. CONCLUSIONS PRÉLIMINAIRES ET RECOMMANDATIONS
 
-### 7.1 Synthèse des jugements évaluatifs
+---
+
+## 7. CRITÈRE 4 — EFFICIENCE
+
+> **Définition OCDE/CAD :** L'efficience mesure dans quelle mesure les ressources (fonds, expertise, temps, etc.) sont converties en résultats de façon économique et au moindre coût.
+
+### 7.1 Questions évaluatives et sources mobilisées
+
+| N° | Question évaluative (QE) | Sources mobilisées |
+|---|---|---|
+| QE17 | Dans quelle mesure les ressources financières allouées ont-elles été utilisées de façon optimale ? | Rapport MO Table 9 ; Prodoc §9.6 |
+| QE18 | Quelle est l'évolution du coût moyen par allocataire inséré sur la période ? | Rapport MO Tables 2, 7, 8, 9 |
+| QE19 | Le ratio coût administratif / coût total est-il raisonnable par rapport aux normes de référence ? | Rapport MO §148 ; Prodoc §9.4 |
+| QE20 | Les processus de sélection et d'appariement sont-ils efficaces sur le plan du rapport candidats/insérés ? | Rapport MO Tables 1, 2 |
+
+---
+
+### 7.2 Exécution budgétaire globale (QE17)
+
+De juillet 2020 à septembre 2025, le PSIE a mobilisé et exécuté un total de **20 579 898 796 FCFA** (environ 20,58 milliards), répartis entre les salaires et charges des allocataires (18,33 milliards, soit 89,1 % du total) et les dépenses de fonctionnement et opérations (2,25 milliards, soit 10,9 %). Le tableau ci-après présente l'évolution annuelle des dépenses réalisées.
+
+**Tableau 18 — Évolution annuelle des dépenses réalisées du PSIE (juillet 2020 – septembre 2025)**
+
+| Période | Salaires et charges sociales (FCFA) | Fonctionnement et opérations (FCFA) | Total annuel (FCFA) |
+|---|---|---|---|
+| Juil. – déc. 2020 | 19 061 727 | 86 622 302 | 105 684 029 |
+| 2021 | 862 820 783 | 257 232 454 | 1 120 053 237 |
+| 2022 | 1 667 244 728 | 371 647 794 | 2 038 892 522 |
+| 2023 | 3 996 429 267 | 468 590 740 | 4 465 020 007 |
+| 2024 | 6 485 673 886 | 598 548 000 | 7 084 221 886 |
+| Janv. – sept. 2025 | 5 294 259 303 | 490 609 417 | 5 784 868 720 |
+| **Total cumulé** | **18 325 489 694** | **2 254 409 102** | **20 579 898 796** |
+
+*Source : Rapport actualisé de mise en œuvre du PSIE, Table 9, Comptabilité PSIE, octobre 2025.*
+
+La croissance exponentielle des décaissements confirme la montée en régime progressive du programme. La progression la plus spectaculaire se situe entre 2020 et 2021 (+960 %), reflétant le démarrage effectif des insertions. La progression se ralentit légèrement en 2025, en cohérence avec un programme en phase de maturité opérationnelle.
+
+En termes d'exécution budgétaire pour l'exercice 2025, le taux de réalisation financière des salaires est de **71,53 %** (5,29 milliards sur 7,40 milliards prévus au 31 décembre 2025) et celui du fonctionnement est de **67,18 %** (0,49 milliard sur 0,73 milliard prévu), soit un taux de réalisation global de **79,61 %** sur les dépenses prévues. Ces écarts, en cours d'exercice (données au 30 septembre), sont néanmoins cohérents avec le rythme d'insertion effectivement observé à la même date (85,3 % de la cible annuelle d'insertions).
+
+---
+
+### 7.3 Évolution du coût opérationnel moyen par allocataire (QE18)
+
+L'indicateur le plus révélateur de l'efficience du PSIE est l'évolution du **coût opérationnel moyen par allocataire**, défini comme le rapport entre les dépenses de fonctionnement et d'opérations de l'année et le nombre d'allocataires effectivement insérés au cours de la même période.
+
+**Tableau 19 — Coût opérationnel moyen par allocataire inséré (2020–2025)**
+
+| Période | Dépenses opérations (FCFA) | Allocataires insérés | Coût moyen par allocataire (FCFA) | Variation |
+|---|---|---|---|---|
+| Juil. – déc. 2020 | 86 622 302 | 44 | **1 968 689** | — *(phase de démarrage)* |
+| 2021 | 257 232 454 | 582 | **441 981** | −77,6 % |
+| 2022 | 371 647 794 | 1 051 | **353 614** | −20,0 % |
+| 2023 | 468 590 740 | 2 207 | **212 313** | −40,0 % |
+| 2024 | 598 548 000 | 3 246 | **184 388** | −13,1 % |
+| Janv. – sept. 2025 | 490 609 417 | 2 133 | **230 009** | +24,7 % *(année incomplète)* |
+
+*Sources : Rapport actualisé de mise en œuvre, Tables 2, 7, 8, 9 ; calculs de l'équipe d'évaluation.*
+
+Ces données révèlent une **tendance structurelle à l'amélioration de l'efficience opérationnelle** très marquée. Le coût moyen par allocataire a diminué de 90,6 % entre 2020 et 2024, passant de près de 2 millions FCFA à 184 388 FCFA. Cette trajectoire illustre les économies d'échelle réalisées au fur et à mesure de la montée en puissance du programme : standardisation des processus d'interview, rationalisation de la commission de sélection, optimisation des missions d'analyse des demandes d'entreprises et réduction des frais d'invitation des candidats par l'utilisation des canaux numériques.
+
+La légère remontée du coût en 2025 (+24,7 %) s'explique par la nature partielle de la période (9 mois sur 12) : les dépenses de fonctionnement ont un caractère plus fixe et se diluent moins bien sur une moitié d'année que les insertions, qui sont concentrées sur le second semestre.
+
+---
+
+### 7.4 Ratio coût administratif / coût total (QE19)
+
+Le Prodoc (§9.4) avait prévu un taux de fonctionnement de **3 % du coût total des allocations et frais d'encadrement**, correspondant à 1 357 327 632 FCFA sur 5 ans, soit environ 271 millions par an.
+
+Les données de mise en œuvre montrent que les dépenses de fonctionnement et opérations ont atteint **2 254 409 102 FCFA** sur 5,25 ans, soit **10,9 % du total réalisé** (20,58 milliards). Ce taux est significativement supérieur à la prévision initiale de 3 %.
+
+Cet écart s'explique en partie par des coûts de construction institutionnelle non anticipés à leur juste mesure dans le Prodoc : développement et maintenance de la plateforme numérique PSIE, organisation de plusieurs dizaines de sessions d'interviews dans des espaces dédiés (CCIB), recrutement et indemnisation d'experts panélistes extérieurs, campagnes de communication sur les réseaux sociaux, et frais de déplacement pour la couverture nationale. Ces charges sont inhérentes à la mise à échelle d'un dispositif de placement national opérant dans 12 départements.
+
+Ramené au nombre de bénéficiaires insérés, le coût administratif cumulé s'établit à **243 365 FCFA par allocataire** pour l'ensemble de la période — ce qui, comparé à la valeur salariale transférée (18,33 milliards / 9 263 = **1 978 726 FCFA par allocataire**), représente un ratio d'administration de 12,3 % sur la valeur transférée. Ce ratio, bien que supérieur à la prévision initiale, reste acceptable dans le contexte d'un programme national en phase de construction.
+
+---
+
+### 7.5 Efficience des processus d'appariement candidats-entreprises (QE20)
+
+Le processus de sélection du PSIE mobilise plusieurs étapes (dépôt de dossiers, présélection, interview par des experts panélistes, sélection par l'entreprise, mise en emploi). Le tableau suivant résume les ratios de conversion entre chaque étape pour l'ensemble de la période.
+
+**Tableau 20 — Ratios de conversion du processus de sélection PSIE (cumulé 2020–2025)**
+
+| Étape | Volume cumulé | Ratio de conversion |
+|---|---|---|
+| Candidats interviewés | 137 086 | — *(point d'entrée)* |
+| Candidats présélectionnés | 56 617 | **41,3 %** des interviewés |
+| Candidats sélectionnés par les entreprises | 15 881 | **28,0 %** des présélectionnés |
+| Allocataires mis en emploi | 9 263 | **58,3 %** des sélectionnés |
+| **Taux de conversion global** | — | **6,8 %** des interviewés insérés |
+
+*Source : Rapport actualisé de mise en œuvre, Tables 1 et 2, Base de données PSIE, septembre 2025.*
+
+Le taux de conversion global de **6,8 %** entre les candidats interviewés et les allocataires effectivement mis en emploi est cohérent avec les sélectivités habituellement observées dans les programmes de subvention salariale à ciblage qualificationnel. La principale perte intervient à l'étape présélection (seulement 41,3 % des candidats interviewés sont retenus), ce qui peut s'expliquer par une inadéquation partielle entre les profils disponibles et les besoins exprimés par les entreprises.
+
+La rationalisation progressive du processus (235 entretiens en 2022-2025 contre des milliers en 2020-2021) traduit, comme souligné dans le rapport de mise en œuvre (§143), un ciblage plus précis des profils et une efficience accrue du dispositif de sélection.
+
+---
+
+### 7.6 Jugement global — Efficience
+
+| Dimension | Constat | Niveau |
+|---|---|---|
+| Exécution budgétaire | Taux de réalisation global de 79,6 % — cohérent avec le rythme d'insertions | ✅ Satisfaisant |
+| Coût moyen par allocataire | Réduction de 90,6 % entre 2020 et 2024 — économies d'échelle avérées | ✅ Élevé |
+| Ratio administratif | 10,9 % du total réalisé — supérieur à la prévision (3 %) mais justifiable en contexte de construction institutionnelle | ⚠️ Modéré |
+| Processus de sélection | Taux de conversion de 6,8 % — cohérent ; rationalisation progressive confirmée | ✅ Satisfaisant |
+| Benchmark régional | Non disponible dans les documents — nécessite la Phase 2 | ⚠️ Partiel |
+
+**Jugement global d'efficience : MOYEN À ÉLEVÉ**
+
+Le PSIE présente une trajectoire d'efficience ascendante et documentée. Les données disponibles permettent de conclure que le programme réalise des économies d'échelle significatives au fil des années, avec un coût opérationnel par allocataire en réduction constante. La principale limite porte sur l'absence de benchmarks comparatifs avec des programmes similaires dans la sous-région (UEMOA, CEDEAO) qui permettraient de contextualiser ces ratios et de porter un jugement d'efficience relative plus robuste.
+
+> ⚠️ **Note méthodologique :** Les données financières disponibles correspondent aux décaissements effectifs du Trésor et du budget de fonctionnement. Elles ne comprennent pas les coûts indirects de l'ANPE (coûts du personnel permanent, locaux, etc.) qui sont mutualisés avec les autres activités de l'agence. Le coût complet du programme est donc sous-estimé dans les calculs ci-dessus.
+
+---
+
+## 8. CRITÈRE 5 — GENRE
+
+> **Définition OCDE/CAD :** Le critère genre évalue dans quelle mesure le programme tient compte des inégalités entre les sexes dans sa conception, sa mise en œuvre et ses effets, et contribue à l'égalité des chances entre hommes et femmes.
+
+> **Cadre d'analyse :** Matrice AGDEN (Africa Gender & Development Evaluators Network), appliquée à 4 composantes (conception, indicateurs, mise en œuvre, budget) et 6 critères (égalité/équité, budgétisation sensible au genre, participation, prise de décision, évaluabilité/révision, durabilité). Score 0 = inexistant ; 1 = faible ; 2 = moyen ; 3 = plein.
+
+---
+
+### 8.1 Questions évaluatives et sources mobilisées
+
+| N° | Question évaluative (QE) | Sources mobilisées |
+|---|---|---|
+| QE21 | Le PSIE intègre-t-il une analyse genre dans sa conception et sa formulation ? | Prodoc PSIE (§1 à §7) ; Cadre logique |
+| QE22 | Existe-t-il des cibles ou des indicateurs désagrégés par sexe dans le cadre de résultats ? | Cadre logique PSIE ; Rapport MO |
+| QE23 | La répartition par sexe des bénéficiaires peut-elle être reconstituée à partir des données disponibles ? | Rapport MO Tables 1-2 ; Base de données PSIE |
+| QE24 | Le budget du PSIE est-il sensible au genre (lignes budgétaires dédiées) ? | Prodoc §9 ; Rapport MO §9 (gestion financière) |
+
+---
+
+### 8.2 Intégration du genre dans la conception du PSIE (QE21)
+
+L'analyse du document de projet (Prodoc, mars 2020) révèle une absence quasi totale de référence explicite à la dimension genre dans la conception du programme. Le PSIE ne mentionne ni analyse différenciée des barrières d'accès à l'emploi selon le sexe, ni stratégie spécifique pour promouvoir l'insertion des jeunes femmes diplômées. La seule occurrence liée au genre dans le Prodoc concerne le terme « disparité », utilisé dans un contexte salarial général (non lié au sexe).
+
+Cette lacune est d'autant plus notable que le contexte béninois de l'emploi est marqué par des inégalités de genre documentées : les femmes diplômées font face à des barrières structurelles spécifiques (mobilité géographique limitée, concentration dans certains secteurs, discriminations à l'embauche), qui auraient justifié un traitement explicite dans la conception du programme.
+
+De même, le cadre logique du PSIE ne contient aucun indicateur désagrégé par sexe, ni dans les indicateurs de résultats intermédiaires, ni dans les indicateurs de finalité. Cette absence d'indicateurs de genre dans la matrice de résultats rend structurellement difficile le suivi de l'équité entre les sexes dans l'accès au programme.
+
+---
+
+### 8.3 Données disponibles sur la répartition par sexe des bénéficiaires (QE23)
+
+Les trois documents sources consultés dans le cadre de cette revue documentaire ne contiennent aucune donnée désagrégée par sexe permettant de reconstituer la répartition hommes/femmes parmi les bénéficiaires du PSIE.
+
+- Le **Rapport actualisé de mise en œuvre** (juillet 2020 – septembre 2025) fournit des statistiques détaillées sur les candidats interviewés, présélectionnés, sélectionnés et mis en emploi, mais aucun tableau ne ventile ces chiffres par sexe.
+- Le **Prodoc** ne fixe aucun quota de féminisation ni aucune cible genre pour les cohortes.
+- Le **Cadre logique** ne comporte aucun indicateur de genre (ni taux de féminisation des insertions, ni part des femmes dans les entreprises bénéficiaires).
+
+En revanche, la répartition sectorielle des postes validés — qui fait apparaître une dominance du Marketing-Commerce-Distribution (18 %), de la Comptabilité-Gestion (16 %), des Agro-industries et des TIC (12 % chacun), des Procédés industriels (9 %) et du Génie civil (8 %) — offre une base indirecte pour inférer des dynamiques de genre implicites. En effet, les filières Procédés industriels, Génie civil et TIC sont historiquement à prédominance masculine dans le contexte béninois, tandis que la Comptabilité-Gestion et le Secrétariat sont plus équilibrées. Toutefois, ces inférences restent fragiles en l'absence de données primaires désagrégées.
+
+---
+
+### 8.4 Sensibilité du budget au genre (QE24)
+
+Le budget prévisionnel du PSIE (Prodoc §9) ne contient aucune ligne budgétaire dédiée à des activités de promotion de l'égalité de genre (sensibilisation, accompagnement spécifique des femmes, collecte de données désagrégées). Les rubriques budgétaires couvertes sont les allocations/salaires, les frais de formation et encadrement, les frais de fonctionnement et les équipements — toutes neutres au genre dans leur libellé et leur conception.
+
+---
+
+### 8.5 Diagnostic genre — Matrice de scoring AGDEN
+
+**Tableau 21 — Matrice de diagnostic genre du PSIE (analyse documentaire)**
+
+| Critère AGDEN | Composante évaluée | Score (0-3) | Justification documentaire |
+|---|---|---|---|
+| **1. Égalité/Équité genre** | Conception du programme | **0** | Pas d'analyse genre dans le Prodoc ; pas de cibles par sexe |
+| **2. Budgétisation sensible au genre** | Budget PSIE | **0** | Aucune ligne budgétaire genre dans le Prodoc (§9) |
+| **3. Participation** | Sélection des bénéficiaires | **0** | Aucun quota ou dispositif d'inclusion des femmes documenté |
+| **4. Prise de décision** | Gouvernance du programme | **0** | Aucune mention de parité dans les instances de pilotage |
+| **5. Évaluabilité / Révision** | Cadre de résultats | **0** | Aucun indicateur genre dans le cadre logique |
+| **6. Durabilité** | Effets à long terme | **n/a** | Impossible à évaluer sans données de suivi désagrégées |
+| **Score moyen** | | **0 / 3** | |
+
+*Source : Matrice AGDEN, adaptée au PSIE sur base de la revue documentaire. Prodoc PSIE mars 2020 ; Cadre logique PSIE ; Rapport MO octobre 2025.*
+
+---
+
+### 8.6 Jugement global — Genre
+
+**Jugement global genre : INSUFFISANT (dans la conception)**
+
+Le PSIE présente une **lacune structurelle en matière d'intégration du genre**, tant dans sa formulation que dans son cadre de suivi. Le score AGDEN global de 0/3 (sur la base des documents disponibles) reflète une conception aveugle au genre (*gender-blind*), qui n'a pas anticipé ni cherché à corriger les inégalités structurelles d'accès à l'emploi formel entre hommes et femmes.
+
+> ⚠️ **Note importante — Limites de l'analyse documentaire :** Ce jugement est établi exclusivement sur la base de la revue documentaire. La Phase 2 (collecte de données primaires auprès de l'ANPE et de la base de données PSIE) permettra de :
+> 1. Obtenir la **répartition effective M/F des allocataires insérés** (137 086 candidats interviewés, base de données PSIE 2025)
+> 2. Vérifier si des **pratiques informelles de promotion de la parité** existent sans être documentées
+> 3. Collecter les **perceptions des femmes bénéficiaires** sur les barrières d'accès rencontrées
+> 4. Calculer un **score AGDEN actualisé** fondé sur les données primaires
+
+**Données prioritaires à collecter en Phase 2 pour compléter l'évaluation genre :**
+
+| Donnée nécessaire | Source | Disponibilité |
+|---|---|---|
+| Répartition M/F des 9 263 allocataires insérés | Base de données PSIE (variable Sexe) | À demander à la Coordination PSIE / ANPE |
+| Répartition M/F par niveau de qualification (BAC pro à BAC+5) | Base de données PSIE | À demander à la Coordination PSIE |
+| Répartition M/F par secteur d'insertion | Base de données PSIE | À demander à la Coordination PSIE |
+| Répartition M/F par département | Base de données PSIE | À demander à la Coordination PSIE |
+| Perception des barrières d'accès par les femmes | Enquête terrain / focus groups | Phase 2 — enquête CAWI/téléphonique |
+| Politique Nationale Genre du Bénin (PNEG) | Document de politique publique | À collecter pour l'alignement PSIE/PNEG |
+
+---
+
+## 9. CONCLUSIONS PRÉLIMINAIRES ET RECOMMANDATIONS
+
+### 9.1 Synthèse des jugements évaluatifs
 
 | Critère OCDE | Jugement global | Niveau de confiance |
 |---|---|---|
 | **Pertinence** | **Élevé** | Élevé — documenté par le Prodoc, les statistiques INSAE et la réponse des entreprises |
 | **Cohérence** | **Élevé** | Moyen à élevé — cadre logique formalisé, mais révision salariale non formellement intégrée |
 | **Efficacité** | **Moyen à élevé** | Élevé en volume d'insertions ; moyen pour la couverture géographique et sectorielle |
+| **Efficience** | **Moyen à élevé** | Élevé en tendance (coût/allocataire −90,6 %) ; moyen pour le ratio administratif et l'absence de benchmark régional |
+| **Genre** | **Insuffisant** | Élevé (conception aveugle au genre documentée) ; jugement de mise en œuvre reporté à Phase 2 |
 
-**Conclusion générale :** Le PSIE est un programme bien conçu, pertinent et cohérent, qui a produit des résultats significatifs en termes d'insertion professionnelle en 5 ans. Ses performances sont en progression constante et ses coûts opérationnels maîtrisés. Les principaux défis portent sur l'équité géographique, la couverture sectorielle, et la mesure de la durabilité des insertions.
+**Conclusion générale :** Le PSIE est un programme bien conçu, pertinent et cohérent, qui a produit des résultats significatifs en termes d'insertion professionnelle en 5 ans avec une efficience opérationnelle en amélioration constante. Ses principales lacunes portent sur l'équité géographique, la couverture sectorielle, l'absence d'intégration genre dans la conception, et la mesure de la durabilité des insertions post-programme.
 
-### 7.2 Recommandations
+### 9.2 Recommandations
 
 #### Recommandations relatives à la Pertinence
 
@@ -1022,9 +1237,9 @@ L'analyse documentaire conduit au constat que **le PSIE présente une efficacit�
 
 ---
 
-## 8. LIMITES DE L'ÉVALUATION
+## 10. LIMITES DE L'ÉVALUATION
 
-1. **Critères non couverts** : Efficience, effets/impacts, durabilité et genre seront évalués en Phase 2 lors de la collecte de données primaires.
+1. **Critères partiellement couverts** : L'efficience et le genre ont été évalués sur base documentaire (voir Sections 7 et 8). Les effets/impacts et la durabilité seront évalués en Phase 2. Le genre documentaire est limité à la conception ; la mise en œuvre nécessite les données PSIE désagrégées par sexe.
 2. **Absence de données sur la rétention post-programme** : Le taux de maintien en emploi des allocataires après la période de 24 mois n'est pas documenté dans les sources disponibles.
 3. **Données statistiques** : Les données de diagnostic du marché du travail utilisées dans le Prodoc datent de 2015-2017 ; une actualisation est nécessaire pour les prochaines phases.
 4. **Biais de rapport** : Les rapports officiels tendent à mettre en avant les succès. Les données sur les abandons, les litiges et les non-conformités des entreprises sont limitées.
@@ -1032,7 +1247,7 @@ L'analyse documentaire conduit au constat que **le PSIE présente une efficacit�
 
 ---
 
-## 9. ANNEXES
+## 11. ANNEXES
 
 ### Annexe 1 — Matrice d'évaluation complète
 
@@ -1073,6 +1288,9 @@ L'analyse documentaire conduit au constat que **le PSIE présente une efficacit�
 | **INSAE** | Institut National de la Statistique et de l'Analyse Économique (Bénin). |
 | **GDIZ** | Zone Industrielle de Glo-Djigbé (Bénin) — moteur industriel national émergent. |
 | **PAG** | Programme d'Actions du Gouvernement (Bénin). |
+| **Efficience** | Rapport entre les résultats obtenus et les ressources mobilisées (coût par bénéficiaire, ratio administratif). |
+| **Genre** | Dimension d'analyse des inégalités sociales entre hommes et femmes, appliquée aux politiques publiques. |
+| **AGDEN** | Africa Gender & Development Evaluators Network — réseau africain d'évaluation sensible au genre. |
 | **PNE** | Politique Nationale de l'Emploi 2017-2026 (Bénin). |
 | **CNSS** | Caisse Nationale de Sécurité Sociale (Bénin). |
 
@@ -1080,10 +1298,10 @@ L'analyse documentaire conduit au constat que **le PSIE présente une efficacit�
 
 | Critère | Définition | Données nécessaires | Disponibilité estimée |
 |---|---|---|---|
-| **Efficience** | Mesure dans laquelle les ressources sont converties en résultats de façon économique (coût par bénéficiaire, comparaison avec des programmes similaires dans la région). | Données financières détaillées par activité ; coûts des programmes comparables (CEDEAO). | Phase 2 |
+| **Efficience** | ✅ *Partiellement évaluée en Phase 1 (Section 7).* Benchmark régional avec programmes comparables (CEDEAO/UEMOA) non disponible. | Données budgétaires des programmes similaires (PAES, FNPEEJ, programmes sous-régionaux). | Phase 2 |
 | **Effets/Impacts** | Changements à long terme chez les bénéficiaires (taux de maintien en emploi post-programme, évolution salariale, impact sur la pauvreté des ménages). | Enquête auprès des alumni à 6, 12 et 24 mois ; données longitudinales. | Phase 2 |
 | **Durabilité** | Mesure dans laquelle les bénéfices nets perdurent après la fin de l'immersion (maintien en emploi par les entreprises, auto-emploi des alumni). | Entretiens avec bénéficiaires et entreprises ; données de suivi post-programme. | Phase 2 |
-| **Genre** | Mesure dans laquelle le programme tient compte des inégalités hommes-femmes (part des femmes bénéficiaires, secteurs, niveaux de qualification, accès géographique). | Données désagrégées par sexe (non disponibles dans les documents actuels). | Phase 2 |
+| **Genre** | ✅ *Partiellement évalué en Phase 1 (Section 8) — conception aveugle au genre documentée, score AGDEN 0/3.* Répartition M/F des bénéficiaires non disponible dans les documents. | Base de données PSIE avec variable Sexe ; PNEG Bénin ; enquête terrain Phase 2. | Phase 2 |
 
 ---
 
