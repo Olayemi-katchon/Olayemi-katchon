@@ -1,0 +1,205 @@
+\documentclass[12pt,a4paper]{article}
+
+%% ---- Encodage et langue ----
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+%% ---- Mathématiques ----
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+%% ---- Mise en page ----
+\usepackage{geometry}
+\geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+\usepackage{parskip}
+\setlength{\parindent}{0pt}
+
+%% ---- En-tête / pied de page ----
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Analyse de Régression}
+\lhead{Cerveau KATCHON}
+\cfoot{\thepage}
+
+%% ---- Commandes personnalisées ----
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\grad}{\nabla}
+
+% -------------------------------------------------------
+\title{\textbf{Devoir d'Analyse de Régression}\\[0.4em]
+       \large Calcul de Gradients et de Hessiennes -- Problème 1}
+\author{Cerveau KATCHON}
+\date{}
+% -------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+
+\section*{Problème 1 : Dérivées matricielles}
+
+Ce problème porte sur le calcul du gradient vectoriel $\grad_x f(x)$ et de la
+hessienne $\grad_x^2 f(x)$ de diverses fonctions scalaires de $x \in \R^n$.
+
+% ==============================================================
+\subsection*{Question 1 -- Gradient d'une forme quadratique généralisée}
+% ==============================================================
+
+\textbf{Énoncé.}
+Soit la fonction
+\[
+  f(x) = \frac{1}{2}\,x^{\top} A x + b^{\top} x + c,
+  \qquad
+  A \in \R^{n \times n} \text{ symétrique},\quad
+  x,\, b \in \R^{n},\quad
+  c \in \R.
+\]
+Calculer $\grad_x f(x)$.
+
+\medskip
+\textbf{Démonstration.}
+
+En appliquant la linéarité de la dérivée et les règles de dérivation matricielle :
+\begin{align}
+  \grad_x f(x)
+    &= \frac{1}{2}\,\frac{\partial\bigl(x^{\top} A x\bigr)}{\partial x}
+       + \frac{\partial\bigl(b^{\top} x\bigr)}{\partial x}
+       + \frac{\partial c}{\partial x} \notag\\[6pt]
+    &= \frac{1}{2}\,(A + A^{\top})\,x + b + 0 \notag\\[6pt]
+    &= \frac{1}{2}\,2A\,x + b
+       \qquad \bigl(\text{car } A^{\top} = A \text{ par hypothèse}\bigr) \notag\\[6pt]
+    &= Ax + b. \notag
+\end{align}
+
+\medskip
+\begin{center}
+  \fbox{$\displaystyle \grad_x f(x) = Ax + b$}
+\end{center}
+
+% ==============================================================
+\subsection*{Question 2 -- Hessienne d'une forme quadratique généralisée}
+% ==============================================================
+
+\textbf{Énoncé.}
+Toujours avec $f(x) = \frac{1}{2}\,x^{\top} A x + b^{\top} x + c$
+(A symétrique), calculer $\grad_x^2 f(x)$.
+
+\medskip
+\textbf{Démonstration.}
+
+La hessienne est la dérivée du gradient par rapport à $x$ :
+\begin{align}
+  \grad_x^2 f(x)
+    &= \frac{\partial^2 f(x)}{\partial x\,\partial x^{\top}}
+     = \frac{\partial}{\partial x}\!\left(Ax + b\right)
+     = A. \notag
+\end{align}
+
+\medskip
+\begin{center}
+  \fbox{$\displaystyle \grad_x^2 f(x) = A$}
+\end{center}
+
+% ==============================================================
+\subsection*{Question 3 -- Gradient d'une exponentielle de forme quadratique}
+% ==============================================================
+
+\textbf{Énoncé.}
+Soit $f(x) = e^{x^{\top} A x}$, $A \in \R^{n \times n}$ symétrique.
+Calculer $\grad_x f(x)$.
+
+\medskip
+\textbf{Démonstration.}
+
+Posons $g(x) = x^{\top} A x$.
+La règle de dérivation en chaîne donne :
+\begin{align}
+  \grad_x f(x)
+    &= e^{g(x)}\cdot \frac{\partial g(x)}{\partial x} \notag\\[6pt]
+    &= e^{x^{\top} A x}\cdot (A + A^{\top})\,x \notag\\[6pt]
+    &= e^{x^{\top} A x}\cdot 2Ax
+       \qquad \bigl(\text{car } A^{\top} = A\bigr). \notag
+\end{align}
+
+\medskip
+\begin{center}
+  \fbox{$\displaystyle \grad_x f(x) = 2\,e^{x^{\top} A x}\,Ax$}
+\end{center}
+
+% ==============================================================
+\subsection*{Question 4 -- Hessienne d'une exponentielle de forme quadratique}
+% ==============================================================
+
+\textbf{Énoncé.}
+Toujours avec $f(x) = e^{x^{\top} A x}$, calculer $\grad_x^2 f(x)$.
+
+\medskip
+\textbf{Démonstration.}
+
+En partant du gradient obtenu à la Question 3 et en appliquant la règle de
+dérivation du produit :
+\begin{align}
+  \grad_x^2 f(x)
+    &= 2\,\frac{\partial}{\partial x}\!\left(e^{x^{\top} A x}\,Ax\right)
+    \notag\\[6pt]
+    &= 2\!\left[
+         \frac{\partial\bigl(e^{x^{\top} A x}\bigr)}{\partial x}\cdot (Ax)^{\top}
+         + e^{x^{\top} A x}\cdot \frac{\partial(Ax)}{\partial x}
+       \right] \notag\\[6pt]
+    &= 2\!\left[
+         2\,e^{x^{\top} A x}\,Ax\,(Ax)^{\top}
+         + e^{x^{\top} A x}\,A
+       \right] \notag\\[6pt]
+    &= e^{x^{\top} A x}\!\left[
+         4\,Ax\,x^{\top} A^{\top} + 2A
+       \right]. \notag
+\end{align}
+
+Puisque $A$ est symétrique ($A^{\top} = A$) :
+
+\medskip
+\begin{center}
+  \fbox{$\displaystyle
+    \grad_x^2 f(x)
+    = e^{x^{\top} A x}\!\left(4\,Ax\,x^{\top} A + 2A\right)
+  $}
+\end{center}
+
+% ==============================================================
+\subsection*{Question 5 -- Gradient de la norme euclidienne au carré de $Ax$}
+% ==============================================================
+
+\textbf{Énoncé.}
+Soit $f(x) = \|Ax\|^2$, $A \in \R^{m \times n}$.
+Calculer $\grad_x f(x)$.
+
+\medskip
+\textbf{Démonstration.}
+
+On réécrit $f$ en développant la norme :
+\[
+  f(x) = \|Ax\|^2 = (Ax)^{\top}(Ax) = x^{\top} A^{\top} A\, x.
+\]
+
+Posons $B = A^{\top} A$ (matrice $n \times n$, symétrique positive). Alors
+$f(x) = x^{\top} B x$ est une forme quadratique, et :
+\begin{align}
+  \grad_x f(x)
+    &= \frac{\partial\bigl(x^{\top} B x\bigr)}{\partial x}
+     = (B + B^{\top})\,x \notag\\[6pt]
+    &= 2B\,x
+       \qquad \bigl(\text{car } B^{\top} = (A^{\top}A)^{\top} = A^{\top}A = B\bigr)
+    \notag\\[6pt]
+    &= 2\,A^{\top} A\, x. \notag
+\end{align}
+
+\medskip
+\begin{center}
+  \fbox{$\displaystyle \grad_x f(x) = 2\,A^{\top} A\, x$}
+\end{center}
+
+\end{document}
