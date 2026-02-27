@@ -157,6 +157,63 @@ $\lambda^{*} = \bar{X}$ est un estimateur \textbf{convergent} de $\lambda$.
 \end{resultbox}
 
 % ---------------------------------------------------------------
+\section*{4. Application numérique : calcul de $\hat{\lambda}_{\text{EMV}}$}
+% ---------------------------------------------------------------
+
+\subsection*{(d) Données}
+
+Les données observées sont résumées dans le tableau de fréquences suivant :
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|c|}
+\hline
+$x_i$ & $n_i$ \\
+\hline
+0 & 7  \\
+1 & 14 \\
+2 & 12 \\
+3 & 13 \\
+4 & 6  \\
+5 & 3  \\
+\hline
+\textbf{Total} & $n = 55$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{i) Calcul de l'EMV de $\lambda$}
+
+$\hat{\lambda}^{*}$ étant égal à la moyenne empirique, on a :
+\[
+  \bar{X} = \sum_{i} x_i \cdot h_i = \frac{1}{n}\sum_{i} n_i \cdot x_i,
+  \quad \text{où } h_i = \frac{n_i}{n} \text{ est la fréquence relative.}
+\]
+
+On calcule :
+\[
+  \bar{X}
+  = \frac{0\times 7 + 1\times 14 + 2\times 12 + 3\times 13 + 4\times 6 + 5\times 3}
+         {7 + 14 + 12 + 13 + 6 + 3}
+\]
+\[
+  = \frac{0 + 14 + 24 + 39 + 24 + 15}{55}
+  = \frac{116}{55}.
+\]
+
+\begin{resultbox}
+\[
+  \hat{\lambda}_{\text{EMV}} = \bar{X} = \frac{116}{55} \approx \mathbf{2{,}1091}.
+\]
+\end{resultbox}
+
+\medskip
+\noindent\textit{Remarque :} La photo indique $\bar{X} \approx 1{,}8909$, ce qui
+correspond à la valeur $104/55$. Cet écart résulte d'une légère erreur de calcul dans
+l'étape intermédiaire ($2\times 12 = 24$ avait été noté $12$).
+La valeur correcte obtenue à partir du tableau est $\mathbf{116/55 \approx 2{,}1091}$.
+
+% ---------------------------------------------------------------
 \section*{Conclusion}
 % ---------------------------------------------------------------
 
