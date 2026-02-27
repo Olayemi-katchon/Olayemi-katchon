@@ -3,70 +3,172 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
-\usepackage{graphicx}
-\usepackage{float}
+\usepackage{amsmath,amssymb,amsthm}
 \usepackage{geometry}
-\usepackage{caption}
-\usepackage{subcaption}
+\usepackage{thmtools}
+\usepackage{mdframed}
 
-\geometry{margin=2cm}
+\geometry{margin=2.5cm}
 
-\title{Photos -- Olayemi Katchon}
+\title{\textbf{Exercice : Estimateur du Maximum de Vraisemblance (EMV)\\
+pour la loi de Poisson}}
 \author{Olayemi Katchon}
 \date{24 février 2026}
+
+% Boîte pour encadrer le résultat final
+\newmdenv[linewidth=1.5pt, roundcorner=4pt, innerleftmargin=10pt,
+          innerrightmargin=10pt, innertopmargin=6pt, innerbottommargin=6pt]{resultbox}
 
 \begin{document}
 
 \maketitle
 
-\section*{Galerie de photos}
+% ---------------------------------------------------------------
+\section*{Données du problème}
+% ---------------------------------------------------------------
 
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.45\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{20260224_134513.jpg}
-        \caption{20260224\_134513}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{20260224_134554.jpg}
-        \caption{20260224\_134554}
-    \end{subfigure}
-    \caption{Photos du 24 février 2026 -- matin}
-\end{figure}
+Soit $X_1, X_2, \ldots, X_n$ un échantillon i.i.d. de loi de Poisson de paramètre
+$\lambda > 0$ :
+\[
+  X_i \overset{\text{i.i.d.}}{\sim} \mathcal{P}(\lambda), \quad \lambda > 0.
+\]
+La fonction de masse de probabilité est :
+\[
+  P(X = x) = \frac{\lambda^{x}\, e^{-\lambda}}{x!}, \quad x \in \mathbb{N}.
+\]
 
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.45\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{20260224_162306.jpg}
-        \caption{20260224\_162306}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{20260224_162312.jpg}
-        \caption{20260224\_162312}
-    \end{subfigure}
-    \caption{Photos du 24 février 2026 -- après-midi (1)}
-\end{figure}
+% ---------------------------------------------------------------
+\section*{1. Calcul de l'Estimateur du Maximum de Vraisemblance (EMV) de $\lambda$}
+% ---------------------------------------------------------------
 
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.45\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{20260224_162615.jpg}
-        \caption{20260224\_162615}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{20260224_164322.jpg}
-        \caption{20260224\_164322}
-    \end{subfigure}
-    \caption{Photos du 24 février 2026 -- après-midi (2)}
-\end{figure}
+\subsection*{a) Fonction de vraisemblance}
+
+\[
+  L(\mathbf{x};\, \lambda)
+  = \prod_{i=1}^{n} P(X = x_i)
+  = \prod_{i=1}^{n} \frac{\lambda^{x_i}\, e^{-\lambda}}{x_i!}.
+\]
+
+\subsection*{b) Log-vraisemblance}
+
+En prenant le logarithme naturel :
+\[
+  \ell(\lambda)
+  = \log L(\mathbf{x};\, \lambda)
+  = \sum_{i=1}^{n} x_i \log \lambda \;-\; n\lambda \;-\; \sum_{i=1}^{n} \log(x_i!).
+\]
+
+\subsection*{c) Maximisation : condition du premier ordre}
+
+Maximiser $\ell(\lambda)$ revient à trouver $\lambda^{*}$ qui annule
+$\nabla_{\!\lambda}\,\ell(\lambda)$.
+
+\medskip
+\textbf{Calcul du gradient :}
+\[
+  \nabla_{\!\lambda}\,\ell(\lambda)
+  = \frac{\partial\,\ell(\lambda)}{\partial\,\lambda}
+  = \frac{\displaystyle\sum_{i=1}^{n} x_i}{\lambda} - n.
+\]
+
+\medskip
+\textbf{Posons} $\nabla_{\!\lambda}\,\ell(\lambda) = 0$ :
+\[
+  \frac{1}{\lambda}\sum_{i=1}^{n} x_i = n
+  \;\implies\;
+  \sum_{i=1}^{n} x_i = n\lambda.
+\]
+
+D'où :
+\begin{resultbox}
+\[
+  \lambda^{*} = \frac{1}{n}\sum_{i=1}^{n} x_i = \bar{x}.
+\]
+\end{resultbox}
+
+\subsection*{d) Vérification : condition du second ordre}
+
+\[
+  \nabla^{2}_{\!\lambda}\,\ell(\lambda)
+  = \frac{\partial^{2}\,\ell(\lambda)}{\partial\,\lambda^{2}}
+  = -\frac{\displaystyle\sum_{i=1}^{n} x_i}{\lambda^{2}}
+  \leq 0.
+\]
+
+Puisque la dérivée seconde est négative, $\lambda^{*} = \bar{x}$ est bien
+un \textbf{maximum} de $\ell(\lambda)$.
+
+% ---------------------------------------------------------------
+\section*{2. Biais de $\lambda^{*}$}
+% ---------------------------------------------------------------
+
+Calculons l'espérance de $\lambda^{*}$ :
+\begin{align*}
+  \mathbb{E}\!\left(\lambda^{*}\right)
+  &= \mathbb{E}\!\left(\frac{1}{n}\sum_{i=1}^{n} X_i\right)\\[4pt]
+  &= \frac{1}{n}\sum_{i=1}^{n} \mathbb{E}(X_i)
+     \quad \text{(car $\mathbb{E}$ est une opération linéaire)}\\[4pt]
+  &= \frac{1}{n} \cdot n\lambda
+     \quad \text{(les $X_i$ sont i.i.d. et $\mathbb{E}(X_i) = \lambda$)}\\[4pt]
+  &= \lambda.
+\end{align*}
+
+Le biais vaut donc :
+\[
+  \operatorname{biais}(\lambda^{*})
+  = \mathbb{E}(\lambda^{*}) - \lambda
+  = \lambda - \lambda
+  = 0.
+\]
+
+\begin{resultbox}
+$\lambda^{*} = \bar{X}$ est un estimateur \textbf{non biaisé} de $\lambda$.
+\end{resultbox}
+
+% ---------------------------------------------------------------
+\section*{3. Convergence de $\lambda^{*}$}
+% ---------------------------------------------------------------
+
+Un estimateur est convergent si sa variance tend vers $0$ lorsque
+$n \to +\infty$.
+
+\medskip
+\textbf{Calcul de la variance :}
+\begin{align*}
+  \operatorname{Var}(\lambda^{*})
+  &= \operatorname{Var}\!\left(\frac{1}{n}\sum_{i=1}^{n} X_i\right)\\[4pt]
+  &= \frac{1}{n^{2}}\sum_{i=1}^{n} \operatorname{Var}(X_i)
+     \quad \text{(les $X_i$ sont i.i.d.)}\\[4pt]
+  &= \frac{n\,\operatorname{Var}(X_i)}{n^{2}}
+  = \frac{\operatorname{Var}(X_i)}{n}\\[4pt]
+  &= \frac{\lambda}{n}
+     \quad \text{(car $\operatorname{Var}(X_i) = \lambda$ pour $\mathcal{P}(\lambda)$)}.
+\end{align*}
+
+On a alors :
+\[
+  \lim_{n \to +\infty} \operatorname{Var}(\lambda^{*})
+  = \lim_{n \to +\infty} \frac{\lambda}{n}
+  = 0.
+\]
+
+\begin{resultbox}
+$\lambda^{*} = \bar{X}$ est un estimateur \textbf{convergent} de $\lambda$.
+\end{resultbox}
+
+% ---------------------------------------------------------------
+\section*{Conclusion}
+% ---------------------------------------------------------------
+
+L'Estimateur du Maximum de Vraisemblance de $\lambda$ pour la loi de Poisson est :
+\[
+  \boxed{\hat{\lambda}_{\text{EMV}} = \bar{X} = \frac{1}{n}\sum_{i=1}^{n} X_i.}
+\]
+
+Cet estimateur est :
+\begin{itemize}
+  \item \textbf{Non biaisé} : $\mathbb{E}(\hat{\lambda}_{\text{EMV}}) = \lambda$,
+  \item \textbf{Convergent} : $\operatorname{Var}(\hat{\lambda}_{\text{EMV}}) = \dfrac{\lambda}{n} \xrightarrow[n\to+\infty]{} 0$.
+\end{itemize}
 
 \end{document}
