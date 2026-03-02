@@ -2,7 +2,22 @@
 
 **Projet :** Promouvoir l'innovation locale dans la gestion de l'eau en agriculture familiale au Sahel (Proli-GEAFaSa)  
 **Pays couverts :** Burkina-Faso · Sénégal  
-**Document produit à partir de :** `visualisation_indicateurs.ipynb` + `base1.xlsx`
+**Source des données :** `base1.xlsx` · **Visualisations :** `visualisation_indicateurs.ipynb`
+
+---
+
+## Contexte et présentation
+
+Ce document compile l'ensemble des commentaires analytiques issus de l'enquête sur les expérimentations conjointes des paysans innovateurs dans le cadre du projet **Proli-GEAFaSa**. Il couvre les sept figures produites et les conclusions générales.
+
+### Figures analysées
+1. **Indicateurs de changements** : résultats observés après l'expérimentation (Section 5 du questionnaire)
+2. **Indicateurs quantitatifs avant/après** : comparaison des tours d'irrigation et du taux de levée (Section 6)
+3. **Production et revenus** : évolution des productions et revenus agricoles (Section 7)
+4. **Diffusion de l'innovation** : nombre de producteurs informés et ayant adopté l'innovation (Section 11)
+5. **Commentaires qualitatifs** : enseignements tirés par les paysans innovateurs
+6. **Tableau de bord récapitulatif** : vue d'ensemble des indicateurs clés
+7. **Saisons d'application** : nombre de saisons agricoles par innovation et par pays
 
 ---
 
@@ -10,12 +25,15 @@
 
 ![Indicateurs de changements](indicateurs_changements.png)
 
+### Description
+Les paysans innovateurs ont été interrogés sur les changements qu'ils ont observés à la suite de l'expérimentation conjointe. Les indicateurs ci-dessous représentent les résultats déclarés (Oui / Non) pour chaque dimension de changement couverte par la Section 5 du questionnaire.
+
 ### Lecture du graphique
-Ce graphique à barres horizontales empilées présente, pour chaque indicateur de la Section 5 du questionnaire, la proportion de paysans innovateurs ayant répondu **« Oui »** (bleu) ou **« Non »** (rouge) à la question portant sur les changements observés à la suite de l'expérimentation conjointe.
+Ce graphique à barres horizontales empilées présente, pour chaque indicateur de la Section 5, la proportion de paysans innovateurs ayant répondu **« Oui »** (bleu) ou **« Non »** (rouge) à la question portant sur les changements observés à la suite de l'expérimentation conjointe.
 
 ### Commentaires
 - **Consensus quasi-unanime sur les bénéfices de l'eau et du sol :** les indicateurs *Réduction de la consommation d'eau*, *Amélioration de la rétention d'eau dans le sol* et *Restauration de la fertilité du sol* atteignent **100 %** de réponses positives, ce qui témoigne d'une efficacité indiscutable des techniques expérimentées (zaï, diguettes, gobelets biodégradables, etc.) sur la gestion hydrique.
-- **Amélioration de la production et des revenus validée à 100 % :** les indicateurs *Amélioration des rendements*, *Amélioration de la production*, *Amélioration des revenus* et *Amélioration de la sécurité alimentaire* sont tous validés à l'unanimité. Ce résultat est particulièrement fort car il reflète des bénéfices perçus à la fois sur le plan agronomique et économique.
+- **Amélioration de la production et des revenus validée à 100 % :** les indicateurs *Amélioration des rendements*, *Amélioration de la production*, *Amélioration des revenus* et *Amélioration de la sécurité alimentaire* sont tous validés à l'unanimité. Ce résultat reflète des bénéfices perçus à la fois sur le plan agronomique et économique.
 - **Meilleur taux de levée à 100 % :** l'ensemble des répondants ont constaté une amélioration du taux de germination de leurs cultures, confirmant que les pratiques améliorent les conditions de départ du cycle cultural.
 - **Indicateurs partiellement validés (50 %) :** *Réduction des frais d'électricité* et *Augmentation de la superficie en agriculture biologique* ne sont validés que par la moitié des répondants, ce qui reflète probablement des contextes différents entre les répondants de Kaolack (systèmes irrigués, pompage électrique) et du Burkina-Faso (agriculture pluviale ou gravitaire).
 - **Certains indicateurs absents ou faibles :** *Amélioration de la qualité de l'eau*, *Réduction des pesticides* et *Réduction de la main-d'œuvre* affichent des taux plus faibles, suggérant que l'impact sur ces dimensions est variable selon le type d'innovation appliquée.
@@ -26,8 +44,11 @@ Ce graphique à barres horizontales empilées présente, pour chaque indicateur 
 
 ![Indicateurs quantitatifs](indicateurs_quantitatifs.png)
 
+### Description
+Comparaison des mesures clés avant et après l'expérimentation conjointe pour chaque paysan innovateur. Cette section quantifie les évolutions observées sur deux indicateurs biophysiques centraux : la fréquence des irrigations et le taux de levée des cultures.
+
 ### Lecture du graphique
-Ce graphique en barres groupées compare, pour chaque répondant (Répondant 1 – Ngane Saer ; Répondant 2 – Ngane Allassane), deux métriques clés mesurées **avant** (orange) et **après** (vert) l'expérimentation conjointe :
+Ce graphique en barres groupées compare, pour chaque répondant (Répondant 1 – Ngane Saer ; Répondant 2 – Ngane Allassane), deux métriques mesurées **avant** (orange) et **après** (vert) l'expérimentation conjointe :
 - À gauche : le **nombre de tours d'irrigation** par cycle cultural
 - À droite : le **taux de levée des cultures** (%)
 
@@ -42,13 +63,16 @@ Ce graphique en barres groupées compare, pour chaque répondant (Répondant 1 �
 
 ![Production et revenus](production_revenus.png)
 
+### Description
+Évolution de la production (kg) et des revenus agricoles (FCFA) pour la culture de tomate, principale culture déclarée par les répondants de la région de Kaolack (Sénégal), avant et après l'expérimentation conjointe.
+
 ### Lecture du graphique
-Ce graphique compare, pour la culture de **tomate** (principale culture déclarée), les **quantités produites (kg)** et les **revenus agricoles (milliers FCFA)** avant et après l'expérimentation conjointe, par répondant.
+Ce graphique compare, pour la culture de **tomate**, les **quantités produites (kg)** et les **revenus agricoles (milliers FCFA)** avant et après l'expérimentation conjointe, par répondant.
 
 ### Commentaires
 - **Multiplication des revenus par un facteur exceptionnel :** pour le Répondant 1 (Ngane Saer), les revenus issus de la tomate sont passés de **600 000 FCFA** à **11 662 000 FCFA**, soit une multiplication par **+19,4**. Un tel accroissement des revenus est remarquable et suggère une combinaison de hausse des rendements, d'amélioration de la qualité des fruits et d'accès à des marchés plus rémunérateurs.
 - **Augmentation de la production (kg) :** la quantité produite a également fortement progressé, traduisant l'effet direct des innovations sur la productivité agricole (meilleure rétention d'eau, meilleur taux de levée, réduction des pertes en pré-récolte).
-- **Impact sur la sécurité économique des ménages :** ces niveaux de revenu après expérimentation représentent un potentiel de transformation significatif des conditions de vie des ménages agricoles, notamment pour les familles des zones periurbaines de Kaolack où la tomate constitue une culture de rente importante.
+- **Impact sur la sécurité économique des ménages :** ces niveaux de revenu après expérimentation représentent un potentiel de transformation significatif des conditions de vie des ménages agricoles, notamment pour les familles des zones périurbaines de Kaolack où la tomate constitue une culture de rente importante.
 - **Limites à noter :** les données portent uniquement sur la tomate et sur deux répondants. Une généralisation nécessiterait des données sur d'autres cultures et un échantillon plus large, incluant les sites du Burkina-Faso.
 
 ---
@@ -56,6 +80,9 @@ Ce graphique compare, pour la culture de **tomate** (principale culture déclar�
 ## Figure 4 – Diffusion et adoption de l'innovation locale (Section 11)
 
 ![Diffusion de l'innovation](diffusion_innovation.png)
+
+### Description
+Nombre de producteurs informés de l'innovation et nombre ayant déjà adopté l'innovation locale, par paysan innovateur. Cette section documente la capacité des paysans innovateurs à diffuser leurs résultats au sein de leurs communautés.
 
 ### Lecture du graphique
 Ce graphique se compose de deux sous-figures :
@@ -73,6 +100,9 @@ Ce graphique se compose de deux sous-figures :
 ## Figure 5 – Commentaires qualitatifs des paysans innovateurs
 
 ![Commentaires qualitatifs](commentaires_qualitatifs.png)
+
+### Description
+Principaux enseignements tirés des expérimentations conjointes et facteurs de durabilité des changements observés, tels que rapportés directement par les paysans innovateurs lors de l'enquête.
 
 ### Lecture du graphique
 Ce graphique présente, sous forme de blocs colorés par thème, les verbatim recueillis auprès de chaque répondant sur quatre dimensions qualitatives :
@@ -93,8 +123,11 @@ Ce graphique présente, sous forme de blocs colorés par thème, les verbatim re
 
 ![Tableau de bord](tableau_de_bord.png)
 
+### Description
+Vue d'ensemble des indicateurs clés du projet Proli-GEAFaSa, rassemblés sur un seul tableau de bord multipanneaux pour faciliter la lecture croisée des résultats.
+
 ### Lecture du graphique
-Ce tableau de bord multipanneaux synthétise l'ensemble des indicateurs clés du projet sur une seule vue :
+Ce tableau de bord synthétise l'ensemble des indicateurs clés sur une seule vue :
 - **Panneau supérieur :** taux de réalisation (%) des indicateurs clés de changement
 - **Panneaux inférieurs (gauche à droite) :** tours d'irrigation, taux de levée, diffusion de l'innovation
 
@@ -110,8 +143,22 @@ Ce tableau de bord multipanneaux synthétise l'ensemble des indicateurs clés du
 
 ![Saisons d'application des innovations](saisons_innovations.png)
 
+### Description
+Le tableau ci-dessous recense, pour chaque expérimentation conjointe réalisée au **Burkina-Faso** et au **Sénégal**, le nombre de saisons agricoles durant lesquelles les innovations locales améliorées ont été effectivement appliquées par les paysans innovateurs après l'expérimentation conjointe.
+
+| Pays | Expérimentation conjointe | Nbre de saisons |
+|------|--------------------------|----------------|
+| Burkina-Faso | Diguettes en terre + zaï (maïs) | 7 |
+| Burkina-Faso | Culture intercalaire Sorgho/Niébé | 6 |
+| Burkina-Faso | Zaï diguette – rétention eau (sorgho) | 2 |
+| Burkina-Faso | Glumes de mil – gestion eau/fertilité (maraîchage) | 2 |
+| Sénégal | Gobelets biodégradables – pépinières gombo | 4 |
+| Sénégal | Tuyaux PVC enfouis – économie eau | 3 |
+| Sénégal | Décantation – réduction salinité eau | 4 |
+| Sénégal | Compost – réduction salinité eau | 4 |
+
 ### Lecture du graphique
-Ce graphique en lollipop (tige + cercle) présente, pour chaque expérimentation conjointe réalisée au **Burkina-Faso** (orange 🟠) et au **Sénégal** (bleu 🔵), le nombre de saisons agricoles durant lesquelles les innovations locales améliorées ont été effectivement appliquées par les paysans innovateurs après l'expérimentation. Les innovations sont triées par ordre décroissant du nombre de saisons.
+Ce graphique en lollipop (tige + cercle) présente, pour chaque expérimentation conjointe réalisée au **Burkina-Faso** (orange 🟠) et au **Sénégal** (bleu 🔵), le nombre de saisons agricoles durant lesquelles les innovations locales améliorées ont été effectivement appliquées. Les innovations sont triées par ordre décroissant du nombre de saisons.
 
 ### Commentaires
 
@@ -134,7 +181,21 @@ Ce graphique en lollipop (tige + cercle) présente, pour chaque expérimentation
 #### Lecture transversale
 - **Le Burkina-Faso présente la plus grande durabilité globale :** les deux principales innovations (diguettes+zaï et culture intercalaire) dépassent 6 saisons, ce qui reflète une appropriation profonde des techniques de CES dans un contexte de lutte contre la dégradation des terres.
 - **Le Sénégal affiche une durabilité intermédiaire mais homogène :** les quatre innovations sénégalaises se situent entre 3 et 4 saisons, témoignant d'une adoption progressive mais régulière dans la région de Kaolack.
-- **La durabilité est un indicateur clé d'impact :** le fait que des innovations continuent d'être appliquées plusieurs saisons après l'expérimentation conjointe confirme leur pertinence agronomique et économique. Elle indique également que les paysans innovateurs ont internalisé ces nouvelles pratiques dans leurs systèmes de production.
+- **La durabilité est un indicateur clé d'impact :** le fait que des innovations continuent d'être appliquées plusieurs saisons après l'expérimentation conjointe confirme leur pertinence agronomique et économique. Cela indique également que les paysans innovateurs ont internalisé ces nouvelles pratiques dans leurs systèmes de production.
+
+---
+
+## Conclusions de l'analyse graphique
+
+L'analyse graphique des indicateurs issus de l'enquête Proli-GEAFaSa met en évidence les résultats suivants :
+
+- **Réduction des tours d'irrigation** : tous les répondants ont réduit leurs tours d'irrigation (de 2–3 fois à 1 fois après expérimentation), ce qui traduit une meilleure rétention de l'eau dans le sol.
+- **Amélioration du taux de levée** : le taux de levée a fortement augmenté pour tous les répondants (de 50–60 % à 80–95 % après expérimentation).
+- **Augmentation de la production et des revenus** : les revenus issus de la tomate ont été multipliés par plus de 19 pour le premier répondant (de 600 000 à 11 662 000 FCFA).
+- **Forte diffusion de l'innovation** : 120 producteurs ont été informés au total, dont 60 (50 %) ont déjà adopté l'innovation locale.
+- **Indicateurs de changements quasiment unanimes** : la majorité des indicateurs de Section 5 sont validés à 100 % (tous les répondants ont répondu Oui).
+
+Ces résultats confirment l'impact positif des expérimentations conjointes du projet Proli-GEAFaSa sur la gestion de l'eau, les rendements agricoles et la sécurité alimentaire des ménages dans la région de Kaolack (Sénégal).
 
 ---
 
@@ -152,4 +213,4 @@ Ces résultats constituent une base solide pour le **passage à l'échelle** des
 
 ---
 
-*Document généré à partir des données de `base1.xlsx` et des visualisations produites par `visualisation_indicateurs.ipynb`.*
+*Document consolidé à partir des données de `base1.xlsx` et des visualisations produites par `visualisation_indicateurs.ipynb`. Toutes les figures, descriptions de sections, commentaires analytiques et conclusions sont réunis dans ce seul document.*
