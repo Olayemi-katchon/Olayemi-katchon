@@ -106,8 +106,7 @@ for (i in 1:2) {
 
 ## Comparaison des ellipses selon ($\sigma_1$, $\sigma_2$, $\rho$)
 
-```{r ellipses_comparaison, fig.width=10, fig.height=9,
-    fig.cap="Ellipses de densité constante pour quatre configurations de paramètres"}
+```{r ellipses_comparaison, fig.width=10, fig.height=9, fig.cap="Ellipses de densité constante pour quatre configurations de paramètres"}
 mu <- c(5, 20)
 par(mfrow = c(2, 2), mar = c(4, 4, 3, 1))
 
@@ -183,8 +182,7 @@ colnames(data.nbiv) <- c("X1", "X2")
 
 ### Nuage de points et ACP
 
-```{r acp_nuage, fig.width=10, fig.height=5,
-    fig.cap="Nuage de points (gauche) et directions principales (droite)"}
+```{r acp_nuage, fig.width=10, fig.height=5, fig.cap="Nuage de points (gauche) et directions principales (droite)"}
 par(mfrow = c(1, 2), mar = c(4, 4, 3, 1))
 
 # --- Nuage brut ---
@@ -270,8 +268,7 @@ print(comparaison)
 
 ### ACP standardisée (scale = TRUE vs scale = FALSE)
 
-```{r acp_scale, fig.width=10, fig.height=5,
-    fig.cap="Projections sans standardisation (gauche) et avec standardisation (droite)"}
+```{r acp_scale, fig.width=10, fig.height=5, fig.cap="Projections sans standardisation (gauche) et avec standardisation (droite)"}
 acp_scale <- prcomp(data.nbiv, center = TRUE, scale. = TRUE)
 
 par(mfrow = c(1, 2))
@@ -295,8 +292,7 @@ abline(h = 0, v = 0, col = "gray", lty = 2)
 
 ## Reconstruction des données à partir de PC2
 
-```{r reconstruction, fig.width=7, fig.height=6,
-    fig.cap="Données originales vs reconstruction par PC2"}
+```{r reconstruction, fig.width=7, fig.height=6, fig.cap="Données originales vs reconstruction par PC2"}
 W2    <- acp$rotation[, 2]
 cat("W2 (2ème vecteur propre) :\n")
 print(round(W2, 4))
@@ -357,8 +353,7 @@ cat("Différence   =", round(abs(J_emp - J_theo), 4), "\n")
 
 ## Sphérage des données
 
-```{r spherage, fig.width=7, fig.height=6,
-    fig.cap="Sphérage des données en quatre étapes"}
+```{r spherage, fig.width=7, fig.height=6, fig.cap="Sphérage des données en quatre étapes"}
 x_bar  <- acp$center
 W      <- acp$rotation
 lambda <- acp$sdev^2
@@ -413,8 +408,7 @@ y_test  <- test[,   1]
 
 ## Analyse exploratoire : distribution marginale
 
-```{r fashion_hist, fig.width=6, fig.height=4,
-    fig.cap="Distribution marginale du pixel 200"}
+```{r fashion_hist, fig.width=6, fig.height=4, fig.cap="Distribution marginale du pixel 200"}
 hist(x_train[, 200],
      breaks = 30,
      col    = "steelblue",
@@ -436,8 +430,7 @@ x_transf <- qnorm(u)
 
 ### Histogrammes : $x$ vs $\tilde{x}$ (4 pixels)
 
-```{r fashion_hist_compare, fig.width=8, fig.height=14,
-    fig.cap="Comparaison des distributions avant et après transformation (4 pixels)"}
+```{r fashion_hist_compare, fig.width=8, fig.height=14, fig.cap="Comparaison des distributions avant et après transformation (4 pixels)"}
 pixels_choix <- c(1, 300, 392, 784)
 titres       <- c("Pixel 1", "Pixel 300", "Pixel 392", "Pixel 784")
 
@@ -460,8 +453,7 @@ for (i in seq_along(pixels_choix)) {
 
 ### Q-Q plots
 
-```{r fashion_qq, fig.width=8, fig.height=8,
-    fig.cap="Q-Q plots avant et après transformation (pixels 1 et 392)"}
+```{r fashion_qq, fig.width=8, fig.height=8, fig.cap="Q-Q plots avant et après transformation (pixels 1 et 392)"}
 par(mfrow = c(2, 2), mar = c(4, 4, 2, 1))
 
 for (j in c(1, 392)) {
@@ -481,8 +473,7 @@ for (j in c(1, 392)) {
 
 ### Distribution de la variance par pixel
 
-```{r fashion_variance, fig.width=10, fig.height=5,
-    fig.cap="Distribution de la variance par pixel avant et après transformation"}
+```{r fashion_variance, fig.width=10, fig.height=5, fig.cap="Distribution de la variance par pixel avant et après transformation"}
 var_x        <- apply(as.matrix(x_train), 2, var)
 var_x_transf <- apply(x_transf, 2, var)
 
@@ -544,8 +535,7 @@ cat("Avec transformation (x\u0303)  :", n90_xt, "composantes pour 90%\n")
 
 ### Variance expliquée cumulée
 
-```{r fashion_var_exp, fig.width=10, fig.height=5,
-    fig.cap="Variance expliquée cumulée (Pullover) sans et avec transformation"}
+```{r fashion_var_exp, fig.width=10, fig.height=5, fig.cap="Variance expliquée cumulée (Pullover) sans et avec transformation"}
 par(mfrow = c(1, 2))
 
 plot(var_exp_x[1:200] * 100,
@@ -569,8 +559,7 @@ text(n90_xt + 5, 85, paste0("PC", n90_xt), col = "red", cex = 0.9)
 
 ### Moyenne et 4 premiers vecteurs propres
 
-```{r fashion_vp, fig.width=10, fig.height=5,
-    fig.cap="Moyenne et 4 premiers vecteurs propres (sans et avec transformation)"}
+```{r fashion_vp, fig.width=10, fig.height=5, fig.cap="Moyenne et 4 premiers vecteurs propres (sans et avec transformation)"}
 afficher_vp <- function(vecteur, titre = "", col_palette = NULL) {
   if (is.null(col_palette))
     col_palette <- colorRampPalette(c("blue", "white", "red"))(256)
@@ -634,8 +623,7 @@ cat("Composantes nécessaires pour 90% de variance :", n90_x, "\n")
 
 ### Projection sur PC1 et PC2
 
-```{r fashion_acp_plot, fig.width=7, fig.height=5,
-    fig.cap="Projection de l'ensemble Fashion-MNIST sur PC1 et PC2"}
+```{r fashion_acp_plot, fig.width=7, fig.height=5, fig.cap="Projection de l'ensemble Fashion-MNIST sur PC1 et PC2"}
 library(RColorBrewer)
 
 proj       <- acp_x$x
@@ -677,8 +665,7 @@ for (k in 1:2) {
 }
 ```
 
-```{r fashion_lda_plot, fig.width=7, fig.height=5,
-    fig.cap="Projection de Fashion-MNIST sur les deux premières variables canoniques (LDA)"}
+```{r fashion_lda_plot, fig.width=7, fig.height=5, fig.cap="Projection de Fashion-MNIST sur les deux premières variables canoniques (LDA)"}
 fashion_can <- data.frame(VC1 = proj_can[, 1],
                           VC2 = proj_can[, 2],
                           label = labels)
@@ -734,8 +721,7 @@ tabl_plot <- data.frame(
 )
 ```
 
-```{r lda_surface_plot, fig.width=8, fig.height=6,
-    fig.cap="Surfaces de décision pour a priori égaux vs inégaux"}
+```{r lda_surface_plot, fig.width=8, fig.height=6, fig.cap="Surfaces de décision pour a priori égaux vs inégaux"}
 x1_seq <- seq(min(tabl_plot$x1) - 2, max(tabl_plot$x1) + 2, length.out = 300)
 
 frontiere_egal <- function(x1, w0_val) -(w[1] * x1 + w0_val) / w[2]
