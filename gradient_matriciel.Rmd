@@ -1,0 +1,287 @@
+---
+title: "Calcul de Gradients et Hessiennes en Algèbre Matricielle"
+subtitle: "Problème 1 : Dérivées de Fonctions Quadratiques"
+author: "Cerveau KATCHON"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+    toc: true
+    number_sections: true
+    latex_engine: xelatex
+    keep_tex: false
+header-includes:
+  - \usepackage{amsmath}
+  - \usepackage{amssymb}
+  - \usepackage{geometry}
+  - \geometry{margin=2.5cm}
+  - \usepackage{booktabs}
+lang: fr
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+set.seed(42)
+n <- 4
+h <- 1e-5  # Pas pour les différences finies
+
+# Matrice symétrique définie positive
+M <- matrix(rnorm(n * n), n, n)
+A <- t(M) %*% M
+
+# Vecteurs
+b     <- rnorm(n)
+c_val <- 2.5
+x     <- rnorm(n)
+```
+
+# Mise en contexte
+
+Soit les notations suivantes tout au long de ce document :
+
+- $A \in \mathbb{R}^{n \times n}$ une matrice **symétrique** ($A = A^\top$)
+- $x \in \mathbb{R}^n$ un vecteur colonne
+- $b \in \mathbb{R}^n$ un vecteur colonne
+- $c \in \mathbb{R}$ un scalaire
+
+Les vérifications numériques utilisent des **différences finies centrées** d'ordre 2
+avec un pas $h = 10^{-5}$, une matrice $A = M^\top M$ (symétrique définie positive),
+et des vecteurs $b$ et $x$ tirés aléatoirement.
+
+---
+
+# Question 1 — Gradient de la forme quadratique
+
+## Énoncé
+
+Soit $f : \mathbb{R}^n \to \mathbb{R}$ définie par :
+$$f(x) = \frac{1}{2}\, x^\top A x + b^\top x + c$$
+Calculer $\nabla_x f(x)$.
+
+## Solution analytique
+
+En décomposant terme par terme :
+
+1. $\displaystyle\frac{\partial}{\partial x}\!\left(\tfrac{1}{2}\,x^\top A x\right) = Ax$
+   \hspace{0.5em}(car $A = A^\top$, règle $\nabla_x x^\top B x = (B + B^\top)x$)
+
+2. $\displaystyle\frac{\partial}{\partial x}(b^\top x) = b$
+
+3. $\displaystyle\frac{\partial}{\partial x}(c) = 0$
+
+On obtient donc :
+$$\boxed{\nabla_x f(x) = Ax + b}$$
+
+## Vérification numérique
+
+```{r q1_verification}
+f1 <- function(x) 0.5 * as.numeric(t(x) %*% A %*% x) +
+                  as.numeric(t(b) %*% x) + c_val
+
+# Gradient analytique
+grad_q1_an <- as.numeric(A %*% x + b)
+
+# Gradient numérique (différences finies centrées)
+grad_q1_num <- numeric(n)
+for (i in seq_len(n)) {
+  xp <- x; xp[i] <- xp[i] + h
+  xm <- x; xm[i] <- xm[i] - h
+  grad_q1_num[i] <- (f1(xp) - f1(xm)) / (2 * h)
+}
+
+cat("Gradient analytique :", round(grad_q1_an, 6), "\n")
+cat("Gradient numérique  :", round(grad_q1_num, 6), "\n")
+cat("Erreur maximale     :", max(abs(grad_q1_an - grad_q1_num)), "\n")
+```
+
+---
+
+# Question 2 — Hessienne de la forme quadratique
+
+## Énoncé
+
+Pour la même fonction $f(x) = \frac{1}{2}\,x^\top A x + b^\top x + c$,
+calculer $\nabla^2_x f(x)$.
+
+## Solution analytique
+
+La Hessienne est la dérivée du gradient par rapport à $x^\top$ :
+$$\nabla^2_x f(x) = \frac{\partial}{\partial x^\top}\!\bigl(Ax + b\bigr) = A$$
+
+Donc :
+$$\boxed{\nabla^2_x f(x) = A}$$
+
+## Vérification numérique
+
+```{r q2_hessienne}
+# Hessienne numérique par différences finies centrées du second ordre
+hess_num <- function(f, x, h = 1e-5) {
+  n <- length(x)
+  H <- matrix(0, n, n)
+  for (i in seq_len(n)) {
+    for (j in seq_len(n)) {
+      xpp <- x; xpp[i] <- xpp[i] + h; xpp[j] <- xpp[j] + h
+      xpm <- x; xpm[i] <- xpm[i] + h; xpm[j] <- xpm[j] - h
+      xmp <- x; xmp[i] <- xmp[i] - h; xmp[j] <- xmp[j] + h
+      xmm <- x; xmm[i] <- xmm[i] - h; xmm[j] <- xmm[j] - h
+      H[i, j] <- (f(xpp) - f(xpm) - f(xmp) + f(xmm)) / (4 * h^2)
+    }
+  }
+  H
+}
+
+H_q2_num <- hess_num(f1, x)
+cat("Erreur maximale (Hessienne Q2) :", max(abs(A - H_q2_num)), "\n")
+cat("La Hessienne est bien A.\n")
+```
+
+---
+
+# Question 3 — Gradient d'une fonction composée
+
+## Énoncé
+
+Soit $f(x) = \ell(g(x))$ où $g(x) = x^\top A x$ et $\ell(t) = e^t$.
+Calculer $\nabla_x f(x)$.
+
+## Solution analytique
+
+Par la **règle de dérivation en chaîne** :
+$$\nabla_x f(x) = \ell'\!\bigl(g(x)\bigr)\cdot \nabla_x g(x)$$
+
+- $\ell'(t) = e^t \Longrightarrow \ell'(g(x)) = e^{x^\top A x}$
+- $\nabla_x g(x) = \nabla_x(x^\top A x) = 2Ax$ \hspace{0.5em}(car $A$ symétrique)
+
+Donc :
+$$\boxed{\nabla_x f(x) = 2\,e^{x^\top A x}\,Ax}$$
+
+## Vérification numérique
+
+```{r q3_verification}
+f3 <- function(x) exp(as.numeric(t(x) %*% A %*% x))
+
+xTAx       <- as.numeric(t(x) %*% A %*% x)
+grad_q3_an  <- as.numeric(2 * exp(xTAx) * (A %*% x))
+
+grad_q3_num <- numeric(n)
+for (i in seq_len(n)) {
+  xp <- x; xp[i] <- xp[i] + h
+  xm <- x; xm[i] <- xm[i] - h
+  grad_q3_num[i] <- (f3(xp) - f3(xm)) / (2 * h)
+}
+
+cat("Gradient analytique Q3 :", round(grad_q3_an, 5), "\n")
+cat("Gradient numérique  Q3 :", round(grad_q3_num, 5), "\n")
+cat("Erreur maximale        :", max(abs(grad_q3_an - grad_q3_num)), "\n")
+```
+
+---
+
+# Question 4 — Hessienne de $f(x) = e^{x^\top A x}$
+
+## Énoncé
+
+Pour la même fonction $f(x) = e^{x^\top A x}$, calculer $\nabla^2_x f(x)$.
+
+## Solution analytique
+
+En dérivant $\nabla_x f(x) = 2\,e^{x^\top A x}\,Ax$ par rapport à $x^\top$
+(règle du produit) :
+
+$$\nabla^2_x f(x)
+  = \frac{\partial}{\partial x^\top}\!\bigl(2\,e^{x^\top Ax}\,Ax\bigr)$$
+
+$$= 2\,e^{x^\top Ax}\,A
+  + 2\,Ax\cdot\frac{\partial\,e^{x^\top Ax}}{\partial x^\top}$$
+
+$$= 2\,e^{x^\top Ax}\,A
+  + 2\,Ax\cdot e^{x^\top Ax}(2Ax)^\top$$
+
+$$= e^{x^\top Ax}\!\left(2A + 4\,Ax(Ax)^\top\right)$$
+
+Donc :
+$$\boxed{\nabla^2_x f(x) = e^{x^\top Ax}\!\left(4\,Ax(Ax)^\top + 2A\right)}$$
+
+## Vérification numérique
+
+```{r q4_hessienne}
+H_q4_num <- hess_num(f3, x)
+
+Ax         <- A %*% x
+H_q4_an    <- exp(xTAx) * (4 * Ax %*% t(Ax) + 2 * A)
+
+cat("Erreur maximale (Hessienne Q4) :", max(abs(H_q4_an - H_q4_num)), "\n")
+```
+
+---
+
+# Question 5 — Gradient de la norme au carré
+
+## Énoncé
+
+Soit $f(x) = \|Ax\|^2$. Calculer $\nabla_x f(x)$.
+
+## Solution analytique
+
+On réécrit $f$ comme une forme quadratique :
+$$f(x) = \|Ax\|^2 = (Ax)^\top(Ax) = x^\top A^\top A\,x$$
+
+Posons $B = A^\top A$. Cette matrice est **symétrique** :
+$B^\top = (A^\top A)^\top = A^\top A = B$.
+
+Par la règle de dérivation d'une forme quadratique :
+$$\nabla_x f(x) = 2Bx = 2A^\top Ax$$
+
+Donc :
+$$\boxed{\nabla_x f(x) = 2A^\top Ax}$$
+
+## Vérification numérique
+
+```{r q5_verification}
+f5 <- function(x) sum((A %*% x)^2)
+
+grad_q5_an  <- as.numeric(2 * t(A) %*% A %*% x)
+
+grad_q5_num <- numeric(n)
+for (i in seq_len(n)) {
+  xp <- x; xp[i] <- xp[i] + h
+  xm <- x; xm[i] <- xm[i] - h
+  grad_q5_num[i] <- (f5(xp) - f5(xm)) / (2 * h)
+}
+
+cat("Gradient analytique Q5 :", round(grad_q5_an, 6), "\n")
+cat("Gradient numérique  Q5 :", round(grad_q5_num, 6), "\n")
+cat("Erreur maximale        :", max(abs(grad_q5_an - grad_q5_num)), "\n")
+```
+
+---
+
+# Récapitulatif des résultats
+
+```{r recap_table, echo=FALSE}
+resultats <- data.frame(
+  Question   = c("Q1 (gradient)", "Q2 (Hessienne)", "Q3 (gradient)",
+                 "Q4 (Hessienne)", "Q5 (gradient)"),
+  Fonction   = c(
+    "$\\frac{1}{2}x^\\top Ax + b^\\top x + c$",
+    "$\\frac{1}{2}x^\\top Ax + b^\\top x + c$",
+    "$e^{x^\\top Ax}$",
+    "$e^{x^\\top Ax}$",
+    "$\\|Ax\\|^2$"
+  ),
+  Résultat   = c(
+    "$Ax + b$",
+    "$A$",
+    "$2\\,e^{x^\\top Ax}\\,Ax$",
+    "$e^{x^\\top Ax}(4\\,Ax(Ax)^\\top + 2A)$",
+    "$2A^\\top Ax$"
+  ),
+  check.names = FALSE
+)
+
+knitr::kable(
+  resultats,
+  caption = "Tableau récapitulatif des gradients et Hessiennes",
+  escape  = FALSE,
+  booktabs = TRUE
+)
+```
