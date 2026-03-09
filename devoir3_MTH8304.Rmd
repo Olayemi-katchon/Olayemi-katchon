@@ -21,6 +21,7 @@ header-includes:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
   echo      = TRUE,
+  eval      = FALSE,
   warning   = FALSE,
   message   = FALSE,
   fig.align = "center"
