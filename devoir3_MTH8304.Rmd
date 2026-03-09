@@ -10,8 +10,6 @@ output:
     latex_engine: xelatex
     fig_caption: true
     keep_tex: false
-    includes:
-      in_header: preamble.tex
 geometry: margin=2.5cm
 fontsize: 11pt
 lang: fr
