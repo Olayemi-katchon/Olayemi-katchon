@@ -1,0 +1,519 @@
+% ============================================================
+%  Synthèse MTH8304 — Apprentissage non supervisé & Séries temporelles
+%  Compilable sur Overleaf (pdflatex)
+% ============================================================
+\documentclass[10pt,a4paper,twocolumn]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[margin=1.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{bm}           % bold math
+\usepackage{booktabs}     % tables
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{lmodern}
+
+% ---------- couleurs & boîtes --------------------------------
+\definecolor{myblue}{RGB}{30,100,180}
+\definecolor{mygray}{RGB}{240,240,245}
+\definecolor{mygreen}{RGB}{0,120,60}
+
+\tcbuselibrary{skins,breakable}
+\newtcolorbox{defbox}[1]{
+  colback=mygray, colframe=myblue, fonttitle=\bfseries\small,
+  title=#1, breakable, left=3pt, right=3pt, top=2pt, bottom=2pt}
+\newtcolorbox{formulebox}[1]{
+  colback=white, colframe=mygreen, fonttitle=\bfseries\small,
+  title=#1, breakable, left=3pt, right=3pt, top=2pt, bottom=2pt}
+
+% ---------- sections compactes -------------------------------
+\titleformat{\section}{\normalfont\large\bfseries\color{myblue}}{\thesection}{0.5em}{}[\titlerule]
+\titleformat{\subsection}{\normalfont\normalsize\bfseries\color{myblue}}{\thesubsection}{0.5em}{}
+\titlespacing{\section}{0pt}{6pt}{3pt}
+\titlespacing{\subsection}{0pt}{4pt}{2pt}
+
+% ---------- macros -------------------------------------------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\argmax}{\operatorname*{arg\,max}}
+\newcommand{\argmin}{\operatorname*{arg\,min}}
+\newcommand{\T}{^{\!\top}}   % transpose
+
+% ============================================================
+\begin{document}
+
+\twocolumn[{%
+\begin{@twocolumnfalse}
+  \begin{center}
+    {\LARGE\bfseries\color{myblue} Synthèse MTH8304}\\[4pt]
+    {\large Apprentissage non supervisé \& Séries temporelles}\\[2pt]
+    {\small Polytechnique Montréal — Feuille d'examen}
+  \end{center}
+  \vspace{6pt}
+\end{@twocolumnfalse}
+}]
+
+% ============================================================
+\section{K plus proches voisins (KNN)}
+% ============================================================
+
+\begin{formulebox}{Règle de décision}
+Pour classer $\mathbf{x}$, trouver les $k$ observations les plus proches selon une distance $d$ (souvent Euclidienne) et affecter la classe majoritaire :
+\[
+\hat{y}(\mathbf{x}) = \argmax_{c} \sum_{i \in \mathcal{N}_k(\mathbf{x})} \mathbf{1}[y_i = c]
+\]
+où $\mathcal{N}_k(\mathbf{x})$ est l'ensemble des $k$ voisins.
+\end{formulebox}
+
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+  \item Distance Euclidienne : $d(\mathbf{x},\mathbf{x'}) = \|\mathbf{x}-\mathbf{x'}\|_2$
+  \item Grand $k$ $\Rightarrow$ frontière lisse (biais $\uparrow$, variance $\downarrow$)
+  \item Petit $k$ $\Rightarrow$ frontière complexe (biais $\downarrow$, variance $\uparrow$)
+  \item Choisir $k$ par validation croisée.
+\end{itemize}
+
+% ============================================================
+\section{Régression logistique}
+% ============================================================
+
+\begin{formulebox}{Modèle}
+\[
+P(Y=1 \mid \mathbf{x}) = \sigma(\mathbf{x}\T\bm{\beta}) = \frac{1}{1+e^{-\mathbf{x}\T\bm{\beta}}}
+\]
+\textbf{Log-vraisemblance} (à maximiser) :
+\[
+\ell(\bm{\beta}) = \sum_{i=1}^n \bigl[y_i \log \hat{p}_i + (1-y_i)\log(1-\hat{p}_i)\bigr]
+\]
+\end{formulebox}
+
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+  \item Pas de solution fermée $\Rightarrow$ descente de gradient / Newton-Raphson.
+  \item Régularisation Ridge ($\ell_2$) ou Lasso ($\ell_1$) pour éviter le sur-ajustement.
+  \item Multiclasse : one-vs-rest ou softmax.
+\end{itemize}
+
+% ============================================================
+\section{Validation croisée \& Bootstrap}
+% ============================================================
+
+\subsection{Validation croisée $k$-fold}
+\begin{formulebox}{Erreur CV}
+\[
+\widehat{\text{Err}}_{\text{CV}} = \frac{1}{n}\sum_{i=1}^n L\!\left(y_i,\, \hat{f}^{-\kappa(i)}(\mathbf{x}_i)\right)
+\]
+$\hat{f}^{-\kappa(i)}$ : modèle entraîné sans le fold $\kappa(i)$ contenant $i$.
+\end{formulebox}
+
+\subsection{Bootstrap}
+\begin{formulebox}{Erreur .632}
+Probabilité d'être absent d'un échantillon bootstrap : $(1-1/n)^n \approx e^{-1} \approx 0.368$.
+\[
+\widehat{\text{Err}}^{.632} = 0.368\,\overline{\text{err}} + 0.632\,\widehat{\text{Err}}^1
+\]
+$\overline{\text{err}}$ : erreur resubstitution ; $\widehat{\text{Err}}^1$ : erreur leave-one-out bootstrap.
+\end{formulebox}
+
+% ============================================================
+\section{Analyse Discriminante (LDA / QDA)}
+% ============================================================
+
+\subsection{Hypothèses}
+\[
+\mathbf{X}\mid Y=k \;\sim\; \mathcal{N}(\bm{\mu}_k,\, \bm{\Sigma}_k)
+\]
+
+\begin{formulebox}{Règle de Bayes}
+\[
+\hat{y} = \argmax_k \;\bigl[\log\pi_k + \log p(\mathbf{x}\mid k)\bigr]
+\]
+\end{formulebox}
+
+\subsection{LDA — Covariances égales $\bm{\Sigma}_k = \bm{\Sigma}$}
+\begin{formulebox}{Fonction discriminante linéaire}
+\[
+\delta_k(\mathbf{x}) = \mathbf{x}\T\bm{\Sigma}^{-1}\bm{\mu}_k - \tfrac{1}{2}\bm{\mu}_k\T\bm{\Sigma}^{-1}\bm{\mu}_k + \log\pi_k
+\]
+Frontière de décision \textbf{linéaire} entre $k$ et $\ell$ :
+\[
+\{\mathbf{x}: \delta_k(\mathbf{x}) = \delta_\ell(\mathbf{x})\}
+\]
+\end{formulebox}
+
+\subsection{QDA — Covariances différentes}
+\begin{formulebox}{Fonction discriminante quadratique}
+\[
+\delta_k(\mathbf{x}) = -\tfrac{1}{2}\log|\bm{\Sigma}_k| -\tfrac{1}{2}(\mathbf{x}-\bm{\mu}_k)\T\bm{\Sigma}_k^{-1}(\mathbf{x}-\bm{\mu}_k) + \log\pi_k
+\]
+Frontière de décision \textbf{quadratique}.
+\end{formulebox}
+
+\begin{defbox}{LDA vs QDA}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+ & LDA & QDA \\
+\midrule
+Covariances & $\bm{\Sigma}_k = \bm{\Sigma}$ & $\bm{\Sigma}_k$ libres \\
+Nb paramètres & $p(p+1)/2$ & $Kp(p+1)/2$ \\
+Frontière & linéaire & quadratique \\
+Biais & $\uparrow$ & $\downarrow$ \\
+Variance & $\downarrow$ & $\uparrow$ \\
+\bottomrule
+\end{tabular}
+\end{defbox}
+
+\subsection{Estimation}
+\[
+\hat{\bm{\mu}}_k = \frac{1}{n_k}\sum_{i: y_i=k}\mathbf{x}_i, \quad
+\hat{\bm{\Sigma}} = \frac{1}{n-K}\sum_{k}\sum_{i:y_i=k}(\mathbf{x}_i-\hat{\bm{\mu}}_k)(\mathbf{x}_i-\hat{\bm{\mu}}_k)\T
+\]
+
+% ============================================================
+\section{K-moyennes (K-means)}
+% ============================================================
+
+\begin{formulebox}{Objectif}
+Minimiser l'inertie intra-classe :
+\[
+J = \sum_{k=1}^K \sum_{i \in C_k} \|\mathbf{x}_i - \bm{\mu}_k\|^2
+\]
+\end{formulebox}
+
+\begin{defbox}{Algorithme}
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+  \item Initialiser $K$ centres $\bm{\mu}_1,\ldots,\bm{\mu}_K$ (aléatoire ou K-means++).
+  \item \textbf{Affectation} : $C_k \leftarrow \{i : k = \argmin_j\|\mathbf{x}_i - \bm{\mu}_j\|^2\}$
+  \item \textbf{Mise à jour} : $\bm{\mu}_k \leftarrow \dfrac{1}{|C_k|}\sum_{i\in C_k}\mathbf{x}_i$
+  \item Répéter 2–3 jusqu'à convergence.
+\end{enumerate}
+\end{defbox}
+
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+  \item Convergence garantie mais vers un minimum local $\Rightarrow$ plusieurs initialisations.
+  \item Choisir $K$ : coude de la courbe $J(K)$, silhouette, BIC.
+  \item Sensible aux outliers et à l'échelle $\Rightarrow$ normaliser les données.
+\end{itemize}
+
+% ============================================================
+\section{Mélange gaussien \& Algorithme EM}
+% ============================================================
+
+\begin{formulebox}{Modèle de mélange}
+\[
+p(\mathbf{x}) = \sum_{k=1}^K \pi_k\,\mathcal{N}(\mathbf{x};\bm{\mu}_k,\bm{\Sigma}_k)
+\]
+avec $\pi_k \geq 0$ et $\sum_k \pi_k = 1$.
+\end{formulebox}
+
+\begin{formulebox}{Log-vraisemblance}
+\[
+\ell(\bm{\theta}) = \sum_{i=1}^n \log\!\left(\sum_{k=1}^K \pi_k\,\mathcal{N}(\mathbf{x}_i;\bm{\mu}_k,\bm{\Sigma}_k)\right)
+\]
+\end{formulebox}
+
+\begin{defbox}{Algorithme EM}
+\textbf{E-step} — Responsabilités :
+\[
+r_{ik} = \frac{\pi_k\,\mathcal{N}(\mathbf{x}_i;\bm{\mu}_k,\bm{\Sigma}_k)}{\sum_j \pi_j\,\mathcal{N}(\mathbf{x}_i;\bm{\mu}_j,\bm{\Sigma}_j)}
+\]
+\textbf{M-step} — Mise à jour :
+\[
+n_k = \sum_{i=1}^n r_{ik}
+\]
+\[
+\hat{\pi}_k = \frac{n_k}{n}, \quad
+\hat{\bm{\mu}}_k = \frac{1}{n_k}\sum_i r_{ik}\,\mathbf{x}_i
+\]
+\[
+\hat{\bm{\Sigma}}_k = \frac{1}{n_k}\sum_i r_{ik}(\mathbf{x}_i-\hat{\bm{\mu}}_k)(\mathbf{x}_i-\hat{\bm{\mu}}_k)\T
+\]
+\end{defbox}
+
+\begin{defbox}{EM vs K-means}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+ & K-means & EM-GMM \\
+\midrule
+Affectation & dure (0/1) & douce ($r_{ik} \in [0,1]$) \\
+Frontières & Voronoï (linéaire) & elliptiques \\
+Paramètres & $\bm{\mu}_k$ seulement & $\pi_k,\bm{\mu}_k,\bm{\Sigma}_k$ \\
+\bottomrule
+\end{tabular}
+\end{defbox}
+
+% ============================================================
+\section{Séries temporelles — Concepts de base}
+% ============================================================
+
+\begin{formulebox}{Stationnarité faible}
+Un processus $\{X_t\}$ est stationnaire au sens large si :
+\begin{align*}
+\E[X_t] &= \mu \quad\text{(constante)}\\
+\Cov(X_t, X_{t+h}) &= \gamma(h) \quad\text{(dépend seulement de }h\text{)}
+\end{align*}
+\end{formulebox}
+
+\begin{formulebox}{Fonction d'autocovariance / autocorrélation}
+\[
+\gamma(h) = \Cov(X_t, X_{t+h}), \quad
+\rho(h) = \frac{\gamma(h)}{\gamma(0)}
+\]
+\end{formulebox}
+
+\begin{formulebox}{Autocorrélation partielle (PACF)}
+$\phi_{hh}$ est le coefficient de la régression de $X_t$ sur $X_{t-1},\ldots,X_{t-h}$ après avoir contrôlé les lags intermédiaires.
+\end{formulebox}
+
+\begin{defbox}{Rendre une série stationnaire}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Problème & Transformation \\
+\midrule
+Tendance & Différenciation $\nabla X_t = X_t - X_{t-1}$ \\
+Saisonnalité & Diff. saisonnière $\nabla_s X_t = X_t - X_{t-s}$ \\
+Variance non const. & $\log X_t$ ou Box-Cox \\
+\bottomrule
+\end{tabular}
+\end{defbox}
+
+% ============================================================
+\section{Processus ARMA}
+% ============================================================
+
+\begin{formulebox}{Modèles de base}
+\textbf{AR($p$)} — Autorégressif :
+\[
+X_t = \phi_1 X_{t-1} + \cdots + \phi_p X_{t-p} + \varepsilon_t
+\]
+\textbf{MA($q$)} — Moyenne mobile :
+\[
+X_t = \varepsilon_t + \theta_1\varepsilon_{t-1} + \cdots + \theta_q\varepsilon_{t-q}
+\]
+\textbf{ARMA($p,q$)} :
+\[
+X_t = \sum_{i=1}^p \phi_i X_{t-i} + \varepsilon_t + \sum_{j=1}^q \theta_j \varepsilon_{t-j}
+\]
+où $\varepsilon_t \overset{\text{iid}}{\sim} \mathcal{N}(0,\sigma^2)$ (bruit blanc gaussien).
+\end{formulebox}
+
+\begin{formulebox}{Opérateur retard $B$}
+\[
+B X_t = X_{t-1}, \quad B^k X_t = X_{t-k}
+\]
+Polynômes caractéristiques :
+\[
+\phi(B) = 1 - \phi_1 B - \cdots - \phi_p B^p
+\]
+\[
+\theta(B) = 1 + \theta_1 B + \cdots + \theta_q B^q
+\]
+ARMA$(p,q)$ : $\phi(B)X_t = \theta(B)\varepsilon_t$
+\end{formulebox}
+
+\begin{defbox}{Propriétés ACF/PACF}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Modèle & ACF & PACF \\
+\midrule
+AR($p$) & décroît & coupure après $p$ \\
+MA($q$) & coupure après $q$ & décroît \\
+ARMA($p,q$) & décroît & décroît \\
+\bottomrule
+\end{tabular}
+\end{defbox}
+
+\subsection{Stationnarité d'un AR($p$)}
+Toutes les racines du polynôme $\phi(z) = 0$ doivent être \textbf{à l'extérieur} du cercle unité ($|z| > 1$), ou bien les racines inverses à l'intérieur.
+
+\subsection{Invertibilité d'un MA($q$)}
+Toutes les racines du polynôme $\theta(z) = 0$ doivent être \textbf{à l'extérieur} du cercle unité.
+
+% ============================================================
+\section{ARIMA et SARIMA}
+% ============================================================
+
+\begin{formulebox}{ARIMA($p,d,q$)}
+\[
+\phi(B)(1-B)^d X_t = \theta(B)\varepsilon_t
+\]
+$d$ : ordre de différenciation pour obtenir la stationnarité.
+\end{formulebox}
+
+\begin{formulebox}{SARIMA($p,d,q$)$\times$($P,D,Q$)$_s$}
+\[
+\Phi(B^s)\,\phi(B)\,(1-B^s)^D(1-B)^d X_t = \Theta(B^s)\,\theta(B)\,\varepsilon_t
+\]
+\begin{tabular}{@{}ll@{}}
+$\Phi(B^s) = 1 - \Phi_1 B^s - \cdots - \Phi_P B^{Ps}$ & (AR saisonnier)\\
+$\Theta(B^s) = 1 + \Theta_1 B^s + \cdots + \Theta_Q B^{Qs}$ & (MA saisonnier)
+\end{tabular}
+\end{formulebox}
+
+\begin{defbox}{Critères de sélection du modèle}
+\[
+\text{AIC} = -2\ell(\hat{\bm{\theta}}) + 2k
+\]
+\[
+\text{AICc} = \text{AIC} + \frac{2k(k+1)}{n-k-1}
+\]
+\[
+\text{BIC} = -2\ell(\hat{\bm{\theta}}) + k\log n
+\]
+$k$ = nombre de paramètres. \textbf{Minimiser} ces critères.\\
+BIC pénalise plus $\Rightarrow$ modèles plus parcimonieux.
+\end{defbox}
+
+\begin{defbox}{Stratégie d'identification Box-Jenkins}
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+  \item Vérifier stationnarité (ADF, KPSS) ; différencier si besoin.
+  \item Examiner ACF \& PACF pour suggérer $p$ et $q$.
+  \item Estimer plusieurs modèles candidats.
+  \item Comparer par AIC/AICc/BIC.
+  \item Diagnostiquer les résidus : test de Ljung-Box, normalité, homoscédasticité.
+\end{enumerate}
+\end{defbox}
+
+% ============================================================
+\section{Tests de stationnarité}
+% ============================================================
+
+\begin{defbox}{Test ADF (Augmented Dickey-Fuller)}
+$H_0$ : racine unitaire (non stationnaire).\\
+$H_1$ : stationnaire.\\
+\textbf{Rejeter $H_0$} si $p$-valeur $<$ seuil $\Rightarrow$ série stationnaire.
+\end{defbox}
+
+\begin{defbox}{Test KPSS}
+$H_0$ : série stationnaire.\\
+$H_1$ : racine unitaire.\\
+\textbf{Ne pas rejeter $H_0$} est souhaitable.\\
+\textit{Utiliser ADF et KPSS ensemble pour confirmer.}
+\end{defbox}
+
+% ============================================================
+\section{Prévision avec ARIMA}
+% ============================================================
+
+\begin{formulebox}{Prévision optimale (MMSE)}
+\[
+\hat{X}_{n+h} = \E[X_{n+h} \mid X_n, X_{n-1}, \ldots]
+\]
+Propriété clé : pour un MA($q$), $\hat{X}_{n+h} = 0$ pour $h > q$.\\
+Pour un AR($p$) :
+\[
+\hat{X}_{n+h} = \sum_{i=1}^p \hat{\phi}_i \hat{X}_{n+h-i}
+\]
+(en remplaçant les valeurs futures inconnues par leurs prévisions).
+\end{formulebox}
+
+\begin{formulebox}{Intervalle de prévision (95\%)}
+\[
+\hat{X}_{n+h} \pm 1.96\,\sigma_h
+\]
+où $\sigma_h^2 = \Var(X_{n+h} - \hat{X}_{n+h})$ croît avec $h$.
+\end{formulebox}
+
+% ============================================================
+\section{Diagrammes ACF/PACF — Guide rapide}
+% ============================================================
+
+\begin{defbox}{Bandes de confiance à 95\%}
+Sous $H_0$ : bruit blanc, les corrélations sont dans $\pm\dfrac{1.96}{\sqrt{n}}$.\\
+Tout pic hors des bandes est statistiquement significatif.
+\end{defbox}
+
+\begin{defbox}{Identifier $p$ et $q$}
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+  \item ACF coupe après lag $q$ \textbf{et} PACF décroît $\Rightarrow$ MA($q$)
+  \item PACF coupe après lag $p$ \textbf{et} ACF décroît $\Rightarrow$ AR($p$)
+  \item Les deux décroissent (exponentielle ou oscillation) $\Rightarrow$ ARMA
+  \item Pics aux lags multiples de $s$ $\Rightarrow$ composante saisonnière d'ordre $s$
+\end{itemize}
+\end{defbox}
+
+% ============================================================
+\section{Résidus \& Diagnostics}
+% ============================================================
+
+\begin{formulebox}{Test de Ljung-Box}
+$H_0$ : les résidus sont un bruit blanc.
+\[
+Q = n(n+2)\sum_{h=1}^H \frac{\hat{\rho}_\varepsilon(h)^2}{n-h} \;\overset{H_0}{\sim}\; \chi^2(H-p-q)
+\]
+\textbf{Rejeter $H_0$} si $Q > \chi^2_{1-\alpha}$ $\Rightarrow$ modèle inadéquat.
+\end{formulebox}
+
+Un bon modèle doit avoir :
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+  \item Résidus $\approx$ bruit blanc (Ljung-Box non rejeté)
+  \item Résidus $\approx$ normaux (QQ-plot, test Shapiro-Wilk)
+  \item Variance des résidus constante (pas d'hétéroscédasticité)
+\end{itemize}
+
+% ============================================================
+\section{ACP — Analyse en Composantes Principales}
+% ============================================================
+
+\begin{formulebox}{SVD / Décomposition spectrale}
+\[
+\bm{\Sigma} = \mathbf{V}\bm{\Lambda}\mathbf{V}\T
+\]
+Vecteurs propres $\mathbf{v}_j$ (composantes principales), valeurs propres $\lambda_1 \geq \cdots \geq \lambda_p \geq 0$.
+\[
+\text{Variance expliquée par } j = \frac{\lambda_j}{\sum_k \lambda_k}
+\]
+Scores : $\mathbf{z}_i = \mathbf{V}_L\T(\mathbf{x}_i - \bar{\mathbf{x}})$ où $\mathbf{V}_L$ = $L$ premières colonnes de $\mathbf{V}$.
+\end{formulebox}
+
+% ============================================================
+\section{Formules utiles}
+% ============================================================
+
+\begin{formulebox}{Loi normale multivariée}
+\[
+\mathcal{N}(\mathbf{x};\bm{\mu},\bm{\Sigma}) = \frac{1}{(2\pi)^{p/2}|\bm{\Sigma}|^{1/2}}
+\exp\!\left(-\tfrac{1}{2}(\mathbf{x}-\bm{\mu})\T\bm{\Sigma}^{-1}(\mathbf{x}-\bm{\mu})\right)
+\]
+Distance de Mahalanobis : $d_M^2 = (\mathbf{x}-\bm{\mu})\T\bm{\Sigma}^{-1}(\mathbf{x}-\bm{\mu})$
+\end{formulebox}
+
+\begin{formulebox}{Théorème de Bayes}
+\[
+P(Y=k\mid\mathbf{x}) = \frac{p(\mathbf{x}\mid Y=k)\,\pi_k}{p(\mathbf{x})} \propto p(\mathbf{x}\mid k)\,\pi_k
+\]
+\end{formulebox}
+
+\begin{formulebox}{Vraisemblance gaussienne}
+\[
+\log p(\mathbf{x}\mid\bm{\mu},\bm{\Sigma}) = -\tfrac{p}{2}\log(2\pi) - \tfrac{1}{2}\log|\bm{\Sigma}| - \tfrac{1}{2}d_M^2
+\]
+\end{formulebox}
+
+\vspace{4pt}
+\begin{tcolorbox}[colback=myblue!10,colframe=myblue,fonttitle=\bfseries\small,title=Mémo rapide]
+\begin{tabular}{@{}ll@{}}
+\toprule
+Tâche & Outil \\
+\midrule
+Clustering souple & EM-GMM \\
+Clustering dur & K-means \\
+Classification supervisée & LDA/QDA/KNN \\
+Série non stationnaire & Différencier + ARIMA \\
+Série saisonnière & SARIMA \\
+Réduction de dimension & ACP \\
+\bottomrule
+\end{tabular}
+\end{tcolorbox}
+
+\end{document}
