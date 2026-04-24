@@ -1,0 +1,381 @@
+% ==============================================================
+%  Exercices de révision MTH8304 — Différentiation matricielle
+%  Transcription et solutions complètes des exercices du tableau
+%  Compilable sur Overleaf avec pdfLaTeX
+% ==============================================================
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[top=2.5cm,bottom=2.5cm,left=2.8cm,right=2.8cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{bm}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{titlesec}
+\usepackage{mdframed}
+
+\tcbuselibrary{skins,breakable,theorems}
+
+% ---- couleurs ------------------------------------------------
+\definecolor{bleu}{RGB}{20,90,170}
+\definecolor{vert}{RGB}{0,120,60}
+\definecolor{rouge}{RGB}{180,30,30}
+\definecolor{gris}{RGB}{245,245,248}
+\definecolor{orange}{RGB}{200,100,0}
+
+% ---- boîtes --------------------------------------------------
+\newtcolorbox{enonce}[1]{
+  colback=bleu!8, colframe=bleu, fonttitle=\bfseries,
+  title=Énoncé — #1, breakable}
+
+\newtcolorbox{solution}{
+  colback=vert!5, colframe=vert, fonttitle=\bfseries,
+  title=Solution détaillée, breakable}
+
+\newtcolorbox{reponse}[1]{
+  colback=orange!10, colframe=orange, fonttitle=\bfseries\color{orange},
+  title=\faCheck\space Bonne réponse : #1, breakable}
+
+\newtcolorbox{rappel}[1]{
+  colback=gris, colframe=gray!50, fonttitle=\bfseries\small,
+  title=Rappel : #1, breakable}
+
+% ---- macros --------------------------------------------------
+\newcommand{\T}{^{\!\top}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\tr}{\operatorname{tr}}
+\renewcommand{\nabla}{\bm{\nabla}}
+
+% ---- sections ------------------------------------------------
+\titleformat{\section}{\large\bfseries\color{bleu}}{\thesection.}{0.6em}{}[\vspace{-4pt}\rule{\linewidth}{0.8pt}]
+\titleformat{\subsection}{\normalsize\bfseries\color{bleu}}{\thesubsection}{0.5em}{}
+
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+% ==============================================================
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries\color{bleu} Exercices de révision — MTH8304}\\[6pt]
+  {\large Différentiation matricielle : gradient et Hessien}\\[4pt]
+  {\small Polytechnique Montréal \quad|\quad Corrigé complet}
+\end{center}
+
+\vspace{8pt}
+
+% ==============================================================
+%  RAPPELS ESSENTIELS
+% ==============================================================
+\begin{rappel}{Formules fondamentales de différentiation matricielle}
+Soit $A \in \R^{n \times n}$ une matrice, $x, b \in \R^n$ des vecteurs.
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Fonction} $f(x)$ & \textbf{Gradient} $\nabla_x f$ \\
+\midrule
+$b\T x$ & $b$ \\
+$x\T b$ & $b$ \\
+$x\T A x$ (A quelconque) & $(A + A\T)x$ \\
+$x\T A x$ (A \textbf{symétrique}) & $2Ax$ \\
+$\|Ax\|^2 = x\T A\T A x$ & $2A\T Ax$ \\
+\midrule
+\textbf{Fonction} $f(x)$ & \textbf{Hessien} $\nabla_x^2 f$ \\
+\midrule
+$x\T A x$ (A symétrique) & $2A$ \\
+$e^{x\T A x}$ (A symétrique) & $e^{x\T Ax}\!\left(4Ax\,(Ax)\T + 2A\right)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Règle de la chaîne :} si $f(x) = h(g(x))$, alors
+$\nabla_x f = \dfrac{\partial g}{\partial x}\T \cdot h'(g(x))$\,, \quad
+$\nabla_x^2 f = \dfrac{\partial g}{\partial x}\T h''(g) \dfrac{\partial g}{\partial x} + h'(g)\,\nabla_x^2 g$.
+\end{rappel}
+
+\vspace{10pt}
+
+% ==============================================================
+\section{Problème 1 — Fonctions quadratiques et exponentielles}
+% ==============================================================
+
+\textbf{Contexte :}
+\[
+  A \in \R^{n \times n} \text{ symétrique},\quad
+  x \in \R^{n},\quad
+  b \in \R^{n},\quad
+  c \in \R.
+\]
+
+% -----------------------------------------------------------
+\subsection{Question 1 — Gradient de \texorpdfstring{$f(x) = \frac{1}{2}x\T Ax + b\T x + c$}{f}}
+% -----------------------------------------------------------
+
+\begin{enonce}{Q1}
+Soit $f : \R^n \to \R$ définie par
+\[
+  f(x) = \frac{1}{2}\,x\T A x + b\T x + c
+\]
+avec $A$ \textbf{symétrique}. Calculer $\nabla_x f(x)$.
+\end{enonce}
+
+\begin{solution}
+On dérive terme par terme.
+
+\medskip
+\textbf{Terme 1 :} $\dfrac{1}{2}\,x\T A x$
+
+En général, $\nabla_x (x\T A x) = (A + A\T)x$.
+Puisque $A$ est symétrique ($A\T = A$) :
+\[
+  \nabla_x \!\left(\frac{1}{2}\,x\T A x\right)
+  = \frac{1}{2}(A + A\T)x
+  = \frac{1}{2} \cdot 2Ax
+  = Ax.
+\]
+
+\textbf{Terme 2 :} $b\T x = x\T b$ \quad$\Rightarrow$\quad $\nabla_x(b\T x) = b$.
+
+\textbf{Terme 3 :} $c$ (constante) \quad$\Rightarrow$\quad gradient nul.
+
+\medskip
+\textbf{En sommant :}
+\[
+  \boxed{\nabla_x f(x) = Ax + b}
+\]
+\end{solution}
+
+\begin{tcolorbox}[colback=orange!10,colframe=orange,fonttitle=\bfseries,
+  title={Bonne réponse : (b) \quad $\nabla_x f(x) = Ax + b$}]
+C'est la généralisation matricielle de $\tfrac{d}{dx}(\tfrac{1}{2}ax^2 + bx + c) = ax + b$.
+\end{tcolorbox}
+
+% -----------------------------------------------------------
+\subsection{Question 2 — Hessien de \texorpdfstring{$f(x) = \frac{1}{2}x\T Ax + b\T x + c$}{f}}
+% -----------------------------------------------------------
+
+\begin{enonce}{Q2}
+Pour la même fonction $f$, calculer le Hessien $\nabla_x^2 f(x)$.
+\end{enonce}
+
+\begin{solution}
+Le Hessien est la dérivée du gradient par rapport à $x\T$ :
+\[
+  \nabla_x^2 f(x) = \frac{\partial}{\partial x\T}\!\left(\nabla_x f(x)\right)
+  = \frac{\partial}{\partial x\T}(Ax + b).
+\]
+\begin{itemize}[itemsep=2pt]
+  \item $\dfrac{\partial}{\partial x\T}(Ax) = A$ \quad (dérivée d'une forme linéaire)
+  \item $\dfrac{\partial}{\partial x\T}(b) = 0$ \quad (constante)
+\end{itemize}
+\[
+  \boxed{\nabla_x^2 f(x) = A}
+\]
+\end{solution}
+
+\begin{tcolorbox}[colback=orange!10,colframe=orange,fonttitle=\bfseries,
+  title={Bonne réponse : (a) \quad $\nabla_x^2 f(x) = A$}]
+C'est l'analogue matriciel de $\tfrac{d^2}{dx^2}(\tfrac{1}{2}ax^2) = a$.
+\end{tcolorbox}
+
+% -----------------------------------------------------------
+\subsection{Question 3 — Gradient de \texorpdfstring{$f(x) = e^{g(x)}$, $g(x)=x\T Ax$}{f = exp(xTAx)}}
+% -----------------------------------------------------------
+
+\begin{enonce}{Q3}
+Soit $f(x) = e^{g(x)}$ avec $g(x) = x\T A x$ et $A$ symétrique.\\
+Calculer $\nabla_x f(x)$.
+\end{enonce}
+
+\begin{solution}
+On applique la \textbf{règle de la chaîne} :
+\[
+  \nabla_x f(x)
+  = \frac{d}{d g}\!\left(e^g\right) \cdot \nabla_x g(x)
+  = e^{g(x)} \cdot \nabla_x g(x).
+\]
+
+\textbf{Calcul de $\nabla_x g(x)$} : $g(x) = x\T A x$, $A$ symétrique $\Rightarrow$
+\[
+  \nabla_x g(x) = (A + A\T)x = 2Ax.
+\]
+
+\textbf{En substituant} :
+\[
+  \nabla_x f(x) = e^{x\T A x} \cdot 2Ax.
+\]
+\[
+  \boxed{\nabla_x f(x) = 2\,e^{x\T Ax}\,Ax}
+\]
+
+\textit{Interprétation :} C'est l'analogue de $\dfrac{d}{dx}e^{ax^2} = 2ax\,e^{ax^2}$ en dimension 1.
+\end{solution}
+
+\begin{tcolorbox}[colback=orange!10,colframe=orange,fonttitle=\bfseries,
+  title={Bonne réponse : (b) \quad $\nabla_x f(x) = 2\,e^{x\T Ax}\,Ax$}]
+\end{tcolorbox}
+
+% -----------------------------------------------------------
+\subsection{Question 4 — Hessien de \texorpdfstring{$f(x) = e^{x\T Ax}$}{f = exp(xTAx)}}
+% -----------------------------------------------------------
+
+\begin{enonce}{Q4}
+Pour $f(x) = e^{x\T A x}$ avec $A$ symétrique, calculer $\nabla_x^2 f(x)$.
+\end{enonce}
+
+\begin{solution}
+On part du gradient calculé à la question précédente :
+\[
+  \nabla_x f(x) = 2\,e^{x\T Ax}\,Ax.
+\]
+
+On dérive à nouveau par rapport à $x\T$ (règle du produit) :
+\[
+  \nabla_x^2 f(x)
+  = \frac{\partial}{\partial x\T}\!\left[2\,e^{x\T Ax}\,Ax\right]
+  = 2\,\frac{\partial e^{x\T Ax}}{\partial x\T} \cdot (Ax)\T
+    + 2\,e^{x\T Ax}\,\frac{\partial (Ax)}{\partial x\T}.
+\]
+
+\textbf{Calcul des deux parties :}
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+\item $\dfrac{\partial e^{x\T Ax}}{\partial x\T} = e^{x\T Ax} \cdot (2Ax)\T = 2e^{x\T Ax}(Ax)\T$
+\quad (vecteur-ligne $1\times n$)
+
+\item $\dfrac{\partial (Ax)}{\partial x\T} = A$
+\quad (matrice $n\times n$)
+\end{enumerate}
+
+En substituant :
+\[
+  \nabla_x^2 f(x)
+  = 2 \cdot \underbrace{e^{x\T Ax} \cdot 2Ax}_{\in\,\R^n}
+    \underbrace{(Ax)\T}_{\in\,\R^{1\times n}}
+    + 2\,e^{x\T Ax}\,A
+\]
+\[
+  = 4\,e^{x\T Ax}\,Ax(Ax)\T + 2\,e^{x\T Ax}\,A
+\]
+\[
+  \boxed{\nabla_x^2 f(x) = e^{x\T Ax}\!\left(4\,Ax\,(Ax)\T + 2\,A\right)}
+\]
+
+\textbf{Vérification des dimensions :}
+\begin{itemize}[itemsep=1pt]
+  \item $Ax \in \R^n$, donc $Ax(Ax)\T \in \R^{n\times n}$ \checkmark
+  \item $A \in \R^{n\times n}$ \checkmark
+  \item Le Hessien est bien $n \times n$ symétrique \checkmark
+\end{itemize}
+
+\textit{Note :} On peut aussi écrire $Ax(Ax)\T = Axx\T A\T = Axx\T A$ car $A$ est symétrique.
+\end{solution}
+
+\begin{tcolorbox}[colback=orange!10,colframe=orange,fonttitle=\bfseries,
+  title={Bonne réponse : (9) \quad $\nabla_x^2 f(x) = e^{x\T Ax}\!\left(4Ax(Ax)\T + 2A\right)$}]
+\end{tcolorbox}
+
+% ==============================================================
+\section{Question 5 — Gradient de \texorpdfstring{$f(x) = \|Ax\|^2$}{f = ||Ax||²}}
+% ==============================================================
+
+\begin{enonce}{Q5}
+Soit $f(x) = \|Ax\|^2$ avec $A \in \R^{m\times n}$, $x \in \R^n$.
+Calculer $\nabla_x f(x)$.
+\end{enonce}
+
+\begin{solution}
+\textbf{Étape 1 : Réécrire $f$ sous forme quadratique.}
+
+Par définition de la norme $\ell_2$ :
+\[
+  f(x) = \|Ax\|^2 = (Ax)\T(Ax) = x\T \underbrace{A\T A}_{=:\,B} x = x\T B x.
+\]
+
+\textbf{Étape 2 : Propriétés de $B = A\T A$.}
+\[
+  B\T = (A\T A)\T = A\T (A\T)\T = A\T A = B.
+\]
+$B$ est donc \textbf{symétrique} (et semi-définie positive).
+
+\textbf{Étape 3 : Calcul du gradient.}
+
+Puisque $f(x) = x\T B x$ et $B$ est symétrique :
+\[
+  \nabla_x f(x) = (B + B\T)x = 2Bx = 2A\T A x.
+\]
+\[
+  \boxed{\nabla_x f(x) = 2A\T Ax}
+\]
+
+\textbf{Vérification en dimension 1 :} si $n=m=1$, $f(x) = a^2 x^2$, $f'(x) = 2a^2 x = 2a\T a\, x$ \checkmark
+
+\textit{Cette formule est fondamentale dans les moindres carrés :}
+Pour minimiser $\|Ax - b\|^2$, le gradient est $2A\T(Ax-b)$, et en l'annulant on obtient les équations normales $A\T Ax = A\T b$.
+\end{solution}
+
+\begin{tcolorbox}[colback=orange!10,colframe=orange,fonttitle=\bfseries,
+  title={Bonne réponse : (a) \quad $\nabla_x f(x) = 2A\T Ax$}]
+\end{tcolorbox}
+
+% ==============================================================
+%  RÉCAPITULATIF
+% ==============================================================
+\newpage
+\section*{Récapitulatif des résultats}
+
+\begin{center}
+\renewcommand{\arraystretch}{2.0}
+\begin{tabular}{@{}clll@{}}
+\toprule
+\textbf{Q} & \textbf{Fonction} $f(x)$ & \textbf{Résultat} & \textbf{Rép.} \\
+\midrule
+1 & $\dfrac{1}{2}x\T Ax + b\T x + c$ \quad ($A$ symét.) 
+  & $\nabla_x f = Ax + b$ & (b) \\
+2 & idem 
+  & $\nabla_x^2 f = A$ & (a) \\
+3 & $e^{x\T Ax}$ \quad ($A$ symét.) 
+  & $\nabla_x f = 2e^{x\T Ax} Ax$ & (b) \\
+4 & $e^{x\T Ax}$ \quad ($A$ symét.) 
+  & $\nabla_x^2 f = e^{x\T Ax}(4Ax(Ax)\T + 2A)$ & (9) \\
+5 & $\|Ax\|^2$ 
+  & $\nabla_x f = 2A\T Ax$ & (a) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{12pt}
+
+% ==============================================================
+%  CONSEILS POUR L'EXAMEN
+% ==============================================================
+\begin{tcolorbox}[colback=bleu!8,colframe=bleu,fonttitle=\bfseries\large,
+  title={Stratégie pour l'examen}]
+
+\begin{enumerate}[itemsep=6pt]
+  \item \textbf{Identifier la structure :} est-ce une forme linéaire ($b\T x$), quadratique ($x\T Ax$), ou une composition ?
+
+  \item \textbf{Vérifier la symétrie de $A$} : si $A$ symétrique, $(A+A\T)x = 2Ax$ simplifie tout.
+
+  \item \textbf{Règle de la chaîne} pour les compositions $f(g(x))$ :
+  \[
+    \nabla_x f = g'(x)^* \cdot f'(g(x))
+  \]
+  où $g'(x)^*$ est la transposée du Jacobien de $g$.
+
+  \item \textbf{Hessien = dérivée du gradient} : dériver $\nabla_x f$ par rapport à $x\T$.
+
+  \item \textbf{Vérifier les dimensions} : le gradient est un vecteur $n\times 1$, le Hessien une matrice $n\times n$.
+
+  \item \textbf{Astuce} : $\|Ax\|^2 \Rightarrow$ poser $B = A\T A$ (symétrique), puis utiliser $\nabla_x(x\T Bx) = 2Bx$.
+\end{enumerate}
+\end{tcolorbox}
+
+\end{document}
