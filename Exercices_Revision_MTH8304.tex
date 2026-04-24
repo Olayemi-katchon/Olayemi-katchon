@@ -1,6 +1,9 @@
 % ==============================================================
-%  Exercices de révision MTH8304 — Différentiation matricielle
-%  Transcription et solutions complètes des exercices du tableau
+%  Exercices de révision MTH8304 — Corrigé complet
+%  Source : fichier photos.pdf (6 pages, notes manuscrites)
+%  Sujets : classifieur probabiliste (Bishop 6.4.9),
+%           classification d'écoulement (Partie II),
+%           modélisation de sédiment (distributions)
 %  Compilable sur Overleaf avec pdfLaTeX
 % ==============================================================
 \documentclass[12pt,a4paper]{article}
@@ -38,10 +41,6 @@
   colback=vert!5, colframe=vert, fonttitle=\bfseries,
   title=Solution détaillée, breakable}
 
-\newtcolorbox{reponse}[1]{
-  colback=orange!10, colframe=orange, fonttitle=\bfseries\color{orange},
-  title=\faCheck\space Bonne réponse : #1, breakable}
-
 \newtcolorbox{rappel}[1]{
   colback=gris, colframe=gray!50, fonttitle=\bfseries\small,
   title=Rappel : #1, breakable}
@@ -49,9 +48,8 @@
 % ---- macros --------------------------------------------------
 \newcommand{\T}{^{\!\top}}
 \newcommand{\R}{\mathbb{R}}
-\newcommand{\diag}{\operatorname{diag}}
-\newcommand{\tr}{\operatorname{tr}}
-\renewcommand{\nabla}{\bm{\nabla}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\operatorname{Var}}
 
 % ---- sections ------------------------------------------------
 \titleformat{\section}{\large\bfseries\color{bleu}}{\thesection.}{0.6em}{}[\vspace{-4pt}\rule{\linewidth}{0.8pt}]
@@ -65,317 +63,383 @@
 
 \begin{center}
   {\LARGE\bfseries\color{bleu} Exercices de révision — MTH8304}\\[6pt]
-  {\large Différentiation matricielle : gradient et Hessien}\\[4pt]
+  {\large Classifieur probabiliste \textbullet{} Classification \textbullet{} Modélisation}\\[4pt]
   {\small Polytechnique Montréal \quad|\quad Corrigé complet}
 \end{center}
 
 \vspace{8pt}
 
 % ==============================================================
-%  RAPPELS ESSENTIELS
+\section{Exercice 1 — Bishop 6.4.9 : Classifieur probabiliste pour $K$ classes}
 % ==============================================================
-\begin{rappel}{Formules fondamentales de différentiation matricielle}
-Soit $A \in \R^{n \times n}$ une matrice, $x, b \in \R^n$ des vecteurs.
+
+\begin{enonce}{Contexte et notations}
+On considère un classifieur probabiliste avec $K$ classes $\mathcal{C}_1, \ldots, \mathcal{C}_K$ :
+\begin{itemize}[itemsep=2pt]
+  \item $P(\mathcal{C}_k) = \Pi_k$ : probabilité \textbf{a priori} de la classe $k$
+  \item $P(\phi \mid \mathcal{C}_k)$ : probabilité conditionnelle de classe ($\phi$ = vecteur de caractéristiques)
+  \item $\{(\phi_n, t_n)\}_{n=1}^{N}$ : observations i.i.d., avec $t_n \in \{0,1\}^K$ en encodage \emph{one-hot}
+  \item $t_{nk} = 1$ si l'observation $n$ appartient à la classe $k$, $0$ sinon
+\end{itemize}
+\textbf{Question :} Montrez que l'estimateur par maximum de vraisemblance de $\Pi_k$ est
+\[
+  \hat{\Pi}_k = \frac{N_k}{N}
+\]
+où $N_k = \sum_{n=1}^{N} t_{nk}$ est le nombre d'observations de la classe $k$.
+\end{enonce}
+
+\begin{solution}
+
+\textbf{Étape 1 : Probabilité d'une observation $(\phi_n, t_n)$.}
+
+La loi jointe s'écrit :
+\[
+  P(\phi_n, t_n)
+  = \prod_{k=1}^{K} P(\phi_n, \mathcal{C}_k)^{t_{nk}}
+  = \prod_{k=1}^{K} \bigl[P(\phi_n \mid \mathcal{C}_k)\,\Pi_k\bigr]^{t_{nk}}.
+\]
+(Seul le facteur $k$ tel que $t_{nk}=1$ contribue réellement au produit.)
+
+\medskip
+\textbf{Étape 2 : Vraisemblance totale (loi multinomiale, $N$ observations indépendantes).}
+\[
+  \mathcal{L}(\Pi_1,\ldots,\Pi_K)
+  = \prod_{n=1}^{N} P(\phi_n, t_n)
+  = \prod_{n=1}^{N}\prod_{k=1}^{K} \bigl[P(\phi_n \mid \mathcal{C}_k)\,\Pi_k\bigr]^{t_{nk}}.
+\]
+
+\medskip
+\textbf{Étape 3 : Log-vraisemblance.}
+\[
+  \ln \mathcal{L}
+  = \sum_{n=1}^{N}\sum_{k=1}^{K} t_{nk}
+    \bigl[\ln P(\phi_n \mid \mathcal{C}_k) + \ln \Pi_k\bigr].
+\]
+On sépare les termes dépendant de $\Pi_k$ :
+\[
+  \ln \mathcal{L}
+  = \underbrace{\sum_{n,k} t_{nk}\ln P(\phi_n \mid \mathcal{C}_k)}_{\text{indépendant de }\Pi_k}
+  + \sum_{k=1}^{K} N_k \ln \Pi_k,
+\]
+avec $N_k = \sum_{n=1}^{N} t_{nk}$.
+
+\medskip
+\textbf{Étape 4 : Maximisation sous contrainte $\sum_{k=1}^{K}\Pi_k = 1$ (multiplicateur de Lagrange).}
+
+On forme le Lagrangien :
+\[
+  \mathcal{F}(\Pi_1,\ldots,\Pi_K,\lambda)
+  = \sum_{k=1}^{K} N_k \ln \Pi_k
+    + \lambda\!\left(\sum_{k=1}^{K} \Pi_k - 1\right).
+\]
+
+\medskip
+\textbf{Étape 5 : Dérivée par rapport à $\Pi_k$.}
+\[
+  \frac{\partial \mathcal{F}}{\partial \Pi_k}
+  = \frac{N_k}{\Pi_k} + \lambda = 0
+  \quad\Longrightarrow\quad
+  \Pi_k = -\frac{N_k}{\lambda}.
+\]
+
+\medskip
+\textbf{Étape 6 : Détermination de $\lambda$ via la contrainte.}
+\[
+  \sum_{k=1}^{K} \Pi_k = 1
+  \quad\Rightarrow\quad
+  \sum_{k=1}^{K} \left(-\frac{N_k}{\lambda}\right) = 1
+  \quad\Rightarrow\quad
+  -\frac{N}{\lambda} = 1
+  \quad\Rightarrow\quad
+  \lambda = -N.
+\]
+
+\medskip
+\textbf{Conclusion :}
+\[
+  \boxed{\hat{\Pi}_k = \frac{N_k}{N}}
+\]
+L'estimateur MLE de la probabilité a priori est simplement la fréquence observée de la classe $k$.
+\end{solution}
+
+% ==============================================================
+\section{Partie II — Classification des mesures d'écoulement d'une rivière}
+% ==============================================================
+
+\begin{enonce}{Contexte}
+On classe les mesures d'écoulement d'une rivière en deux catégories :
+\textbf{sous-critique} ($\mathrm{Fr} < 1$) et \textbf{sur-critique} ($\mathrm{Fr} > 1$).
+\begin{itemize}[itemsep=2pt]
+  \item Données d'entrée : vitesse $v$ et profondeur $d$
+  \item 300 observations : \textbf{270 sous-critique} (90\,\%) et \textbf{30 sur-critique} (10\,\%)
+  \item Performance du modèle : \textbf{95\,\% en entraînement}, \textbf{61\,\% en test}
+\end{itemize}
+\end{enonce}
+
+% -----------------------------------------------------------
+\subsection{Question (a) — Deux explications de la différence train/test}
+% -----------------------------------------------------------
+
+\begin{enonce}{Q(a)}
+Donnez 2 explications différentes pour expliquer la différence de performance entre l'entraînement (95\,\%) et le test (61\,\%).
+\begin{enumerate}[label=\roman*)]
+  \item Décrivez le mécanisme causant cette différence.
+  \item Commentez sur l'interprétation des mesures de performance.
+  \item Proposez un diagnostic pour vérifier quelle explication est en cause.
+\end{enumerate}
+\end{enonce}
+
+\begin{solution}
+
+\textbf{i) Deux mécanismes possibles :}
+
+\begin{enumerate}[label=\textcircled{\small\arabic*},itemsep=4pt]
+  \item \textbf{Déséquilibre de classes.}
+  Avec 90\,\% de données sous-critiques, un modèle ``trivial'' qui prédit toujours
+  \emph{sous-critique} obtient déjà 90\,\% d'accuracy en entraînement.
+  Si la proportion change en test (par exemple plus d'événements sur-critiques),
+  l'accuracy chute brutalement.
+
+  \item \textbf{Sur-apprentissage (\emph{overfitting}).}
+  Le modèle mémorise les données d'entraînement (bruit inclus) sans apprendre
+  la structure générale. Il performe bien sur le train mais généralise mal sur
+  des données non vues.
+\end{enumerate}
+
+\medskip
+\textbf{ii) Interprétation des mesures de performance :}
+
+L'accuracy est une mesure \textbf{trompeuse} sur des données déséquilibrées.
+Avec 90\,\% de sous-critiques, prédire systématiquement la classe majoritaire
+donne 90\,\% d'accuracy sans apprendre quoi que ce soit.
+Il faudrait utiliser des métriques plus robustes : précision, rappel, score F1,
+matrice de confusion, ou AUC-ROC.
+
+\medskip
+\textbf{iii) Diagnostics :}
+
+\begin{itemize}[itemsep=4pt]
+  \item Pour le \textbf{déséquilibre} : vérifier les proportions de chaque classe
+  \emph{prédite} en test. Si le modèle ne prédit jamais ``sur-critique'', c'est
+  le déséquilibre qui est en cause.
+
+  \item Pour le \textbf{sur-apprentissage} : tracer les courbes d'erreur
+  entraînement \emph{et} test en fonction de la taille de l'ensemble
+  d'entraînement (\emph{learning curves}).
+  Un grand écart entre les deux courbes révèle un sur-apprentissage.
+\end{itemize}
+\end{solution}
+
+% -----------------------------------------------------------
+\subsection{Question (b) — Nombre de Froude et régression logistique}
+% -----------------------------------------------------------
+
+\begin{enonce}{Q(b)}
+Le nombre de Froude est défini par
+\[
+  \mathrm{Fr} = \frac{v}{\sqrt{g\,d}}\,,
+\]
+où $g$ est l'accélération gravitationnelle.
+On utilise la \textbf{régression logistique} comme classifieur dans l'espace $(v, d)$.
+Expliquez en quoi ce modèle est \textbf{mal adapté} pour cette classification.
+Proposez des solutions.
+\end{enonce}
+
+\begin{solution}
+
+\textbf{Problème fondamental : frontière de décision non-linéaire.}
+
+La régression logistique est un \textbf{classifieur linéaire} : sa frontière de décision
+dans l'espace $(v, d)$ est un hyperplan de la forme
+\[
+  w_1 v + w_2 d + b = 0.
+\]
+
+Or la frontière naturelle entre sous-critique et sur-critique est $\mathrm{Fr} = 1$, soit :
+\[
+  \frac{v}{\sqrt{g\,d}} = 1
+  \quad\Longleftrightarrow\quad
+  v = \sqrt{g\,d}
+  \quad\Longleftrightarrow\quad
+  v^2 = g\,d.
+\]
+C'est une \textbf{courbe parabolique} dans l'espace $(v, d)$ : non-linéaire.
+La régression logistique ne peut donc pas capturer cette frontière.
+
+\medskip
+\textbf{Solutions :}
+
+\begin{enumerate}[label=\textbf{--},itemsep=4pt]
+  \item \textbf{Classifier directement par rapport à $\mathrm{Fr}$} (une seule feature) :
+  la frontière $\mathrm{Fr} = 1$ devient triviale à apprendre avec n'importe quel classifieur.
+
+  \item \textbf{Classifier dans l'espace $(v,\,\sqrt{d})$} (ou $(v,\,\sqrt{g\,d})$) :
+  la frontière $v = \sqrt{g\,d}$ devient linéaire dans ce nouvel espace,
+  et la régression logistique devient appropriée.
+\end{enumerate}
+\end{solution}
+
+% ==============================================================
+\section{Exercice 2 — Modélisation de sédiment en suspension}
+% ==============================================================
+
+\begin{enonce}{Contexte}
+On dispose de $N = 200$ mesures journalières de sédiment en suspension dans une rivière.
+\begin{itemize}[itemsep=2pt]
+  \item Les données semblent \textbf{unimodales}.
+  \item La distribution est \textbf{asymétrique vers la droite} (\emph{right-skewed}).
+\end{itemize}
+\end{enonce}
+
+% -----------------------------------------------------------
+\subsection{Question (a) — Gaussienne ajustée par maximum de vraisemblance}
+% -----------------------------------------------------------
+
+\begin{enonce}{Q(a-b) — Impact des événements extrêmes}
+On ajuste une gaussienne $\mathcal{N}(\mu, \sigma^2)$ par maximum de vraisemblance.
+
+Expliquez pourquoi et comment la présence d'un \textbf{petit nombre d'événements extrêmes}
+affecte l'estimation de la variance.
+\end{enonce}
+
+\begin{solution}
+
+L'estimateur MLE de la variance est :
+\[
+  \hat{\sigma}^2_{\mathrm{MLE}}
+  = \frac{1}{N}\sum_{n=1}^{N}(x_n - \hat{\mu})^2.
+\]
+
+Les événements extrêmes (grandes valeurs $x_n \gg \hat{\mu}$) contribuent
+\textbf{quadratiquement} au terme $(x_n - \hat{\mu})^2$.
+Même un petit nombre d'extrêmes peut donc \textbf{dominer} la somme et
+\textbf{surestimer artificiellement} $\hat{\sigma}^2$.
+
+La gaussienne ajustée sera trop étalée (\emph{over-dispersed}),
+ce qui correspond mal à la réalité des données typiques.
+\end{solution}
+
+\begin{enonce}{Q(a-c) — Conséquences pratiques pour les valeurs typiques}
+Quelles sont les conséquences pratiques si on cherche à estimer les probabilités
+des valeurs \emph{typiques} (autour de $\mu$) ?
+\end{enonce}
+
+\begin{solution}
+
+La densité gaussienne est normalisée : $\int_{-\infty}^{+\infty} f(x)\,dx = 1$.
+Si $\hat{\sigma}^2$ est surestimé, la hauteur du pic (densité maximale en $\mu$) :
+\[
+  f(\mu) = \frac{1}{\sqrt{2\pi\,\hat{\sigma}^2}}
+\]
+est \textbf{réduite}. Les probabilités des valeurs typiques (proches de $\mu$)
+sont ainsi \textbf{sous-estimées}, au profit des queues.
+
+\textbf{Conséquence pratique :}
+Si l'on cherche à prédire la probabilité d'une mesure sédiment normale (événement courant),
+le modèle gaussien calibré sur des extrêmes la sous-estimera systématiquement,
+conduisant à une mauvaise gestion du risque.
+\end{solution}
+
+% -----------------------------------------------------------
+\subsection{Question (b) — Choix parmi trois modèles}
+% -----------------------------------------------------------
+
+\begin{enonce}{Q(b)}
+On dispose de trois modèles alternatifs :
+\begin{enumerate}[label=\arabic*.]
+  \item Gaussienne $\mathcal{N}(\mu, \sigma^2)$
+  \item Loi de Student $t_\nu(\mu, \sigma^2)$
+  \item Mélange de $M=5$ gaussiennes
+\end{enumerate}
+Expliquez lequel des trois modèles vous choisissez et pourquoi, en vous appuyant sur :
+\begin{enumerate}[label=(\roman*)]
+  \item L'adéquation du modèle à ce que vous connaissez des données.
+  \item Le risque de sur-ajustement étant donné la taille d'entraînement ($N=200$).
+  \item La facilité à bien ajuster chaque modèle.
+\end{enumerate}
+\end{enonce}
+
+\begin{solution}
+
 \begin{center}
-\renewcommand{\arraystretch}{1.6}
-\begin{tabular}{@{}ll@{}}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{@{}lccc@{}}
 \toprule
-\textbf{Fonction} $f(x)$ & \textbf{Gradient} $\nabla_x f$ \\
+\textbf{Critère} & \textbf{Gaussienne} & \textbf{$t$ de Student} & \textbf{Mélange 5G} \\
 \midrule
-$b\T x$ & $b$ \\
-$x\T b$ & $b$ \\
-$x\T A x$ (A quelconque) & $(A + A\T)x$ \\
-$x\T A x$ (A \textbf{symétrique}) & $2Ax$ \\
-$\|Ax\|^2 = x\T A\T A x$ & $2A\T Ax$ \\
-\midrule
-\textbf{Fonction} $f(x)$ & \textbf{Hessien} $\nabla_x^2 f$ \\
-\midrule
-$x\T A x$ (A symétrique) & $2A$ \\
-$e^{x\T A x}$ (A symétrique) & $e^{x\T Ax}\!\left(4Ax\,(Ax)\T + 2A\right)$ \\
+(i) Adéquation aux données & Faible & \textbf{Bonne} & Excessive \\
+(ii) Risque sur-ajustement & Faible (2 params) & \textbf{Faible (3 params)} & Élevé (14 params) \\
+(iii) Facilité d'ajustement & Analytique & Simple & Complexe (EM) \\
 \bottomrule
 \end{tabular}
 \end{center}
-\textbf{Règle de la chaîne :} si $f(x) = h(g(x))$, alors
-$\nabla_x f = \dfrac{\partial g}{\partial x}\T \cdot h'(g(x))$\,, \quad
-$\nabla_x^2 f = \dfrac{\partial g}{\partial x}\T h''(g) \dfrac{\partial g}{\partial x} + h'(g)\,\nabla_x^2 g$.
-\end{rappel}
-
-\vspace{10pt}
-
-% ==============================================================
-\section{Problème 1 — Fonctions quadratiques et exponentielles}
-% ==============================================================
-
-\textbf{Contexte :}
-\[
-  A \in \R^{n \times n} \text{ symétrique},\quad
-  x \in \R^{n},\quad
-  b \in \R^{n},\quad
-  c \in \R.
-\]
-
-% -----------------------------------------------------------
-\subsection{Question 1 — Gradient de \texorpdfstring{$f(x) = \frac{1}{2}x\T Ax + b\T x + c$}{f}}
-% -----------------------------------------------------------
-
-\begin{enonce}{Q1}
-Soit $f : \R^n \to \R$ définie par
-\[
-  f(x) = \frac{1}{2}\,x\T A x + b\T x + c
-\]
-avec $A$ \textbf{symétrique}. Calculer $\nabla_x f(x)$.
-\end{enonce}
-
-\begin{solution}
-On dérive terme par terme.
 
 \medskip
-\textbf{Terme 1 :} $\dfrac{1}{2}\,x\T A x$
+\textbf{Modèle choisi : loi de Student $t_\nu(\mu, \sigma^2)$}
 
-En général, $\nabla_x (x\T A x) = (A + A\T)x$.
-Puisque $A$ est symétrique ($A\T = A$) :
-\[
-  \nabla_x \!\left(\frac{1}{2}\,x\T A x\right)
-  = \frac{1}{2}(A + A\T)x
-  = \frac{1}{2} \cdot 2Ax
-  = Ax.
-\]
+\begin{enumerate}[label=(\roman*),itemsep=6pt]
+  \item \textbf{Adéquation :}
+  Le $t$ de Student possède des \textbf{queues lourdes} (heavy-tailed), contrôlées par
+  le paramètre de degrés de liberté $\nu$.
+  Cela permet de mieux absorber les événements extrêmes sans qu'ils contaminent
+  l'estimation de la dispersion centrale.
+  La gaussienne ($\nu \to \infty$) est trop légère en queue ; le mélange de 5 gaussiennes
+  permet une multimodalité inutile pour des données \emph{unimodales}.
 
-\textbf{Terme 2 :} $b\T x = x\T b$ \quad$\Rightarrow$\quad $\nabla_x(b\T x) = b$.
+  \item \textbf{Risque de sur-ajustement :}
+  Le $t$ de Student n'a que \textbf{3 paramètres} $(\mu, \sigma, \nu)$
+  pour $N = 200$ observations → risque très faible.
+  Le mélange de 5 gaussiennes nécessite jusqu'à $5 \times 3 - 1 = 14$ paramètres libres,
+  ce qui est disproportionné pour 200 données.
 
-\textbf{Terme 3 :} $c$ (constante) \quad$\Rightarrow$\quad gradient nul.
-
-\medskip
-\textbf{En sommant :}
-\[
-  \boxed{\nabla_x f(x) = Ax + b}
-\]
-\end{solution}
-
-\begin{tcolorbox}[colback=orange!10,colframe=orange,fonttitle=\bfseries,
-  title={Bonne réponse : (b) \quad $\nabla_x f(x) = Ax + b$}]
-C'est la généralisation matricielle de $\tfrac{d}{dx}(\tfrac{1}{2}ax^2 + bx + c) = ax + b$.
-\end{tcolorbox}
-
-% -----------------------------------------------------------
-\subsection{Question 2 — Hessien de \texorpdfstring{$f(x) = \frac{1}{2}x\T Ax + b\T x + c$}{f}}
-% -----------------------------------------------------------
-
-\begin{enonce}{Q2}
-Pour la même fonction $f$, calculer le Hessien $\nabla_x^2 f(x)$.
-\end{enonce}
-
-\begin{solution}
-Le Hessien est la dérivée du gradient par rapport à $x\T$ :
-\[
-  \nabla_x^2 f(x) = \frac{\partial}{\partial x\T}\!\left(\nabla_x f(x)\right)
-  = \frac{\partial}{\partial x\T}(Ax + b).
-\]
-\begin{itemize}[itemsep=2pt]
-  \item $\dfrac{\partial}{\partial x\T}(Ax) = A$ \quad (dérivée d'une forme linéaire)
-  \item $\dfrac{\partial}{\partial x\T}(b) = 0$ \quad (constante)
-\end{itemize}
-\[
-  \boxed{\nabla_x^2 f(x) = A}
-\]
-\end{solution}
-
-\begin{tcolorbox}[colback=orange!10,colframe=orange,fonttitle=\bfseries,
-  title={Bonne réponse : (a) \quad $\nabla_x^2 f(x) = A$}]
-C'est l'analogue matriciel de $\tfrac{d^2}{dx^2}(\tfrac{1}{2}ax^2) = a$.
-\end{tcolorbox}
-
-% -----------------------------------------------------------
-\subsection{Question 3 — Gradient de \texorpdfstring{$f(x) = e^{g(x)}$, $g(x)=x\T Ax$}{f = exp(xTAx)}}
-% -----------------------------------------------------------
-
-\begin{enonce}{Q3}
-Soit $f(x) = e^{g(x)}$ avec $g(x) = x\T A x$ et $A$ symétrique.\\
-Calculer $\nabla_x f(x)$.
-\end{enonce}
-
-\begin{solution}
-On applique la \textbf{règle de la chaîne} :
-\[
-  \nabla_x f(x)
-  = \frac{d}{d g}\!\left(e^g\right) \cdot \nabla_x g(x)
-  = e^{g(x)} \cdot \nabla_x g(x).
-\]
-
-\textbf{Calcul de $\nabla_x g(x)$} : $g(x) = x\T A x$, $A$ symétrique $\Rightarrow$
-\[
-  \nabla_x g(x) = (A + A\T)x = 2Ax.
-\]
-
-\textbf{En substituant} :
-\[
-  \nabla_x f(x) = e^{x\T A x} \cdot 2Ax.
-\]
-\[
-  \boxed{\nabla_x f(x) = 2\,e^{x\T Ax}\,Ax}
-\]
-
-\textit{Interprétation :} C'est l'analogue de $\dfrac{d}{dx}e^{ax^2} = 2ax\,e^{ax^2}$ en dimension 1.
-\end{solution}
-
-\begin{tcolorbox}[colback=orange!10,colframe=orange,fonttitle=\bfseries,
-  title={Bonne réponse : (b) \quad $\nabla_x f(x) = 2\,e^{x\T Ax}\,Ax$}]
-\end{tcolorbox}
-
-% -----------------------------------------------------------
-\subsection{Question 4 — Hessien de \texorpdfstring{$f(x) = e^{x\T Ax}$}{f = exp(xTAx)}}
-% -----------------------------------------------------------
-
-\begin{enonce}{Q4}
-Pour $f(x) = e^{x\T A x}$ avec $A$ symétrique, calculer $\nabla_x^2 f(x)$.
-\end{enonce}
-
-\begin{solution}
-On part du gradient calculé à la question précédente :
-\[
-  \nabla_x f(x) = 2\,e^{x\T Ax}\,Ax.
-\]
-
-On dérive à nouveau par rapport à $x\T$ (règle du produit) :
-\[
-  \nabla_x^2 f(x)
-  = \frac{\partial}{\partial x\T}\!\left[2\,e^{x\T Ax}\,Ax\right]
-  = 2\,\frac{\partial e^{x\T Ax}}{\partial x\T} \cdot (Ax)\T
-    + 2\,e^{x\T Ax}\,\frac{\partial (Ax)}{\partial x\T}.
-\]
-
-\textbf{Calcul des deux parties :}
-
-\begin{enumerate}[label=\textbf{(\alph*)}]
-\item $\dfrac{\partial e^{x\T Ax}}{\partial x\T} = e^{x\T Ax} \cdot (2Ax)\T = 2e^{x\T Ax}(Ax)\T$
-\quad (vecteur-ligne $1\times n$)
-
-\item $\dfrac{\partial (Ax)}{\partial x\T} = A$
-\quad (matrice $n\times n$)
+  \item \textbf{Facilité d'ajustement :}
+  L'estimation des paramètres du $t$ de Student se fait par une optimisation numérique
+  simple (algorithme EM ou MLE direct), beaucoup plus stable que l'EM
+  du mélange de gaussiennes (initialisation sensible, convergence non garantie).
 \end{enumerate}
 
-En substituant :
-\[
-  \nabla_x^2 f(x)
-  = 2 \cdot \underbrace{e^{x\T Ax} \cdot 2Ax}_{\in\,\R^n}
-    \underbrace{(Ax)\T}_{\in\,\R^{1\times n}}
-    + 2\,e^{x\T Ax}\,A
-\]
-\[
-  = 4\,e^{x\T Ax}\,Ax(Ax)\T + 2\,e^{x\T Ax}\,A
-\]
-\[
-  \boxed{\nabla_x^2 f(x) = e^{x\T Ax}\!\left(4\,Ax\,(Ax)\T + 2\,A\right)}
-\]
-
-\textbf{Vérification des dimensions :}
-\begin{itemize}[itemsep=1pt]
-  \item $Ax \in \R^n$, donc $Ax(Ax)\T \in \R^{n\times n}$ \checkmark
-  \item $A \in \R^{n\times n}$ \checkmark
-  \item Le Hessien est bien $n \times n$ symétrique \checkmark
-\end{itemize}
-
-\textit{Note :} On peut aussi écrire $Ax(Ax)\T = Axx\T A\T = Axx\T A$ car $A$ est symétrique.
+\textbf{Conclusion :} Le $t$ de Student offre le meilleur compromis entre flexibilité
+(queues lourdes adaptées aux extrêmes), parcimonie (3 paramètres) et facilité d'ajustement.
 \end{solution}
-
-\begin{tcolorbox}[colback=orange!10,colframe=orange,fonttitle=\bfseries,
-  title={Bonne réponse : (9) \quad $\nabla_x^2 f(x) = e^{x\T Ax}\!\left(4Ax(Ax)\T + 2A\right)$}]
-\end{tcolorbox}
-
-% ==============================================================
-\section{Question 5 — Gradient de \texorpdfstring{$f(x) = \|Ax\|^2$}{f = ||Ax||²}}
-% ==============================================================
-
-\begin{enonce}{Q5}
-Soit $f(x) = \|Ax\|^2$ avec $A \in \R^{m\times n}$, $x \in \R^n$.
-Calculer $\nabla_x f(x)$.
-\end{enonce}
-
-\begin{solution}
-\textbf{Étape 1 : Réécrire $f$ sous forme quadratique.}
-
-Par définition de la norme $\ell_2$ :
-\[
-  f(x) = \|Ax\|^2 = (Ax)\T(Ax) = x\T \underbrace{A\T A}_{=:\,B} x = x\T B x.
-\]
-
-\textbf{Étape 2 : Propriétés de $B = A\T A$.}
-\[
-  B\T = (A\T A)\T = A\T (A\T)\T = A\T A = B.
-\]
-$B$ est donc \textbf{symétrique} (et semi-définie positive).
-
-\textbf{Étape 3 : Calcul du gradient.}
-
-Puisque $f(x) = x\T B x$ et $B$ est symétrique :
-\[
-  \nabla_x f(x) = (B + B\T)x = 2Bx = 2A\T A x.
-\]
-\[
-  \boxed{\nabla_x f(x) = 2A\T Ax}
-\]
-
-\textbf{Vérification en dimension 1 :} si $n=m=1$, $f(x) = a^2 x^2$, $f'(x) = 2a^2 x = 2a\T a\, x$ \checkmark
-
-\textit{Cette formule est fondamentale dans les moindres carrés :}
-Pour minimiser $\|Ax - b\|^2$, le gradient est $2A\T(Ax-b)$, et en l'annulant on obtient les équations normales $A\T Ax = A\T b$.
-\end{solution}
-
-\begin{tcolorbox}[colback=orange!10,colframe=orange,fonttitle=\bfseries,
-  title={Bonne réponse : (a) \quad $\nabla_x f(x) = 2A\T Ax$}]
-\end{tcolorbox}
 
 % ==============================================================
 %  RÉCAPITULATIF
 % ==============================================================
 \newpage
-\section*{Récapitulatif des résultats}
+\section*{Récapitulatif des résultats clés}
 
-\begin{center}
-\renewcommand{\arraystretch}{2.0}
-\begin{tabular}{@{}clll@{}}
-\toprule
-\textbf{Q} & \textbf{Fonction} $f(x)$ & \textbf{Résultat} & \textbf{Rép.} \\
-\midrule
-1 & $\dfrac{1}{2}x\T Ax + b\T x + c$ \quad ($A$ symét.) 
-  & $\nabla_x f = Ax + b$ & (b) \\
-2 & idem 
-  & $\nabla_x^2 f = A$ & (a) \\
-3 & $e^{x\T Ax}$ \quad ($A$ symét.) 
-  & $\nabla_x f = 2e^{x\T Ax} Ax$ & (b) \\
-4 & $e^{x\T Ax}$ \quad ($A$ symét.) 
-  & $\nabla_x^2 f = e^{x\T Ax}(4Ax(Ax)\T + 2A)$ & (9) \\
-5 & $\|Ax\|^2$ 
-  & $\nabla_x f = 2A\T Ax$ & (a) \\
-\bottomrule
-\end{tabular}
-\end{center}
+\begin{tcolorbox}[colback=bleu!8,colframe=bleu,fonttitle=\bfseries,
+  title={Exercice 1 — Bishop 6.4.9}]
+Estimateur MLE des probabilités a priori d'un classifieur probabiliste à $K$ classes :
+\[
+  \hat{\Pi}_k = \frac{N_k}{N}
+\]
+Dérivé par maximisation du Lagrangien $\sum_k N_k \ln \Pi_k + \lambda\!\left(\sum_k \Pi_k - 1\right)$.
+\end{tcolorbox}
 
-\vspace{12pt}
+\vspace{8pt}
 
-% ==============================================================
-%  CONSEILS POUR L'EXAMEN
-% ==============================================================
-\begin{tcolorbox}[colback=bleu!8,colframe=bleu,fonttitle=\bfseries\large,
-  title={Stratégie pour l'examen}]
+\begin{tcolorbox}[colback=bleu!8,colframe=bleu,fonttitle=\bfseries,
+  title={Partie II — Classification d'écoulement}]
+\begin{itemize}[itemsep=4pt]
+  \item Performance train/test : deux causes possibles =
+        \textbf{déséquilibre de classes} ou \textbf{sur-apprentissage}
+  \item Diagnostic : \emph{learning curves} + proportions de classes prédites
+  \item Régression logistique inadaptée car $\mathrm{Fr}=v/\!\sqrt{gd}=1$
+        est une frontière \textbf{non-linéaire} dans $(v,d)$
+  \item Solutions : classer sur $\mathrm{Fr}$ directement, ou sur $(v, \sqrt{d})$
+\end{itemize}
+\end{tcolorbox}
 
-\begin{enumerate}[itemsep=6pt]
-  \item \textbf{Identifier la structure :} est-ce une forme linéaire ($b\T x$), quadratique ($x\T Ax$), ou une composition ?
+\vspace{8pt}
 
-  \item \textbf{Vérifier la symétrie de $A$} : si $A$ symétrique, $(A+A\T)x = 2Ax$ simplifie tout.
-
-  \item \textbf{Règle de la chaîne} pour les compositions $f(g(x))$ :
-  \[
-    \nabla_x f = g'(x)^* \cdot f'(g(x))
-  \]
-  où $g'(x)^*$ est la transposée du Jacobien de $g$.
-
-  \item \textbf{Hessien = dérivée du gradient} : dériver $\nabla_x f$ par rapport à $x\T$.
-
-  \item \textbf{Vérifier les dimensions} : le gradient est un vecteur $n\times 1$, le Hessien une matrice $n\times n$.
-
-  \item \textbf{Astuce} : $\|Ax\|^2 \Rightarrow$ poser $B = A\T A$ (symétrique), puis utiliser $\nabla_x(x\T Bx) = 2Bx$.
-\end{enumerate}
+\begin{tcolorbox}[colback=bleu!8,colframe=bleu,fonttitle=\bfseries,
+  title={Exercice 2 — Modélisation de sédiment}]
+\begin{itemize}[itemsep=4pt]
+  \item Les événements extrêmes \textbf{surestiment} $\hat{\sigma}^2_{\mathrm{MLE}}$ de la gaussienne
+        (contribution quadratique), entraînant une \textbf{sous-estimation} des probabilités typiques
+  \item Modèle choisi : \textbf{$t$ de Student} — queues lourdes + 3 params + ajustement simple
+\end{itemize}
 \end{tcolorbox}
 
 \end{document}
