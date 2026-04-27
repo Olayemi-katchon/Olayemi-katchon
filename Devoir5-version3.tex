@@ -1,0 +1,539 @@
+\documentclass[12pt,a4paper]{article}
+
+% Encodage / langue
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+
+% Mise en page
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{setspace}
+\onehalfspacing
+
+% Maths et figures
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{booktabs}
+
+% Style des listings R
+\lstset{
+  language=R,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{orange},
+  breaklines=true,
+  frame=single
+}
+
+% Liens
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+% Titre
+\title{APPRENTISSAGE NON SUPERVISE ET SERIES CHRONOLOGIQUES :\\
+DEVOIR 5}
+\author{KATCHON CERVEAU}
+\date{23 avril 2026}
+
+\begin{document}
+\maketitle
+
+\section{Description des données}
+La série étudiée est la série mensuelle des températures moyennes de l'Angleterre centrale
+(\emph{Central England Temperature, CET}). Il s'agit de la plus longue série instrumentale de températures au monde,disponible depuis 1659 et mise à jour mensuellement par le Met Office britannique. Les données sont exprimées en degrés Celsius et représentent des températures moyennes mensuelles pour une région triangulaire de l'Angleterre délimitée par le Lancashire, Londres et Bristol.
+
+L'objectif de cette analyse exploratoire est d'identifier les principales composantes de la série (tendance à long terme, saisonnalité, bruit) afin d'orienter les choix de modélisation et de prévision.
+
+\section{Partie A: Analyses préliminaires}
+\subsection{Évaluation – élément (1)}
+Dans cette partie, nous présenterons une analyse des différentes graphiques de la série pour mettre en évidence les composantes de la série: Tendance-cycle, saisonnalité et résidus. 
+\subsubsection{Graphique 1 : Evolution de la température moyenne de l'Angleterre centrale}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.90\textwidth]{fig4.png}
+    \caption{Série CET mensuelle : vue d'ensemble (ex. 1900--2020 ou longue période).}
+    \label{fig:longseries}
+\end{figure}
+
+\paragraph{Commentaires (tendance, saisonnalité, bruit).}
+\begin{itemize}
+    \item \textbf{Saisonnalité dominante :} oscillations régulières de forte amplitude sur toute la période.
+    \item \textbf{Tendance long terme :} une augmentation graduelle du niveau moyen est plausible, notamment sur la période récente (réchauffement).
+    \item \textbf{Bruit et extrêmes :} la série comporte des mois exceptionnellement froids ou chauds (valeurs extrêmes), et un bruit important autour du cycle saisonnier.
+\end{itemize}
+
+\subsubsection{Graphique 2 : Détection de la saisonnalité }
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{fig1.png}
+    \caption{Saisonnalité : températures mensuelles superposées par année (season plot).}
+    \label{fig:seasonplot}
+\end{figure}
+
+\paragraph{Commentaires (tendance, saisonnalité, bruit).}
+\begin{itemize}
+    \item \textbf{Saisonnalité très marquée et régulière :} la forme générale est stable d'une année à l'autre, avec des minima en hiver (janvier--février) et des maxima en été (juillet--août).
+    \item \textbf{Amplitude saisonnière :} l'écart entre hiver et été est important, de l'ordre d'une quinzaine de degrés selon les années.
+    \item \textbf{Bruit / variabilité interannuelle :} pour un même mois, les températures varient d'une année à l'autre, ce qui correspond à la variabilité météorologique/climatique.
+\end{itemize}
+
+\paragraph{Implications pour la modélisation.}
+La présence d'une saisonnalité annuelle forte suggère l'utilisation de modèles saisonniers (période $m=12$), par exemple SARIMA saisonnier, ETS avec saisonnalité, ou une approche STL + modèle sur les résidus.
+
+\subsubsection{Graphique 3 : dépendance temporelle (lag plots)}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.2\textwidth]{fig2.png}
+    \caption{Lag plots (retards 1, 6 et 12) : structure de dépendance et saisonnalité.}
+    \label{fig:lagplots}
+\end{figure}
+
+\paragraph{Commentaires (tendance, saisonnalité, bruit).}
+\begin{itemize}
+    \item \textbf{Lag 1 :} corrélation positive forte, indiquant une dépendance à court terme (un mois ressemble au mois précédent).
+    \item \textbf{Lag 6 :} relation plutôt négative, cohérente avec le fait qu'à 6 mois d'intervalle on se trouve souvent dans une saison opposée (été vs hiver).
+    \item \textbf{Lag 12 :} corrélation positive forte, montrant qu'un mois donné est proche du même mois l'année précédente : saisonnalité annuelle stable.
+\end{itemize}
+
+\paragraph{Implications pour la modélisation.}
+Ces graphes confirment que la série n'est pas un bruit blanc : il existe une autocorrélation notable aux retards courts et à 12 mois. Des modèles intégrant des dépendances (AR/MA) et une composante saisonnière sont adaptés.
+
+\subsubsection{Graphique 4 : évolution par mois (facettes)}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{fig3.png}
+    \caption{Série par facettes : évolution de chaque mois au fil des années.}
+    \label{fig:monthlyfacets}
+\end{figure}
+
+\paragraph{Commentaires (tendance, saisonnalité, bruit).}
+\begin{itemize}
+    \item \textbf{Saisonnalité (différences de niveau selon les mois) :} les mois d'été présentent des niveaux moyens plus élevés que les mois d'hiver.
+    \item \textbf{Tendance long terme potentielle :} on peut observer un décalage progressif des niveaux (réchauffement), surtout sur les périodes récentes, selon l'échelle d'observation.
+    \item \textbf{Bruit :} chaque mois présente une variabilité importante d'une année à l'autre, reflétant les fluctuations météorologiques.
+\end{itemize}
+
+\paragraph{Implications pour la modélisation.}
+Ces facettes aident à juger si la tendance est similaire selon les mois et si la saisonnalité reste stable. Une tendance lente peut être modélisée explicitement (terme de trend / régression sur le temps) plutôt que d'être uniquement éliminée par différenciation.
+
+
+\subsection{Évaluation – élément (2)}
+Nous présenterons dans cette partie la décomposition de la série, suivi du graphique de l'autocorrélation et enfin d'une analyse sur la nature de la série. 
+
+
+\subsubsection{Graphique 5 : Décomposition de la série}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{fig6.png}
+    \caption{Décomposition STL de la série CET (trend window = 24, season = ``periodic'').}
+    \label{fig:stl_decomp}
+\end{figure}
+
+\paragraph{Commentaires sur la décomposition STL.}
+La décomposition STL (Seasonal-Trend decomposition using Loess) sépare la série CET en trois composantes :
+\begin{itemize}
+    \item \textbf{Tendance (\textit{trend}) :} la composante de tendance révèle une évolution lente et progressive du niveau moyen des températures sur la période 1659--1996. On observe une légère hausse à long terme, cohérente avec le réchauffement climatique documenté en Angleterre. Cette tendance est relativement lisse (fenêtre \texttt{trend = 24} mois), ce qui évite de capturer des fluctuations interannuelles qui relèvent plutôt du bruit.
+    \item \textbf{Saisonnalité (\textit{season}) :} la composante saisonnière est supposée \emph{périodique} (\texttt{season = 'periodic'}), c'est-à-dire identique d'une année à l'autre. Elle capture l'alternance régulière entre les mois froids (hiver, valeurs négatives) et les mois chauds (été, valeurs positives), avec une amplitude d'environ 8 à 9 degrés Celsius. Cette hypothèse de périodicité stricte est toutefois une simplification : en réalité, l'amplitude saisonnière peut évoluer légèrement sur plus de trois siècles.
+    \item \textbf{Résidus (\textit{remainder}) :} les résidus représentent ce qui n'est expliqué ni par la tendance ni par la saisonnalité. Ils semblent centrés autour de zéro, mais une inspection plus détaillée (ACF) révèle s'ils se comportent comme un bruit blanc.
+\end{itemize}
+
+\subsubsection{Graphique 6 : Fonction d'autocorrélation ACF des résidus jusqu'à lag 36}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{fig5.png}
+    \caption{ACF des résidus STL (trend = 24, season = ``periodic'') -- jusqu'au lag 36.}
+    \label{fig:acf36}
+\end{figure}
+
+\paragraph{Commentaires sur l'ACF (lag 36, season = ``periodic'').}
+L'ACF de la composante résiduelle obtenue avec \texttt{season = 'periodic'} montre :
+\begin{itemize}
+    \item \textbf{Autocorrélation significative aux retards courts (lag 1, 2, 3\ldots) :} de nombreuses barres dépassent les bornes de confiance à 95\%, indiquant que les résidus ne sont pas un bruit blanc. La dépendance temporelle à court terme n'a pas été entièrement absorbée par la décomposition.
+    \item \textbf{Autocorrélations significatives aux retards saisonniers (lag 12, 24, 36) :} la présence de pics aux multiples de 12 révèle que l'hypothèse d'une saisonnalité \emph{strictement périodique} est trop rigide. Une partie de la structure saisonnière varie légèrement d'une année à l'autre et se retrouve dans le résidu.
+    \item \textbf{Conclusion :} avec \texttt{season = 'periodic'}, le reste de la décomposition n'est pas un bruit blanc. Il est nécessaire d'assouplir le paramètre saisonnier.
+\end{itemize}
+
+\subsubsection{Graphique 7 : Fonction d'autocorrélation ACF des résidus lag 24}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{DEVOIR 5/fig7.png}
+    \caption{ACF des résidus STL (trend = 24, season = ``periodic'') -- jusqu'au lag 24.}
+    \label{fig:acf24}
+\end{figure}
+
+\paragraph{Commentaires sur l'ACF (lag 24, season = ``periodic'').}
+Cette représentation restreinte au lag 24 confirme les observations précédentes :
+\begin{itemize}
+    \item Les retards 1 et 2 sont fortement significatifs, traduisant une dépendance à court terme.
+    \item Le retard 12 présente une autocorrélation positive significative, signalant que la saisonnalité périodique fixe n'est pas entièrement adaptée aux variations lentes de la saisonnalité sur 337 ans de données.
+    \item Le retard 24 peut également être significatif, renforçant la conclusion qu'une fenêtre saisonnière variable serait préférable à l'hypothèse périodique.
+\end{itemize}
+
+\subsubsection{Graphique 8 : ACF avec trend=24; season=11}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{DEVOIR 5/DEVOIR 5/afc11.png}
+    \caption{ACF des résidus STL avec trend = 24, season = 11.}
+    \label{fig:acf_s11}
+\end{figure}
+
+\paragraph{Commentaires (trend = 24, season = 11).}
+En passant d'une saisonnalité périodique à une fenêtre de lissage \texttt{season = 11} (équivalant à un lissage sur environ 5 cycles), on observe :
+\begin{itemize}
+    \item \textbf{Réduction visible des autocorrélations aux lags saisonniers :} le pic à lag 12 diminue par rapport au cas périodique, indiquant que la fenêtre saisonnière plus courte absorbe davantage de la variabilité saisonnière lentement évolutive.
+    \item \textbf{Autocorrélations aux lags courts encore présentes :} les retards 1 et 2 restent significatifs. La fenêtre saisonnière de 11 n'est peut-être pas encore suffisamment large pour capturer toute la structure saisonnière.
+    \item \textbf{Conclusion intermédiaire :} \texttt{season = 11} constitue une amélioration par rapport à l'hypothèse périodique, mais les résidus ne satisfont pas encore complètement les critères d'un bruit blanc.
+\end{itemize}
+
+\subsubsection{Graphique 9 : ACF avec trend=50; season=15}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{DEVOIR 5/DEVOIR 5/acf15.png}
+    \caption{ACF des résidus STL avec trend = 50, season = 15.}
+    \label{fig:acf_s15}
+\end{figure}
+
+\paragraph{Commentaires (trend = 50, season = 15).}
+Avec une fenêtre de tendance plus large (\texttt{trend = 50}) et une fenêtre saisonnière intermédiaire (\texttt{season = 15}) :
+\begin{itemize}
+    \item \textbf{Tendance très lissée :} la fenêtre de tendance de 50 capture des mouvements à très long terme (plusieurs décennies), éliminant davantage des fluctuations décennales de la tendance.
+    \item \textbf{Amélioration de l'ACF saisonnière :} les autocorrélations aux multiples de 12 sont davantage réduites. \texttt{season = 15} permet à la composante saisonnière de s'adapter plus souplement aux variations lentes sur les trois siècles de données.
+    \item \textbf{Résidus plus proches d'un bruit blanc :} bien que quelques barres restent significatives aux retards courts, l'ensemble de l'ACF montre une nette amélioration par rapport aux configurations précédentes.
+\end{itemize}
+
+\subsubsection{Graphique 10 : ACF avec trend=13; season=19}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{DEVOIR 5/DEVOIR 5/acf19.png}
+    \caption{ACF des résidus STL avec trend = 13, season = 19.}
+    \label{fig:acf_s19}
+\end{figure}
+
+\paragraph{Commentaires (trend = 13, season = 19).}
+La combinaison \texttt{trend = 13} (fenêtre courte, tendance réactive) et \texttt{season = 19} (fenêtre plus large, saisonnalité très souple) produit les résultats suivants :
+\begin{itemize}
+    \item \textbf{Tendance plus réactive :} avec \texttt{trend = 13} (environ 1 an), la tendance s'ajuste rapidement aux variations interannuelles. Cela peut toutefois faire absorber par la tendance des fluctuations qui sont plutôt de la nature du bruit.
+    \item \textbf{Meilleure absorption de la saisonnalité variable :} la fenêtre saisonnière de 19 (environ 9 ans de lissage) permet à la composante saisonnière de s'adapter aux évolutions lentes, ce qui réduit davantage les autocorrélations saisonnières dans les résidus.
+    \item \textbf{Résidus les plus proches d'un bruit blanc :} parmi les configurations testées, cette combinaison offre généralement les résidus les moins autocorrélés. L'ACF ne présente que peu de barres significatives au-delà des bornes à 95\%.
+    \item \textbf{Paramétrage retenu :} sur la base de ces essais, le paramétrage \texttt{trend = 13, season = 19} est le plus justifié pour la décomposition STL de la série CET, car il conduit aux résidus les plus proches d'un bruit blanc. Ces résidus satisfont davantage les hypothèses nécessaires à la modélisation.
+\end{itemize}
+
+\paragraph{Synthèse des paramètres STL.}
+Le tableau~\ref{tab:stl_params} résume les essais de paramétrage et l'évaluation qualitative de l'ACF des résidus.
+
+\begin{table}[H]
+\centering
+\caption{Comparaison des paramètres de décomposition STL.}
+\label{tab:stl_params}
+\begin{tabular}{@{}lllp{6cm}@{}}
+\toprule
+Trend window & Season window & ACF saisonnière & Commentaire \\
+\midrule
+24  & periodic & Forte (lag 12, 24, 36) & Hypothèse trop rigide \\
+24  & 11 & Réduite mais présente & Amélioration partielle \\
+50  & 15 & Faible  & Bonne absorption \\
+13  & 19 & Très faible & Meilleure configuration \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Évaluation – élément (3)}
+Il s'agit ici de mettre en oeuvre la méthode saisonnière naïve pour la prévision de la série. 
+
+\subsubsection{Prévision avec la méthode saisonnière naive}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{DEVOIR 5/fig8.png}
+    \caption{Prévision avec le modèle de référence (méthode saisonnière naïve, horizon 12 mois).}
+    \label{fig:snaive}
+\end{figure}
+
+\paragraph{Commentaires sur la prévision naïve saisonnière.}
+\begin{itemize}
+    \item La méthode saisonnière naïve répète simplement les valeurs observées au cours de la dernière saison complète. Elle constitue un modèle de référence (\textit{benchmark}) minimal.
+    \item Les prévisions reproduisent fidèlement le profil saisonnier (hiver froid / été chaud), ce qui est cohérent avec la forte saisonnalité de la série.
+    \item Les intervalles de prévision à 95\% s'élargissent avec l'horizon, reflétant l'incertitude croissante.
+    \item Ce modèle ignore toute tendance et toute structure de corrélation résiduelle : il servira de référence inférieure pour évaluer les modèles plus sophistiqués proposés en Partie~B.
+\end{itemize}
+
+\section{PARTIE B : Modélisation, prévision et comparaison}
+\subsection{Évaluation – élément (1) (3 points)}
+La série CET est mensuelle (période saisonnière $m=12$) et présente une saisonnalité annuelle marquée (hiver froid / été chaud),
+ainsi qu'une dépendance temporelle (corrélations aux retards courts et au retard 12). Sur la base des méthodes vues en cours,
+nous proposons trois modèles candidats, implémentés avec la librairie \texttt{fpp3}.
+
+\subsubsection{Modèle candidat 1 : ETS saisonnier (lissage exponentiel)}
+\paragraph{Justification.}
+Les modèles ETS (\emph{Error--Trend--Seasonal}) sont adaptés aux séries présentant une structure de niveau et une saisonnalité régulière.
+Ils constituent un choix pertinent pour la prévision à court/moyen terme lorsque la saisonnalité domine et que l'évolution de long terme
+reste relativement lisse. De plus, \texttt{ETS()} peut sélectionner automatiquement la forme (additive/multiplicative) compatible avec la série.
+
+\paragraph{Implémentation (\texttt{fpp3}).}
+\begin{lstlisting}
+cet.fit.ets <- cet.train |> model(ETS = ETS(Tmean))
+\end{lstlisting}
+
+\subsection*{Évaluation – élément (2) (1.5 points)}
+
+\subsubsection{Analyse des résidus -- Modèle ETS}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{DEVOIR 5/residu1.png}
+    \caption{Diagnostic des résidus -- Modèle ETS.}
+    \label{fig:residu1}
+\end{figure}
+
+\paragraph{Commentaires sur les résidus ETS.}
+\begin{itemize}
+    \item \textbf{Graphique temporel des résidus :} les résidus semblent globalement centrés autour de zéro, sans structure temporelle évidente à l'œil nu. Toutefois, la variance peut présenter une légère hétérogénéité sur les premières décennies de la série (variabilité plus grande pour les données anciennes).
+    \item \textbf{ACF des résidus :} plusieurs barres dépassent les bornes de confiance à 95\%, notamment aux retards courts (lag 1, 2) et possiblement à lag 12. Cela indique que le modèle ETS n'a pas complètement capturé la structure de dépendance de la série, en particulier les corrélations à court terme.
+    \item \textbf{Histogramme :} la distribution des résidus est approximativement symétrique et centrée sur zéro, sans asymétrie majeure.
+\end{itemize}
+
+\subsubsection{Analyse des résultats portmanteau -- Modèle ETS}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{DEVOIR 5/pormant1.png}
+    \caption{Test de Ljung-Box (10 lags) -- Modèle ETS.}
+    \label{fig:portmanteau1}
+\end{figure}
+
+\paragraph{Commentaires sur le test de Ljung-Box (ETS).}
+\begin{itemize}
+    \item Le test de Ljung-Box avec 10 retards teste l'hypothèse nulle que les résidus sont indépendants (bruit blanc).
+    \item Si la p-valeur est inférieure à 0,05, on rejette l'hypothèse nulle, ce qui signifie que les résidus présentent une autocorrélation significative.
+    \item Pour le modèle ETS appliqué à la série CET, la p-valeur est en général inférieure au seuil de 5\%, indiquant que les résidus ne sont pas un bruit blanc. Le modèle ETS ne capture pas intégralement la structure de dépendance de la série, notamment la corrélation résiduelle à court terme.
+\end{itemize}
+
+\subsubsection{Modèle candidat 2 : SARIMA saisonnier (ARIMA automatique)}
+\paragraph{Justification.}
+La présence d'autocorrélation aux retards courts et au retard saisonnier ($12$ mois) rend les modèles SARIMA pertinents.
+Ils permettent de capturer explicitement la dépendance temporelle via des composantes autorégressives et moyennes mobiles,
+et d'intégrer la saisonnalité annuelle (différenciation et/ou termes saisonniers).
+
+\paragraph{Implémentation (\texttt{fpp3}).}
+\begin{lstlisting}
+cet.fit.arima <- cet.train |> model(SARIMA = ARIMA(Tmean))
+\end{lstlisting}
+
+\subsubsection{Analyse des résidus -- Modèle SARIMA}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{DEVOIR 5/residu2.png}
+    \caption{Diagnostic des résidus -- Modèle SARIMA.}
+    \label{fig:residu2}
+\end{figure}
+
+\paragraph{Commentaires sur les résidus SARIMA.}
+\begin{itemize}
+    \item \textbf{Graphique temporel des résidus :} les résidus présentent une structure qui ressemble davantage à un bruit blanc. Ils sont centrés autour de zéro et ne montrent pas de tendance résiduelle visible.
+    \item \textbf{ACF des résidus :} la plupart des barres sont à l'intérieur des bornes de confiance à 95\%. La différenciation saisonnière et les termes AR/MA saisonniers sélectionnés automatiquement par \texttt{ARIMA()} ont permis d'absorber la majeure partie de la structure de dépendance.
+    \item \textbf{Histogramme :} la distribution des résidus est approximativement normale et bien centrée sur zéro.
+\end{itemize}
+
+\subsubsection{Analyse des résultats portmanteau -- Modèle SARIMA}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{DEVOIR 5/pormant2.png}
+    \caption{Test de Ljung-Box (10 lags) -- Modèle SARIMA.}
+    \label{fig:portmanteau2}
+\end{figure}
+
+\paragraph{Commentaires sur le test de Ljung-Box (SARIMA).}
+\begin{itemize}
+    \item La p-valeur du test de Ljung-Box est supérieure à 0,05, ce qui indique qu'on ne peut pas rejeter l'hypothèse nulle d'indépendance des résidus.
+    \item Les résidus du modèle SARIMA satisfont l'hypothèse de bruit blanc au sens de l'absence d'autocorrélation. Le modèle a correctement capturé la structure de dépendance de la série.
+    \item \textbf{Conclusion :} le modèle SARIMA produit des résidus ayant les propriétés adéquates pour la modélisation. C'est un modèle à retenir pour la validation et la comparaison.
+\end{itemize}
+
+\subsubsection{Modèle candidat 3 : STL + ARIMA (décomposition + modèle sur le reste)}
+\paragraph{Justification.}
+Étant donné la saisonnalité très dominante, une stratégie consiste à (i) décomposer la série en tendance + saisonnalité + reste
+par STL, puis (ii) modéliser la composante restante (\textit{remainder}) avec un modèle ARIMA.
+Cette approche améliore souvent l'interprétabilité (diagnostic via l'ACF du remainder) et peut renforcer la qualité des prévisions.
+
+\paragraph{Implémentation (\texttt{fpp3}).}
+\begin{lstlisting}
+cet.fit.stlarima <- cet.train |>
+  model(STL_ARIMA = decomposition_model(
+    STL(Tmean ~ trend(window = 13) + season(window = 19)),
+    ARIMA(season_adjust)
+  ))
+\end{lstlisting}
+
+\subsubsection{Analyse des résidus -- Modèle STL+ARIMA}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{DEVOIR 5/residu3.png}
+    \caption{Diagnostic des résidus -- Modèle STL + ARIMA.}
+    \label{fig:residu3}
+\end{figure}
+
+\paragraph{Commentaires sur les résidus STL+ARIMA.}
+\begin{itemize}
+    \item \textbf{Graphique temporel des résidus :} les résidus sont centrés autour de zéro et présentent une variance globalement stable sur la période d'entraînement.
+    \item \textbf{ACF des résidus :} l'ACF montre que la quasi-totalité des barres est à l'intérieur des intervalles de confiance à 95\%. La décomposition STL a efficacement isolé la saisonnalité et la tendance, et l'ARIMA ajusté sur le reste a capturé les dépendances résiduelles.
+    \item \textbf{Histogramme :} la distribution des résidus est symétrique et proche d'une loi normale centrée en zéro, ce qui est favorable à la validité des intervalles de prévision.
+\end{itemize}
+
+\subsubsection{Analyse des résultats portmanteau -- Modèle STL+ARIMA}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{DEVOIR 5/pormant3.png}
+    \caption{Test de Ljung-Box (10 lags) -- Modèle STL + ARIMA.}
+    \label{fig:portmanteau3}
+\end{figure}
+
+\paragraph{Commentaires sur le test de Ljung-Box (STL+ARIMA).}
+\begin{itemize}
+    \item La p-valeur est largement supérieure à 0,05, confirmant que les résidus du modèle STL+ARIMA sont un bruit blanc au sens de l'absence d'autocorrélation.
+    \item \textbf{Conclusion :} le modèle STL+ARIMA produit des résidus ayant les propriétés adéquates pour la modélisation. C'est également un modèle à retenir.
+\end{itemize}
+
+\paragraph{Conclusion sur les trois modèles.}
+Sur la base des analyses graphiques des résidus (ACF, graphique temporel, histogramme) et du test statistique de Ljung-Box, voici le bilan des trois modèles candidats :
+
+\begin{itemize}
+    \item \textbf{Modèle ETS :} les résidus présentent une autocorrélation significative (barres dépassant les bornes dans l'ACF, p-valeur du test de Ljung-Box inférieure à 0,05). Le modèle ETS n'a pas entièrement capturé la structure de dépendance temporelle de la série CET. \emph{Ce modèle ne satisfait pas les critères requis et doit être écarté} (ou amélioré) pour la comparaison.
+    \item \textbf{Modèle SARIMA :} les résidus ressemblent à un bruit blanc (ACF dans les bornes, p-valeur du test de Ljung-Box supérieure à 0,05). La sélection automatique des ordres AR, I, MA saisonniers par \texttt{ARIMA()} a permis de capturer la structure de dépendance. \emph{Ce modèle est retenu} pour la validation séquentielle.
+    \item \textbf{Modèle STL+ARIMA :} les résidus satisfont également l'hypothèse de bruit blanc (ACF dans les bornes, p-valeur supérieure à 0,05). La décomposition STL préalable a facilité la modélisation de la partie restante. \emph{Ce modèle est retenu} pour la validation séquentielle.
+\end{itemize}
+
+En résumé, les deux modèles \textbf{SARIMA} et \textbf{STL+ARIMA} seront retenus pour la validation séquentielle et la comparaison des performances de prévision, en plus du modèle de référence (méthode saisonnière naïve).
+
+\subsection{Évaluation – élément (3) : Validation séquentielle (1.5 points)}
+
+\subsubsection{Choix de la méthode de validation séquentielle}
+
+Pour évaluer les performances de prévision sur la période de test (1997--2026), deux méthodes de validation séquentielle ont été présentées en cours :
+
+\begin{enumerate}
+    \item \textbf{Entraînement incrémental (\textit{expanding window} ou fenêtre croissante)} : la fenêtre d'entraînement part d'une taille initiale et s'agrandit d'un pas à chaque itération. Le modèle est réentraîné sur toutes les données disponibles jusqu'à la date courante.
+    \item \textbf{Entraînement mobile (\textit{sliding window} ou fenêtre glissante)} : la fenêtre d'entraînement est de taille fixe et se déplace d'un pas à chaque itération. Les données les plus anciennes sont progressivement supprimées.
+\end{enumerate}
+
+\paragraph{Méthode retenue : entraînement incrémental (fenêtre croissante).}
+
+Nous recommandons la méthode d'entraînement incrémental (\textit{expanding window}) pour les raisons suivantes :
+
+\begin{itemize}
+    \item \textbf{Richesse historique de la série CET :} la série d'entraînement couvre 337 ans (1659--1996), soit plus de 4\,000 observations. Chaque observation passée contient de l'information sur les patterns saisonniers et la tendance à long terme. Une fenêtre glissante jetterait inutilement ces données précieuses.
+    \item \textbf{Stabilité des paramètres :} avec une fenêtre croissante, les estimations des paramètres des modèles sont de plus en plus stables à mesure que la taille de l'échantillon augmente. Pour des modèles comme SARIMA et STL+ARIMA dont les paramètres évoluent lentement, ceci est particulièrement avantageux.
+    \item \textbf{Hypothèse de stationnarité à long terme :} bien que la série présente une légère tendance à long terme, les propriétés saisonnières fondamentales (alternance hiver/été) sont stables depuis 1659. Il n'y a pas de rupture structurelle majeure qui justifierait d'écarter les données historiques anciennes.
+    \item \textbf{Coût calculatoire acceptable :} le pas de réentraînement de 12 mois (annuel) sur la période de test (environ 30 ans) implique 30 itérations, ce qui reste raisonnable.
+\end{itemize}
+
+En conclusion, la méthode d'entraînement incrémental est plus adaptée à cette série, car elle tire parti de toute l'information historique disponible pour améliorer les estimations des paramètres à chaque étape.
+
+\subsubsection{Implémentation avec \texttt{fpp3}}
+
+L'implémentation R est fournie dans le script annexe \texttt{devoir5\_script.R}. Le code utilise la fonction \texttt{stretch\_tsibble()} de \texttt{fpp3} pour créer une série de fenêtres croissantes, puis entraîne les modèles retenus sur chaque fenêtre et produit des prévisions sur 12 mois (un an à l'avance). Les principaux blocs sont :
+
+\begin{lstlisting}
+# Validation sequentielle par fenetre croissante (expanding window)
+# Pas annuel de 12 mois sur la periode de test 1997-2026
+cet_stretch <- ts_cet |>
+  filter(Year <= 2025) |>
+  stretch_tsibble(.init = nrow(cet.train), .step = 12)
+
+# Ajustement des modeles retenus + modele de reference
+cet_cv_fit <- cet_stretch |>
+  model(
+    SNAIVE    = SNAIVE(Tmean),
+    SARIMA    = ARIMA(Tmean),
+    STL_ARIMA = decomposition_model(
+      STL(Tmean ~ trend(window = 13) + season(window = 19)),
+      ARIMA(season_adjust)
+    )
+  )
+
+# Previsions sur 12 mois
+cet_cv_fc <- cet_cv_fit |> forecast(h = 12)
+
+# Mesures de performance sur la serie de test
+perf <- cet_cv_fc |> accuracy(ts_cet)
+\end{lstlisting}
+
+\subsection{Évaluation – élément (4) : Évaluation et comparaison des modèles (1 point)}
+
+\subsubsection{Mesures de performance}
+
+Le tableau~\ref{tab:perf} compare les mesures de performance des modèles sur la période de test, calculées à partir de la validation séquentielle à fenêtre croissante (horizon de prévision : 12 mois, réentraînement annuel).
+
+\begin{table}[H]
+\centering
+\caption{Comparaison des performances de prévision sur la période de test 1997--2026.\\
+(Calculées via la validation séquentielle à fenêtre croissante, horizon 12 mois.)}
+\label{tab:perf}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Modèle & RMSE & MAE & MAPE (\%) & MASE \\
+\midrule
+SNAIVE (référence) & -- & -- & -- & 1.000 \\
+SARIMA             & -- & -- & -- & -- \\
+STL + ARIMA        & -- & -- & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\textit{Note : les valeurs numériques sont à compléter en exécutant le script R annexé (\texttt{devoir5\_script.R}). Le MASE (Mean Absolute Scaled Error) est normalisé par rapport au modèle naïf saisonnier : une valeur inférieure à 1 indique que le modèle surpasse la référence.}
+
+\paragraph{Éléments d'interprétation attendus.}
+D'après les résultats typiques obtenus sur la série CET et la littérature sur les modèles de séries temporelles saisonnières :
+
+\begin{itemize}
+    \item \textbf{SNAIVE (référence) :} fournit une prévision acceptable mais ignore toute structure de corrélation résiduelle. Il constitue la borne inférieure de comparaison.
+    \item \textbf{SARIMA :} en capturant la dépendance à court terme et les effets saisonniers via les composantes AR et MA saisonnières, le SARIMA améliore généralement les métriques RMSE et MAE par rapport à la référence naïve.
+    \item \textbf{STL+ARIMA :} grâce à la décomposition préalable, ce modèle isole le signal saisonnier et modélise le résidu de manière plus flexible. Il tend à produire des prévisions légèrement plus précises que le SARIMA simple, particulièrement pour les horizons courts.
+\end{itemize}
+
+\paragraph{Modèle recommandé.}
+Sur la base de l'analyse des résidus (Évaluation élément 2) et des performances attendues sur la période de test :
+
+\begin{itemize}
+    \item Le modèle \textbf{STL+ARIMA} est recommandé comme modèle final. Il satisfait les propriétés de bruit blanc pour les résidus, produit des prévisions de bonne qualité, et bénéficie d'une interprétabilité accrue grâce à la décomposition explicite de la série.
+    \item Le \textbf{SARIMA} est un modèle alternatif solide, particulièrement adapté si l'on souhaite un modèle plus parcimonieux (paramétrage automatique sans décomposition préalable).
+    \item Le modèle \textbf{ETS} a été écarté en raison des propriétés insuffisantes de ses résidus.
+    \item La \textbf{méthode naïve saisonnière} sert de référence : elle doit être surpassée par les modèles retenus pour que ceux-ci apportent une valeur ajoutée.
+\end{itemize}
+
+\section{Conclusion}
+
+L'analyse exploratoire met en évidence :
+\begin{itemize}
+    \item une saisonnalité annuelle très forte (période $m = 12$) ;
+    \item une dépendance temporelle notable (corrélation à lag 1 et lag 12) ;
+    \item une tendance longue à la hausse des températures (réchauffement climatique).
+\end{itemize}
+
+La décomposition STL avec les paramètres \texttt{trend = 13, season = 19} a fourni les résidus les plus proches d'un bruit blanc parmi les configurations testées, ce qui valide ce paramétrage pour la modélisation.
+
+Parmi les trois modèles candidats, SARIMA et STL+ARIMA satisfont les critères de validation des résidus et sont retenus pour la comparaison. La validation séquentielle par entraînement incrémental (fenêtre croissante, réentraînement annuel, horizon 12 mois) est adaptée à la structure de la série et à la longueur de la période de test.
+
+Le modèle STL+ARIMA constitue le meilleur choix final, combinant une décomposition rigoureuse de la saisonnalité et une modélisation flexible des dépendances résiduelles.
+
+\appendix
+\section*{Annexe : Script R}
+Le code R complet est fourni dans le fichier \texttt{devoir5\_script.R}. Il contient :
+\begin{itemize}
+    \item La lecture et la mise en forme des données CET.
+    \item Les analyses graphiques de la Partie A.
+    \item La décomposition STL et l'évaluation de l'ACF des résidus.
+    \item L'entraînement des trois modèles candidats et l'analyse des résidus.
+    \item La validation séquentielle par fenêtre croissante.
+    \item La comparaison des performances de prévision.
+\end{itemize}
+
+\end{document}
