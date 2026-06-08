@@ -1,0 +1,784 @@
+---
+title: "MTH8304 — Devoir 3 : Loi normale bivariée, ACP et Fashion-MNIST"
+author: "Cerveau KATCHON"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+output:
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    latex_engine: xelatex
+    fig_caption: true
+    keep_tex: false
+geometry: margin=2.5cm
+fontsize: 11pt
+lang: fr
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo      = TRUE,
+  eval      = FALSE,
+  warning   = FALSE,
+  message   = FALSE,
+  fig.align = "center"
+)
+```
+
+# Partie A : Loi normale bivariée et ACP
+
+## Paramètres et matrice de covariance
+
+```{r params}
+library(ggplot2)
+library(grid)
+
+sigma1 <- 4
+sigma2 <- 2
+rho    <- 0.7
+mu     <- c(5, 20)
+
+Sigma <- matrix(c(sigma1^2,              rho * sigma1 * sigma2,
+                  rho * sigma1 * sigma2, sigma2^2),
+                nrow = 2, ncol = 2, byrow = TRUE)
+
+print(Sigma)
+```
+
+## Décomposition spectrale
+
+```{r spectral}
+decomp <- eigen(Sigma)
+lambda <- decomp$values
+cat("\nValeurs propres :\n")
+print(lambda)
+
+P <- decomp$vectors
+cat("\nVecteurs propres (colonnes) :\n")
+print(P)
+```
+
+## Ellipse de densité constante
+
+```{r ellipse, fig.width=6, fig.height=5, fig.cap="Ellipse de densité constante avec vecteurs propres"}
+xy <- expand.grid(
+  x = seq(mu[1] - 3 * sqrt(Sigma[1, 1]),
+          mu[1] + 3 * sqrt(Sigma[1, 1]), by = 0.01),
+  y = seq(mu[2] - 3 * sqrt(Sigma[2, 2]),
+          mu[2] + 3 * sqrt(Sigma[2, 2]), by = 0.01)
+)
+
+dist.xy <- mahalanobis(xy, mu, Sigma)
+
+plot(xy, type = "n",
+     main = "Ellipse de densité constante",
+     xlab = expression(x[1]),
+     ylab = expression(x[2]),
+     xlim = c(mu[1] - 3 * sqrt(Sigma[1, 1]),
+              mu[1] + 3 * sqrt(Sigma[1, 1])),
+     ylim = c(mu[2] - 3 * sqrt(Sigma[2, 2]),
+              mu[2] + 3 * sqrt(Sigma[2, 2])))
+
+points(xy[dist.xy <= 1, ], pch = 20, col = "blue")
+
+nx <- length(unique(xy$x))
+ny <- length(unique(xy$y))
+
+contour(x = unique(xy$x), y = unique(xy$y),
+        z = matrix(dist.xy, nrow = nx, ncol = ny),
+        levels = 1, col = "red", lwd = 2, add = TRUE, drawlabels = FALSE)
+
+points(mu[1], mu[2], pch = 15, col = "black", cex = 1.5)
+text(mu[1] + 0.3, mu[2] - 0.5,
+     labels = expression(mu), cex = 1.3, font = 3, col = "black")
+
+for (i in 1:2) {
+  x1_end <- mu[1] + sqrt(lambda[i]) * P[1, i]
+  x2_end <- mu[2] + sqrt(lambda[i]) * P[2, i]
+  arrows(x0 = mu[1], y0 = mu[2], x1 = x1_end, y1 = x2_end,
+         col = "darkgreen", lwd = 2.5, length = 0.12)
+  text(x  = mu[1] + sqrt(lambda[i]) * P[1, i] * 1.18,
+       y  = mu[2] + sqrt(lambda[i]) * P[2, i] * 1.18,
+       labels = bquote(u[.(i)]),
+       col = "darkgreen", cex = 0.85, font = 2)
+}
+```
+
+## Comparaison des ellipses selon ($\sigma_1$, $\sigma_2$, $\rho$)
+
+```{r ellipses_comparaison, fig.width=10, fig.height=9, fig.cap="Ellipses de densité constante pour quatre configurations de paramètres"}
+mu <- c(5, 20)
+par(mfrow = c(2, 2), mar = c(4, 4, 3, 1))
+
+# ------------------------------------------------------------------
+# Fonction utilitaire locale : trace un panneau ellipse
+# ------------------------------------------------------------------
+trace_ellipse <- function(sigma1, sigma2, rho, titre, step = 0.01) {
+  Sigma <- matrix(c(sigma1^2,              rho * sigma1 * sigma2,
+                    rho * sigma1 * sigma2, sigma2^2),
+                  nrow = 2, byrow = TRUE)
+  decomp <- eigen(Sigma)
+  lambda <- decomp$values
+  P      <- decomp$vectors
+
+  xy <- expand.grid(
+    x = seq(mu[1] - 3 * sqrt(Sigma[1, 1]),
+            mu[1] + 3 * sqrt(Sigma[1, 1]), by = step),
+    y = seq(mu[2] - 3 * sqrt(Sigma[2, 2]),
+            mu[2] + 3 * sqrt(Sigma[2, 2]), by = step)
+  )
+  dist.xy <- mahalanobis(xy, mu, Sigma)
+  nx <- length(unique(xy$x))
+  ny <- length(unique(xy$y))
+
+  plot(xy, type = "n", main = titre,
+       xlab = expression(x[1]), ylab = expression(x[2]))
+  points(xy[dist.xy <= 1, ], pch = 20, col = "lightblue", cex = 0.7)
+  contour(x = unique(xy$x), y = unique(xy$y),
+          z = matrix(dist.xy, nrow = nx, ncol = ny),
+          levels = 1, col = "red", lwd = 2, add = TRUE, drawlabels = FALSE)
+  points(mu[1], mu[2], pch = 19, col = "black", cex = 1.5)
+  text(mu[1], mu[2] - 0.8, labels = expression(mu), cex = 1.1, font = 3)
+  for (i in 1:2) {
+    arrows(mu[1], mu[2],
+           mu[1] + sqrt(lambda[i]) * P[1, i],
+           mu[2] + sqrt(lambda[i]) * P[2, i],
+           col = "darkgreen", lwd = 2, length = 0.10)
+    text(mu[1] + sqrt(lambda[i]) * P[1, i] * 1.2,
+         mu[2] + sqrt(lambda[i]) * P[2, i] * 1.2,
+         labels = bquote(u[.(i)]), col = "darkgreen", cex = 0.85, font = 2)
+  }
+}
+
+# step = 0.05 for all four panels for consistent resolution and rendering speed
+trace_ellipse(4, 4,  0,    "(a) \u03c31 = \u03c32 = 4, \u03c1 = 0",     step = 0.05)
+trace_ellipse(4, 4, -0.7,  "(b) \u03c31 = \u03c32 = 4, \u03c1 = -0.7",  step = 0.05)
+trace_ellipse(6, 2,  0,    "(c) \u03c31 = 3\u03c32 (\u03c31=6, \u03c32=2), \u03c1 = 0",    step = 0.05)
+trace_ellipse(6, 2, -0.7,  "(d) \u03c31 = 3\u03c32 (\u03c31=6, \u03c32=2), \u03c1 = -0.7", step = 0.05)
+```
+
+## ACP dans un cadre gaussien
+
+### Simulation et ACP
+
+```{r acp_sim}
+library(MASS)
+library(stats)
+
+sigma1 <- 4
+sigma2 <- 2
+rho    <- 0.7
+mu     <- c(5, 20)
+
+Sigma <- matrix(c(sigma1^2,              rho * sigma1 * sigma2,
+                  rho * sigma1 * sigma2, sigma2^2),
+                nrow = 2, ncol = 2, byrow = TRUE)
+
+N <- 500
+set.seed(2492346)
+data.nbiv <- mvrnorm(N, mu = mu, Sigma = Sigma)
+colnames(data.nbiv) <- c("X1", "X2")
+```
+
+### Nuage de points et ACP
+
+```{r acp_nuage, fig.width=10, fig.height=5, fig.cap="Nuage de points (gauche) et directions principales (droite)"}
+par(mfrow = c(1, 2), mar = c(4, 4, 3, 1))
+
+# --- Nuage brut ---
+plot(data.nbiv,
+     pch  = 20,
+     col  = adjustcolor("steelblue", alpha.f = 0.4),
+     asp  = 1,
+     main = "Nuage de points des données data.nbiv",
+     xlab = expression(x[1]),
+     ylab = expression(x[2]))
+
+mu_emp <- colMeans(data.nbiv)
+points(mu_emp[1], mu_emp[2], pch = 19, col = "red", cex = 2)
+text(mu_emp[1] + 0.2, mu_emp[2] - 0.9,
+     labels = expression(bar(x)), col = "red", cex = 1.2, font = 3)
+
+# --- ACP ---
+acp <- prcomp(data.nbiv, center = TRUE, scale. = FALSE)
+
+cat("1. Centre du nuage (moyenne empirique) :\n")
+print(round(acp$center, 4))
+cat("\n2. Écarts-types des composantes principales :\n")
+print(round(acp$sdev, 4))
+cat("\n3. Variances expliquées (sdev^2) :\n")
+print(round(acp$sdev^2, 4))
+cat("\n4. Vecteurs propres (rotation) :\n")
+print(round(acp$rotation, 4))
+cat("\n5. Proportion de variance expliquée :\n")
+print(round(summary(acp)$importance, 4))
+
+# --- Directions principales ---
+plot(data.nbiv,
+     pch  = 20,
+     col  = adjustcolor("steelblue", alpha.f = 0.4),
+     asp  = 1,
+     main = "Centre et directions principales (ACP)",
+     xlab = expression(x[1]),
+     ylab = expression(x[2]))
+
+centre <- acp$center
+points(centre[1], centre[2], pch = 19, col = "red", cex = 2)
+text(centre[1] + 0.3, centre[2] - 0.8,
+     labels = expression(bar(x)), col = "red", cex = 1.2, font = 3)
+
+for (i in 1:2) {
+  x1_end <- centre[1] + acp$sdev[i] * acp$rotation[1, i]
+  x2_end <- centre[2] + acp$sdev[i] * acp$rotation[2, i]
+  arrows(x0 = centre[1], y0 = centre[2], x1 = x1_end, y1 = x2_end,
+         col = "darkgreen", lwd = 2.5, length = 0.12)
+  text(x = centre[1] + acp$sdev[i] * acp$rotation[1, i] * 1.15,
+       y = centre[2] + acp$sdev[i] * acp$rotation[2, i] * 1.15,
+       labels = bquote(PC[.(i)]),
+       col = "darkgreen", cex = 0.85, font = 2)
+}
+```
+
+### Analyse des projections
+
+```{r acp_projections}
+scores  <- acp$x
+print(round(head(scores), 4))
+
+var_PC1 <- var(scores[, 1])
+var_PC2 <- var(scores[, 2])
+cat("Var(PC1) =", round(var_PC1, 4), "\n")
+cat("Var(PC2) =", round(var_PC2, 4), "\n")
+
+decomp <- eigen(Sigma)
+lambda <- decomp$values
+cat("lambda1 =", round(lambda[1], 4), "\n")
+cat("lambda2 =", round(lambda[2], 4), "\n")
+cat("sdev1^2 =", round(acp$sdev[1]^2, 4), "\n")
+cat("sdev2^2 =", round(acp$sdev[2]^2, 4), "\n")
+
+comparaison <- data.frame(
+  Var_projection   = round(c(var_PC1, var_PC2), 4),
+  sdev2            = round(acp$sdev^2, 4),
+  lambda_theorique = round(lambda, 4)
+)
+rownames(comparaison) <- c("PC1", "PC2")
+print(comparaison)
+```
+
+### ACP standardisée (scale = TRUE vs scale = FALSE)
+
+```{r acp_scale, fig.width=10, fig.height=5, fig.cap="Projections sans standardisation (gauche) et avec standardisation (droite)"}
+acp_scale <- prcomp(data.nbiv, center = TRUE, scale. = TRUE)
+
+par(mfrow = c(1, 2))
+
+plot(acp$x,
+     pch  = 20,
+     col  = adjustcolor("steelblue", alpha.f = 0.4),
+     main = "Projections\n(scale = FALSE)",
+     xlab = bquote(PC[1] ~ "(Var=" * .(round(acp$sdev[1]^2, 2)) * ")"),
+     ylab = bquote(PC[2] ~ "(Var=" * .(round(acp$sdev[2]^2, 2)) * ")"))
+abline(h = 0, v = 0, col = "gray", lty = 2)
+
+plot(acp_scale$x,
+     pch  = 20,
+     col  = adjustcolor("tomato", alpha.f = 0.4),
+     main = "Projections\n(scale = TRUE)",
+     xlab = bquote(PC[1] ~ "(Var=" * .(round(acp_scale$sdev[1]^2, 2)) * ")"),
+     ylab = bquote(PC[2] ~ "(Var=" * .(round(acp_scale$sdev[2]^2, 2)) * ")"))
+abline(h = 0, v = 0, col = "gray", lty = 2)
+```
+
+## Reconstruction des données à partir de PC2
+
+```{r reconstruction, fig.width=7, fig.height=6, fig.cap="Données originales vs reconstruction par PC2"}
+W2    <- acp$rotation[, 2]
+cat("W2 (2ème vecteur propre) :\n")
+print(round(W2, 4))
+
+Z2    <- acp$x[, 2]
+cat("\nZ2 : 6 premières projections sur PC2 :\n")
+print(round(head(Z2), 4))
+
+x_bar <- acp$center
+cat("\nMoyenne empirique x_bar :\n")
+print(round(x_bar, 4))
+
+X_hat <- Z2 %o% W2 + matrix(x_bar, nrow = N, ncol = 2, byrow = TRUE)
+cat("\nDimensions de X_hat :", dim(X_hat), "\n")
+cat("6 premières lignes de X_hat :\n")
+print(round(head(X_hat), 4))
+
+# --- Graphique ---
+par(mfrow = c(1, 1))
+xlim <- range(c(data.nbiv[, 1], X_hat[, 1]))
+ylim <- range(c(data.nbiv[, 2], X_hat[, 2]))
+
+plot(data.nbiv,
+     pch = 20, col = adjustcolor("steelblue", alpha.f = 0.5),
+     xlim = xlim, ylim = ylim,
+     main = "Données originales vs reconstruction",
+     xlab = expression(x[1]), ylab = expression(x[2]))
+points(X_hat, pch = 20, col = adjustcolor("tomato", alpha.f = 0.6))
+points(x_bar[1], x_bar[2], pch = 19, col = "black", cex = 2)
+text(x_bar[1] + 0.3, x_bar[2] - 0.8,
+     labels = expression(bar(x)), cex = 1.2, font = 3)
+arrows(x_bar[1], x_bar[2],
+       x_bar[1] + 3 * W2[1], x_bar[2] + 3 * W2[2],
+       col = "darkgreen", lwd = 2, length = 0.12)
+arrows(x_bar[1], x_bar[2],
+       x_bar[1] - 3 * W2[1], x_bar[2] - 3 * W2[2],
+       col = "darkgreen", lwd = 2, length = 0.12)
+text(x_bar[1] + 3.5 * W2[1], x_bar[2] + 3.5 * W2[2],
+     labels = expression(W[2]), col = "darkgreen", cex = 1.1, font = 2)
+legend("topright",
+       legend = c("Données originales X", "Reconstruction X\u0302 (PC2)",
+                  "Centre x\u0305", "Direction W\u2082"),
+       col  = c("steelblue", "tomato", "black", "darkgreen"),
+       pch  = c(20, 20, 19, NA),
+       lty  = c(NA, NA, NA, 1),
+       lwd  = c(NA, NA, NA, 2),
+       bty  = "n")
+
+# --- Erreur de reconstruction ---
+erreurs <- data.nbiv - X_hat
+J_emp   <- mean(rowSums(erreurs^2))
+J_theo  <- lambda[1]
+cat("J empirique  =", round(J_emp,  4), "\n")
+cat("J théorique  =", round(J_theo, 4), "(= lambda1)\n")
+cat("sdev[1]^2    =", round(acp$sdev[1]^2, 4), "(= lambda1 empirique)\n")
+cat("Différence   =", round(abs(J_emp - J_theo), 4), "\n")
+```
+
+## Sphérage des données
+
+```{r spherage, fig.width=7, fig.height=6, fig.cap="Sphérage des données en quatre étapes"}
+x_bar  <- acp$center
+W      <- acp$rotation
+lambda <- acp$sdev^2
+
+X   <- data.nbiv
+X_c <- sweep(X,   2, x_bar,       "-")
+X_r <- X_c %*% W
+X_s <- sweep(X_r, 2, sqrt(lambda), "/")
+
+all_data <- rbind(X, X_c, X_r, X_s)
+xlim <- range(all_data[, 1]) * 1.1
+ylim <- range(all_data[, 2]) * 1.1
+
+plot(X,
+     pch = 20, col = adjustcolor("black", alpha.f = 0.3),
+     xlim = xlim, ylim = ylim,
+     main = "Sphérage des données",
+     xlab = expression(x[1]), ylab = expression(x[2]))
+points(X_c, pch = 20, col = adjustcolor("blue",      alpha.f = 0.3))
+points(X_r, pch = 20, col = adjustcolor("darkgreen", alpha.f = 0.3))
+points(X_s, pch = 20, col = adjustcolor("red",       alpha.f = 0.4))
+abline(h = 0, v = 0, col = "gray50", lty = 2, lwd = 1)
+legend("topleft",
+       legend = c(expression("X originales"),
+                  expression("X centr\u00e9es"),
+                  expression("X centr\u00e9es + rotation"),
+                  expression("X sph\u00e9r\u00e9es")),
+       col = c("black", "blue", "darkgreen", "red"),
+       pch = 20, bty = "n", cex = 0.85)
+```
+
+---
+
+# Partie B : Fashion-MNIST
+
+> **Note :** Cette partie nécessite les fichiers `fashion-mnist_train.csv` et
+> `fashion-mnist_test.csv` dans le répertoire de travail.  
+> Ces fichiers peuvent être téléchargés depuis
+> <https://www.kaggle.com/datasets/zalando-research/fashionmnist>.
+
+## Chargement des données
+
+```{r fashion_load}
+train <- read.csv("fashion-mnist_train.csv")
+test  <- read.csv("fashion-mnist_test.csv")
+
+x_train <- train[, -1]
+y_train <- train[,  1]
+x_test  <- test[,  -1]
+y_test  <- test[,   1]
+```
+
+## Analyse exploratoire : distribution marginale
+
+```{r fashion_hist, fig.width=6, fig.height=4, fig.cap="Distribution marginale du pixel 200"}
+hist(x_train[, 200],
+     breaks = 30,
+     col    = "steelblue",
+     main   = "Distribution marginale du pixel 200",
+     xlab   = "Intensité (0-255)",
+     ylab   = "Fréquence")
+```
+
+## Élément 1 : Transformation vers la normalité
+
+### Transformation $x \to \tilde{x} = \Phi^{-1}(u)$
+
+```{r fashion_transf}
+epsilon  <- 1e-3
+u        <- epsilon + (x_train / 255) * (1 - 2 * epsilon)
+u        <- as.matrix(u)
+x_transf <- qnorm(u)
+```
+
+### Histogrammes : $x$ vs $\tilde{x}$ (4 pixels)
+
+```{r fashion_hist_compare, fig.width=8, fig.height=14, fig.cap="Comparaison des distributions avant et après transformation (4 pixels)"}
+pixels_choix <- c(1, 300, 392, 784)
+titres       <- c("Pixel 1", "Pixel 300", "Pixel 392", "Pixel 784")
+
+par(mfrow = c(4, 2), mar = c(3, 3, 2, 1))
+
+for (i in seq_along(pixels_choix)) {
+  j <- pixels_choix[i]
+  hist(as.matrix(x_train[, j]),
+       breaks = 30, col = "steelblue",
+       main   = paste("x \u2014", titres[i]),
+       xlab   = "Intensité (0-255)", freq = FALSE)
+  hist(x_transf[, j],
+       breaks = 30, col = "tomato",
+       main   = paste("x\u0303 \u2014", titres[i]),
+       xlab   = "Valeur transformée", freq = FALSE)
+  curve(dnorm(x, mean(x_transf[, j]), sd(x_transf[, j])),
+        add = TRUE, col = "black", lwd = 2)
+}
+```
+
+### Q-Q plots
+
+```{r fashion_qq, fig.width=8, fig.height=8, fig.cap="Q-Q plots avant et après transformation (pixels 1 et 392)"}
+par(mfrow = c(2, 2), mar = c(4, 4, 2, 1))
+
+for (j in c(1, 392)) {
+  qqnorm(as.matrix(x_train[, j]),
+         main = paste("Q-Q plot x \u2014 pixel", j),
+         col  = adjustcolor("steelblue", 0.3),
+         pch  = 20, cex = 0.3)
+  qqline(as.matrix(x_train[, j]), col = "red", lwd = 2)
+
+  qqnorm(x_transf[, j],
+         main = paste("Q-Q plot x\u0303 \u2014 pixel", j),
+         col  = adjustcolor("tomato", 0.3),
+         pch  = 20, cex = 0.3)
+  qqline(x_transf[, j], col = "red", lwd = 2)
+}
+```
+
+### Distribution de la variance par pixel
+
+```{r fashion_variance, fig.width=10, fig.height=5, fig.cap="Distribution de la variance par pixel avant et après transformation"}
+var_x        <- apply(as.matrix(x_train), 2, var)
+var_x_transf <- apply(x_transf, 2, var)
+
+par(mfrow = c(1, 2))
+hist(var_x,        breaks = 40, col = "steelblue",
+     main = "Variance par pixel \u2014 x",     xlab = "Variance")
+hist(var_x_transf, breaks = 40, col = "tomato",
+     main = "Variance par pixel \u2014 x\u0303", xlab = "Variance")
+```
+
+### Asymétrie et aplatissement (skewness / kurtosis)
+
+```{r fashion_moments}
+if (!requireNamespace("moments", quietly = TRUE)) {
+  install.packages("moments", repos = "https://cloud.r-project.org")
+}
+library(moments)
+
+for (j in c(1, 392)) {
+  cat("\n--- Pixel", j, "---\n")
+  cat("Skewness x    :", round(skewness(as.matrix(x_train[, j])), 4), "\n")
+  cat("Skewness x\u0303    :", round(skewness(x_transf[, j]),            4), "\n")
+  cat("Kurtosis x    :", round(kurtosis(as.matrix(x_train[, j])), 4),
+      "(normale = 3)\n")
+  cat("Kurtosis x\u0303    :", round(kurtosis(x_transf[, j]),            4),
+      "(normale = 3)\n")
+}
+```
+
+## Élément 2 : ACP sur la classe Pullover
+
+```{r fashion_acp_pull}
+classes <- c("T-shirt", "Pantalon", "Pull", "Robe", "Manteau",
+             "Sandale",  "Chemise",  "Sneaker", "Sac", "Bottine")
+
+labels <- factor(train[, 1], levels = 0:9, labels = classes)
+pixels <- as.matrix(train[, -1])
+
+idx_pull    <- which(labels == "Pull")
+pixels_pull <- pixels[idx_pull, ]
+cat("Nombre d'images Pullover :", nrow(pixels_pull), "\n")
+
+epsilon     <- 1e-3
+u_pull      <- epsilon + (pixels_pull / 255) * (1 - 2 * epsilon)
+x_tran_pull <- qnorm(u_pull)
+
+acp_x  <- prcomp(pixels_pull,  center = TRUE, scale. = FALSE)
+acp_xt <- prcomp(x_tran_pull,  center = TRUE, scale. = FALSE)
+
+var_exp_x  <- cumsum(acp_x$sdev^2)  / sum(acp_x$sdev^2)
+var_exp_xt <- cumsum(acp_xt$sdev^2) / sum(acp_xt$sdev^2)
+
+n90_x  <- which(var_exp_x  >= 0.90)[1]
+n90_xt <- which(var_exp_xt >= 0.90)[1]
+
+cat("Sans transformation (x)  :", n90_x,  "composantes pour 90%\n")
+cat("Avec transformation (x\u0303)  :", n90_xt, "composantes pour 90%\n")
+```
+
+### Variance expliquée cumulée
+
+```{r fashion_var_exp, fig.width=10, fig.height=5, fig.cap="Variance expliquée cumulée (Pullover) sans et avec transformation"}
+par(mfrow = c(1, 2))
+
+plot(var_exp_x[1:200] * 100,
+     type = "l", lwd = 2, col = "steelblue",
+     main = "Variance expliquée cumulée\nSans transformation",
+     xlab = "Nombre de composantes", ylab = "Variance expliquée (%)",
+     ylim = c(0, 100))
+abline(h = 90, col = "red", lty = 2, lwd = 2)
+abline(v = n90_x, col = "red", lty = 2, lwd = 2)
+text(n90_x + 5, 85, paste0("PC", n90_x), col = "red", cex = 0.9)
+
+plot(var_exp_xt[1:200] * 100,
+     type = "l", lwd = 2, col = "tomato",
+     main = "Variance expliquée cumulée\nAvec transformation",
+     xlab = "Nombre de composantes", ylab = "Variance expliquée (%)",
+     ylim = c(0, 100))
+abline(h = 90, col = "red", lty = 2, lwd = 2)
+abline(v = n90_xt, col = "red", lty = 2, lwd = 2)
+text(n90_xt + 5, 85, paste0("PC", n90_xt), col = "red", cex = 0.9)
+```
+
+### Moyenne et 4 premiers vecteurs propres
+
+```{r fashion_vp, fig.width=10, fig.height=5, fig.cap="Moyenne et 4 premiers vecteurs propres (sans et avec transformation)"}
+afficher_vp <- function(vecteur, titre = "", col_palette = NULL) {
+  if (is.null(col_palette))
+    col_palette <- colorRampPalette(c("blue", "white", "red"))(256)
+  img <- matrix(vecteur, nrow = 28, ncol = 28)
+  img <- t(apply(img, 2, rev))
+  image(img, col = col_palette, axes = FALSE, main = titre)
+}
+
+lambda_x  <- acp_x$sdev^2
+lambda_xt <- acp_xt$sdev^2
+
+par(mfrow = c(2, 5), mar = c(1, 1, 3, 1))
+
+afficher_vp(acp_x$center,
+            titre = "Moyenne\n(image moyenne)",
+            col_palette = grey(seq(0, 1, length = 256)))
+for (k in 1:4) {
+  afficher_vp(acp_x$rotation[, k],
+              titre = paste0("PC", k, "\n\u03bb=",
+                             round(lambda_x[k], 1), " (",
+                             round(acp_x$sdev[k]^2 / sum(acp_x$sdev^2) * 100, 1), "%)"))
+}
+
+afficher_vp(acp_xt$center,
+            titre = "Moyenne x\u0303\n(transform\u00e9e)",
+            col_palette = colorRampPalette(c("blue", "white", "red"))(256))
+for (k in 1:4) {
+  afficher_vp(acp_xt$rotation[, k],
+              titre = paste0("PC", k, "\n\u03bb=",
+                             round(lambda_xt[k], 2), " (",
+                             round(acp_xt$sdev[k]^2 / sum(acp_xt$sdev^2) * 100, 1), "%)"))
+}
+
+mtext("Moyenne et 4 premiers vecteurs propres",
+      outer = TRUE, cex = 1.2, line = -1)
+```
+
+### Tableau comparatif des 10 premières composantes
+
+```{r fashion_tab_comp}
+comp_tab <- data.frame(
+  PC     = paste0("PC", 1:10),
+  VE_x   = round(diff(c(0, var_exp_x[1:10]))  * 100, 2),
+  VE_xt  = round(diff(c(0, var_exp_xt[1:10])) * 100, 2),
+  Cum_x  = round(var_exp_x[1:10]  * 100, 2),
+  Cum_xt = round(var_exp_xt[1:10] * 100, 2)
+)
+colnames(comp_tab) <- c("PC", "VE% (x)", "VE% (x\u0303)", "Cum% (x)", "Cum% (x\u0303)")
+print(comp_tab)
+```
+
+## Élément 3 : ACP et analyse canonique sur Fashion-MNIST complet
+
+```{r fashion_acp_full}
+acp_x     <- prcomp(pixels, center = TRUE, scale. = FALSE)
+var_exp_x <- cumsum(acp_x$sdev^2) / sum(acp_x$sdev^2)
+
+n90_x <- which(var_exp_x >= 0.90)[1]
+cat("Composantes nécessaires pour 90% de variance :", n90_x, "\n")
+```
+
+### Projection sur PC1 et PC2
+
+```{r fashion_acp_plot, fig.width=7, fig.height=5, fig.cap="Projection de l'ensemble Fashion-MNIST sur PC1 et PC2"}
+library(RColorBrewer)
+
+proj       <- acp_x$x
+fashion.df <- data.frame(PC1 = proj[, 1], PC2 = proj[, 2], label = labels)
+
+ggplot(fashion.df, aes(x = PC1, y = PC2, col = label)) +
+  geom_point(col = "black", size = 0.08) +
+  geom_point(size = 0.05) +
+  scale_colour_manual(values = brewer.pal(n = 10, name = "Paired")) +
+  guides(colour = guide_legend(override.aes = list(size = 4))) +
+  labs(title = "Projection de X sur PC1 et PC2", col = "Classe") +
+  theme_light(14) +
+  theme(plot.title   = element_text(face = "bold"),
+        legend.title = element_text(face = "bold"))
+```
+
+### Analyse discriminante linéaire (LDA / analyse canonique)
+
+```{r fashion_lda}
+library(gridExtra)
+library(MASS)
+
+npc_95   <- which(var_exp_x >= 0.95)[1]
+cat("Composantes nécessaires pour 95% de variance :", npc_95, "\n")
+
+proj_95     <- acp_x$x[, 1:npc_95]
+df_lda      <- data.frame(proj_95)
+df_lda$label <- labels
+
+lda_fit  <- lda(label ~ ., data = df_lda)
+proj_can <- predict(lda_fit, df_lda)$x
+
+prop_can     <- lda_fit$svd^2 / sum(lda_fit$svd^2)
+prop_can_cum <- cumsum(prop_can)
+
+for (k in 1:2) {
+  cat(sprintf("VC%-2d :  %5.2f%%   |   Cumulé : %6.2f%%\n",
+              k, prop_can[k] * 100, prop_can_cum[k] * 100))
+}
+```
+
+```{r fashion_lda_plot, fig.width=7, fig.height=5, fig.cap="Projection de Fashion-MNIST sur les deux premières variables canoniques (LDA)"}
+fashion_can <- data.frame(VC1 = proj_can[, 1],
+                          VC2 = proj_can[, 2],
+                          label = labels)
+
+ggplot(fashion_can, aes(x = VC1, y = VC2, col = label)) +
+  geom_point(col = "black", size = 0.08) +
+  geom_point(size = 0.05) +
+  scale_colour_manual(values = brewer.pal(n = 10, name = "Paired")) +
+  guides(colour = guide_legend(override.aes = list(size = 4))) +
+  labs(title = "Analyse Canonique (LDA)",
+       x     = paste0("VC1  (", round(prop_can[1] * 100, 1), "%)"),
+       y     = paste0("VC2  (", round(prop_can[2] * 100, 1), "%)"),
+       col   = "Classe") +
+  theme_light(14) +
+  theme(plot.title   = element_text(face = "bold"),
+        legend.title = element_text(face = "bold"))
+```
+
+## Élément 4 : Surface de décision de l'analyse discriminante linéaire
+
+```{r lda_surface_data}
+sigma1 <- 4
+sigma2 <- 2
+rho    <- 0.7
+mu1    <- c(5,  20)
+mu2    <- c(12, 20)
+
+Sigma <- matrix(c(sigma1^2,              rho * sigma1 * sigma2,
+                  rho * sigma1 * sigma2, sigma2^2),
+                nrow = 2, ncol = 2, byrow = TRUE)
+
+Sigma_inv <- solve(Sigma)
+w         <- Sigma_inv %*% (mu1 - mu2)
+
+w0 <- function(p_C1, p_C2) {
+  -0.5 * t(mu1) %*% Sigma_inv %*% mu1 +
+   0.5 * t(mu2) %*% Sigma_inv %*% mu2 +
+   log(p_C1 / p_C2)
+}
+
+w0_egal <- w0(p_C1 = 0.5, p_C2 = 0.5)
+w0_ineg <- w0(p_C1 = 0.1, p_C2 = 0.9)
+
+set.seed(42)
+n     <- 500
+x_C1  <- mvrnorm(n, mu = mu1, Sigma = Sigma)
+x_C2  <- mvrnorm(n, mu = mu2, Sigma = Sigma)
+
+tabl_plot <- data.frame(
+  x1    = c(x_C1[, 1], x_C2[, 1]),
+  x2    = c(x_C1[, 2], x_C2[, 2]),
+  label = factor(c(rep("C1", n), rep("C2", n)))
+)
+```
+
+```{r lda_surface_plot, fig.width=8, fig.height=6, fig.cap="Surfaces de décision pour a priori égaux vs inégaux"}
+x1_seq <- seq(min(tabl_plot$x1) - 2, max(tabl_plot$x1) + 2, length.out = 300)
+
+frontiere_egal <- function(x1, w0_val) -(w[1] * x1 + w0_val) / w[2]
+sigmoid        <- function(z) 1 / (1 + exp(-z))
+
+x1_grid  <- seq(min(tabl_plot$x1) - 2, max(tabl_plot$x1) + 2, length.out = 200)
+x2_grid  <- seq(min(tabl_plot$x2) - 5, max(tabl_plot$x2) + 5, length.out = 200)
+grid     <- expand.grid(x1 = x1_grid, x2 = x2_grid)
+grid_xy  <- as.matrix(grid[, c("x1", "x2")])
+
+grid$prob_egal <- sigmoid(grid_xy %*% w + as.numeric(w0_egal))
+grid$prob_ineg <- sigmoid(grid_xy %*% w + as.numeric(w0_ineg))
+
+df_front <- data.frame(
+  x1     = x1_seq,
+  x2_egal = frontiere_egal(x1_seq, w0_egal),
+  x2_ineg = frontiere_egal(x1_seq, w0_ineg)
+)
+
+ggplot() +
+  geom_raster(data  = grid,
+              aes(x = x1, y = x2, fill = prob_egal), alpha = 0.4) +
+  scale_fill_gradient2(low = "steelblue", mid = "white", high = "tomato",
+                       midpoint = 0.5, name = "P(C1 | x)") +
+  geom_point(data  = tabl_plot,
+             aes(x = x1, y = x2, colour = label, shape = label),
+             size = 1.5, alpha = 0.7) +
+  scale_colour_manual(values = c("C1" = "tomato", "C2" = "steelblue"),
+                      name   = "Classe") +
+  scale_shape_manual(values  = c("C1" = 16, "C2" = 17),
+                     name    = "Classe") +
+  geom_point(data = data.frame(x1 = c(mu1[1], mu2[1]),
+                               x2 = c(mu1[2], mu2[2]),
+                               cl = c("\u03bc\u2081", "\u03bc\u2082")),
+             aes(x = x1, y = x2, shape = cl),
+             size = 5, colour = "black", show.legend = FALSE) +
+  geom_line(data = df_front,
+            aes(x = x1, y = x2_egal,
+                linetype = "p(C1)=p(C2)=0.5"),
+            colour = "black", lwd = 1.2) +
+  geom_line(data = df_front,
+            aes(x = x1, y = x2_ineg,
+                linetype = "p(C1)=0.1, p(C2)=0.9"),
+            colour = "darkred", lwd = 1.2) +
+  scale_linetype_manual(
+    name   = "Surface de décision",
+    values = c("p(C1)=p(C2)=0.5"      = "solid",
+               "p(C1)=0.1, p(C2)=0.9" = "dashed")) +
+  labs(title = "Comparaison des frontières selon les probabilités a priori",
+       x     = expression(x[1]),
+       y     = expression(x[2])) +
+  theme_light(14) +
+  theme(plot.title   = element_text(face = "bold"),
+        legend.title = element_text(face = "bold"))
+```
+
+---
+
+*Document généré avec R `r getRversion()` et
+rmarkdown `r packageVersion("rmarkdown")`.*

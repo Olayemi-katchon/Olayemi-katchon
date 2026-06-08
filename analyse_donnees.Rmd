@@ -1,0 +1,207 @@
+---
+title: "Analyse de données avec R"
+author: "Cerveau KATCHON"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+output:
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    latex_engine: xelatex
+    fig_caption: true
+    keep_tex: false
+geometry: margin=2.5cm
+fontsize: 11pt
+lang: fr
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo       = TRUE,
+  warning    = FALSE,
+  message    = FALSE,
+  fig.align  = "center",
+  fig.width  = 6,
+  fig.height = 4
+)
+```
+
+# Introduction
+
+Ce document R Markdown illustre comment produire un rapport PDF reproductible
+à partir d'un script R. Toutes les étapes — chargement des données, exploration,
+visualisation et modélisation — sont intégrées dans un seul fichier `.Rmd`
+compilé en PDF via la commande :
+
+```r
+rmarkdown::render("analyse_donnees.Rmd")
+```
+
+ou en cliquant sur le bouton **Knit → PDF** dans RStudio
+(nécessite `tinytex` ou une distribution LaTeX complète).
+
+# Chargement des packages
+
+```{r packages}
+# Packages nécessaires (installer si absent : install.packages("..."))
+library(readxl)   # lecture de fichiers Excel
+library(dplyr)    # manipulation de données
+library(ggplot2)  # visualisation
+library(knitr)    # tableaux formatés
+library(tidyr)    # mise en forme des données
+```
+
+# Importation et exploration des données
+
+```{r import}
+# Lecture du fichier Excel présent dans le répertoire du projet
+donnees <- read_excel("base1.xlsx")
+
+# Dimensions du jeu de données
+cat("Dimensions :", nrow(donnees), "lignes ×", ncol(donnees), "colonnes\n")
+
+# Aperçu des premières observations
+kable(head(donnees, 6), caption = "Aperçu des premières observations")
+```
+
+```{r structure}
+# Structure du jeu de données
+str(donnees)
+```
+
+```{r resume}
+# Résumé statistique
+kable(summary(donnees), caption = "Résumé statistique des variables")
+```
+
+# Nettoyage des données
+
+```{r nettoyage}
+# Suppression des lignes entièrement vides
+donnees_propres <- donnees %>%
+  filter(if_any(everything(), ~ !is.na(.)))
+
+# Vérification des valeurs manquantes par colonne
+na_par_col <- donnees_propres %>%
+  summarise(across(everything(), ~ sum(is.na(.)))) %>%
+  pivot_longer(everything(),
+               names_to  = "Variable",
+               values_to = "Valeurs_manquantes")
+
+kable(na_par_col, caption = "Nombre de valeurs manquantes par variable")
+```
+
+# Analyse exploratoire
+
+## Distribution des variables numériques
+
+```{r histogrammes, fig.cap="Histogrammes des variables numériques"}
+# Sélection des colonnes numériques
+vars_num <- donnees_propres %>% select(where(is.numeric))
+
+if (ncol(vars_num) > 0) {
+  vars_num_long <- vars_num %>%
+    pivot_longer(everything(), names_to = "Variable", values_to = "Valeur")
+
+  ggplot(vars_num_long, aes(x = Valeur)) +
+    geom_histogram(bins = 20, fill = "#4472C4", color = "white", alpha = 0.8) +
+    facet_wrap(~ Variable, scales = "free") +
+    labs(title = "Distribution des variables numériques",
+         x     = "Valeur",
+         y     = "Fréquence") +
+    theme_minimal(base_size = 10)
+} else {
+  cat("Aucune variable numérique détectée.\n")
+}
+```
+
+## Statistiques descriptives
+
+```{r stats_desc}
+if (ncol(vars_num) > 0) {
+  stats <- vars_num %>%
+    summarise(across(everything(),
+                     list(Moyenne  = ~ round(mean(., na.rm = TRUE), 2),
+                          Mediane  = ~ round(median(., na.rm = TRUE), 2),
+                          Ecart_type = ~ round(sd(., na.rm = TRUE), 2),
+                          Min      = ~ round(min(., na.rm = TRUE), 2),
+                          Max      = ~ round(max(., na.rm = TRUE), 2)),
+                     .names = "{.col}__{.fn}")) %>%
+    pivot_longer(everything(),
+                 names_to  = c("Variable", "Statistique"),
+                 names_sep = "__") %>%
+    pivot_wider(names_from = Statistique, values_from = value)
+
+  kable(stats,
+        caption = "Statistiques descriptives des variables numériques",
+        digits  = 2)
+}
+```
+
+## Variables catégorielles
+
+```{r variables_cat}
+vars_cat <- donnees_propres %>% select(where(~ is.character(.) | is.factor(.)))
+
+if (ncol(vars_cat) > 0) {
+  for (v in names(vars_cat)) {
+    cat("\n### Variable :", v, "\n\n")
+    tbl <- table(vars_cat[[v]], useNA = "ifany")
+    print(kable(as.data.frame(tbl),
+                col.names = c("Modalité", "Effectif"),
+                caption   = paste("Répartition de", v)))
+  }
+} else {
+  cat("Aucune variable catégorielle détectée.\n")
+}
+```
+
+# Corrélations entre variables numériques
+
+```{r correlations, fig.cap="Matrice de corrélation"}
+if (ncol(vars_num) >= 2) {
+  mat_cor <- cor(vars_num, use = "complete.obs")
+
+  # Affichage tabulaire
+  kable(round(mat_cor, 2),
+        caption = "Matrice de corrélation (Pearson)")
+
+  # Visualisation par heatmap
+  mat_long <- as.data.frame(as.table(mat_cor))
+  names(mat_long) <- c("Var1", "Var2", "Correlation")
+
+  ggplot(mat_long, aes(x = Var1, y = Var2, fill = Correlation)) +
+    geom_tile(color = "white") +
+    geom_text(aes(label = round(Correlation, 2)), size = 3) +
+    scale_fill_gradient2(low  = "#D73027",
+                         mid  = "white",
+                         high = "#1A9850",
+                         midpoint = 0,
+                         limits   = c(-1, 1)) +
+    labs(title = "Matrice de corrélation",
+         x = NULL, y = NULL) +
+    theme_minimal(base_size = 10) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+}
+```
+
+# Conclusion
+
+Ce document démontre la chaîne complète de conversion **R → PDF** via
+R Markdown :
+
+1. **Importation** des données depuis Excel avec `readxl`.
+2. **Nettoyage** et gestion des valeurs manquantes avec `dplyr`.
+3. **Exploration** visuelle et statistique avec `ggplot2` et `knitr`.
+4. **Rapport reproductible** généré automatiquement en PDF.
+
+Pour régénérer ce rapport à tout moment :
+
+```r
+rmarkdown::render("analyse_donnees.Rmd", output_format = "pdf_document")
+```
+
+---
+
+*Document généré avec R `r getRversion()` et
+rmarkdown `r packageVersion("rmarkdown")`.*
